@@ -1,0 +1,20 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Source files & documentation not needed for deployment
+MiPag/
+hola.txt
+
+# Backup files
+*.bak
+*.tmp
+*.docx
+*.zip

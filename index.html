@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Luis Téllez | Director de Arquitectura de Ciberseguridad</title>
+    <meta name="description" content="Diseñando ecosistemas digitales resilientes y arquitecturas Zero Trust para infraestructuras críticas empresariales. Conoce la trayectoria de Luis Téllez." />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "surface-variant": "#353436",
+                        "on-tertiary": "#3c0090",
+                        "surface-container-low": "#1c1b1c",
+                        "primary-container": "#00e5ff",
+                        "on-secondary-fixed": "#000767",
+                        "error": "#ffb4ab",
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary": "#00363d",
+                        "on-secondary-container": "#a8afff",
+                        "secondary-fixed": "#e0e0ff",
+                        "outline": "#849396",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "on-tertiary-container": "#6c00f7",
+                        "inverse-surface": "#e5e2e3",
+                        "surface-container-high": "#2a2a2b",
+                        "primary-fixed-dim": "#00daf3",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#9cf0ff",
+                        "on-surface": "#e5e2e3",
+                        "surface-dim": "#131314",
+                        "on-tertiary-fixed": "#23005b",
+                        "surface-bright": "#3a393a",
+                        "surface-charcoal": "#121214",
+                        "secondary": "#bdc2ff",
+                        "background": "#131314",
+                        "on-background": "#e5e2e3",
+                        "on-primary-fixed": "#001f24",
+                        "tertiary": "#f2e9ff",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#353436",
+                        "on-secondary": "#1b247f",
+                        "tertiary-container": "#d9c8ff",
+                        "border-cyan": "rgba(0, 229, 255, 0.3)",
+                        "inverse-on-surface": "#313031",
+                        "inverse-primary": "#006875",
+                        "surface-container": "#201f20",
+                        "glow-blue": "rgba(0, 114, 255, 0.5)",
+                        "secondary-container": "#343d96",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "surface": "#131314",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0f",
+                        "surface-tint": "#00daf3",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "on-surface-variant": "#bac9cc",
+                        "on-primary-container": "#00626e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px",
+                        "margin-sm": "1rem",
+                        "margin-md": "2rem",
+                        "margin-lg": "4rem",
+                        "section-gap": "8rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "timeline-date": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        
+        /* Custom Utilities */
+        .glass-panel {
+            background: rgba(18, 18, 20, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .hover-glow:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+        }
+        
+        .tech-bg {
+            background: radial-gradient(circle at 50% 0%, #001f24 0%, #050505 50%);
+        }
+        
+        /* Circuit Line for Timeline */
+        .circuit-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #001f24;
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .circuit-line::before {
+                left: 20px;
+                transform: none;
+            }
+        }
+
+        /* Scroll Animation Styles */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <div class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</div>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps">
+            <li><a class="text-primary font-bold border-b border-primary hover:text-primary transition-all duration-200" href="#inicio" data-i18n="nav_inicio">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#perfil" data-i18n="nav_perfil">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#experiencia" data-i18n="nav_experiencia">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#educacion" data-i18n="nav_educacion">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#logros" data-i18n="nav_logros">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
+        </ul>
+        <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+            <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+            <span>|</span>
+            <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+        </div>
+    </nav>
+    
+    <!-- Main Content Canvas -->
+    <main class="max-w-container-max mx-auto px-grid-gutter pt-32 pb-section-gap flex flex-col gap-section-gap">
+        
+        <!-- Hero Section (Inicio) -->
+        <section class="min-h-[819px] flex flex-col justify-center relative bg-bg-deep rounded-xl overflow-hidden glass-panel p-margin-lg fade-in-section" id="inicio">
+            <div class="relative z-10 max-w-3xl bg-bg-deep/60 p-8 rounded-xl backdrop-blur-sm border border-outline-variant/10">
+                <p class="font-label-caps text-label-caps text-primary tracking-widest mb-4" data-i18n="hero_badge">GUARDIAN ARCHITECT</p>
+                <h1 class="font-display-lg text-display-lg text-on-surface mb-6 leading-tight" data-i18n="hero_title">Luis Téllez</h1>
+                <h2 class="font-headline-md text-headline-md text-on-surface-variant mb-8" data-i18n="hero_subtitle">Director de Arquitectura de Ciberseguridad</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl" data-i18n="hero_desc">Diseñando ecosistemas digitales resilientes y arquitecturas Zero Trust para infraestructuras críticas empresariales.</p>
+                <a class="inline-flex items-center gap-2 px-8 py-4 bg-primary-container text-bg-deep font-label-caps text-label-caps uppercase tracking-wider rounded-DEFAULT hover:shadow-[0_0_15px_rgba(0,229,255,0.4)] transition-all duration-300" href="https://www.linkedin.com/in/luis-t%C3%A9llez-57878110a" target="_blank" rel="noopener noreferrer">
+                    <span data-i18n="hero_cta">Conectar en LinkedIn</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+                </a>
+            </div>
+            <!-- Background Portrait Image -->
+            <div class="absolute inset-0 w-full h-full opacity-40 pointer-events-none">
+                <img alt="Luis Téllez professional portrait banner" class="w-full h-full object-cover object-[75%_center]" src="assets/banner.png"/>
+                <div class="absolute inset-0 bg-gradient-to-r from-bg-deep via-bg-deep/80 to-transparent"></div>
+            </div>
+        </section>
+        
+        <!-- About Section (Perfil) -->
+        <section class="flex flex-col md:flex-row gap-margin-lg items-center fade-in-section" id="perfil">
+            <div class="md:w-1/2 relative w-full">
+                <div class="glass-panel p-2 rounded-xl relative hover-glow transition-all duration-500">
+                    <img alt="Luis Téllez Professional Portrait" class="w-full aspect-[3/4] object-cover rounded-lg object-top" src="assets/portrait_profile.png"/>
+                    <!-- Overlay decorative element -->
+                    <div class="absolute inset-0 border border-primary/20 m-6 rounded-lg pointer-events-none"></div>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex flex-col gap-6 w-full">
+                <div class="flex items-center gap-4">
+                    <span class="w-12 h-px bg-primary"></span>
+                    <h2 class="font-label-caps text-label-caps text-primary tracking-widest uppercase" data-i18n="profile_badge">Perfil Profesional</h2>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface" data-i18n="profile_title">15+ Años de Liderazgo en Arquitectura Tecnológica</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant text-justify" data-i18n="profile_desc1">
+                    Experto en el diseño, implementación y evolución de arquitecturas de red complejas y estrategias de ciberseguridad. Especializado en entornos críticos como ISPs, infraestructuras Cloud multi-tenant y Data Centers de alta disponibilidad.
+                </p>
+                <p class="font-body-md text-body-md text-on-surface-variant text-justify" data-i18n="profile_desc2">
+                    Mi enfoque se centra en alinear la visión tecnológica con los objetivos de negocio corporativos, mitigando riesgos sistémicos mediante metodologías Zero Trust y liderando equipos multidisciplinarios de alto rendimiento para garantizar la resiliencia operativa a escala nacional e internacional.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="glass-panel p-4 rounded-lg flex flex-col gap-2">
+                        <span class="font-display-lg text-4xl text-primary font-bold" data-i18n="profile_stat1_num">15+</span>
+                        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase" data-i18n="profile_stat1_lbl">Años Exp.</span>
+                    </div>
+                    <div class="glass-panel p-4 rounded-lg flex flex-col gap-2">
+                        <span class="font-display-lg text-4xl text-primary font-bold" data-i18n="profile_stat2_num">ZTA</span>
+                        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase" data-i18n="profile_stat2_lbl">Enfoque Zero Trust</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section (Experiencia) -->
+        <section class="flex flex-col gap-margin-md fade-in-section" id="experiencia">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-4">
+                        <span class="w-12 h-px bg-primary"></span>
+                        <h2 class="font-label-caps text-label-caps text-primary tracking-widest uppercase" data-i18n="exp_badge">Trayectoria - Grupo Salinas</h2>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant max-w-xl" data-i18n="exp_desc">Evolución estratégica liderando la arquitectura de seguridad y redes para infraestructuras críticas.</p>
+                </div>
+                <div class="hidden md:block w-24 h-24 shrink-0 rounded-full overflow-hidden border-2 border-primary/30 p-1 glass-panel">
+                    <img alt="Luis Téllez Headshot" class="w-full h-full object-cover rounded-full" src="assets/headshot.png"/>
+                </div>
+            </div>
+            
+            <div class="relative circuit-line py-8">
+                <!-- Node 1: Director -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center w-full mb-16 group">
+                    <div class="md:w-1/2 flex justify-start md:justify-end pr-0 md:pr-12 pl-12 md:pl-0 relative z-10 text-left md:text-right w-full">
+                        <div class="glass-panel p-6 rounded-lg w-full max-w-md hover-glow transition-all">
+                            <h3 class="font-headline-md text-2xl text-on-surface mb-2" data-i18n="exp_role1_title">Director de Arquitectura de Ciberseguridad</h3>
+                            <ul class="font-body-md text-body-md text-on-surface-variant list-disc pl-4 text-left space-y-2">
+                                <li data-i18n="exp_role1_bullet1">Lidera la función de Arquitectura de Ciberseguridad, creándola y consolidándola para diseñar modelos de seguridad on-premises, cloud e híbridos.</li>
+                                <li data-i18n="exp_role1_bullet2">Habilita el despliegue seguro de nuevas aplicaciones y evalúa las existentes conforme a estándares para proteger la confidencialidad, integridad y disponibilidad de los sistemas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Central Node -->
+                    <div class="absolute left-[20px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-4 h-4 bg-bg-deep border-2 border-primary rounded-full z-20 group-hover:bg-primary transition-colors shadow-[0_0_10px_rgba(0,229,255,0.5)]"></div>
+                    <div class="md:w-1/2 pl-12 md:pl-12 pt-4 md:pt-0 relative z-10">
+                        <span class="font-timeline-date text-timeline-date text-primary" data-i18n="exp_date1">Abril 2022 – Actualidad</span>
+                    </div>
+                </div>
+                
+                <!-- Node 2: Telecom Manager -->
+                <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center w-full mb-16 group">
+                    <div class="md:w-1/2 flex justify-start pl-12 relative z-10 w-full">
+                        <div class="glass-panel p-6 rounded-lg w-full max-w-md hover-glow transition-all">
+                            <h3 class="font-headline-md text-2xl text-on-surface mb-2" data-i18n="exp_role2_title">Gerente de Telecomunicaciones</h3>
+                            <ul class="font-body-md text-body-md text-on-surface-variant list-disc pl-4 text-left space-y-2">
+                                <li data-i18n="exp_role2_bullet1">Responsable de la seguridad perimetral de Grupo Salinas, el diseño de redes core y la seguridad de datos.</li>
+                                <li data-i18n="exp_role2_bullet2">Supervisó el análisis de desempeño de aplicaciones, gestión de ancho de banda y pruebas e implementación de nuevas tecnologías de seguridad.</li>
+                                <li data-i18n="exp_role2_bullet3">Desarrolló planes de CAPEX y OPEX para iniciativas estratégicas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Central Node -->
+                    <div class="absolute left-[20px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-4 h-4 bg-bg-deep border-2 border-outline-variant rounded-full z-20 group-hover:border-primary transition-colors"></div>
+                    <div class="md:w-1/2 pr-0 md:pr-12 pl-12 md:pl-0 pt-4 md:pt-0 relative z-10 text-left md:text-right">
+                        <span class="font-timeline-date text-timeline-date text-on-surface-variant" data-i18n="exp_date2">Enero 2017 – Marzo 2022</span>
+                    </div>
+                </div>
+                
+                <!-- Node 3: Network Manager -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center w-full group">
+                    <div class="md:w-1/2 flex justify-start md:justify-end pr-0 md:pr-12 pl-12 md:pl-0 relative z-10 text-left md:text-right w-full">
+                        <div class="glass-panel p-6 rounded-lg w-full max-w-md hover-glow transition-all">
+                            <h3 class="font-headline-md text-2xl text-on-surface mb-2" data-i18n="exp_role3_title">Gerente de Arquitectura de Redes</h3>
+                            <ul class="font-body-md text-body-md text-on-surface-variant list-disc pl-4 text-left space-y-2">
+                                <li data-i18n="exp_role3_bullet1">Lideró el diseño de propuestas de conectividad e iniciativas de mejora de red para Grupo Salinas.</li>
+                                <li data-i18n="exp_role3_bullet2">Gestionó la relación con proveedores y realizó evaluaciones y pruebas de tecnología de transporte.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Central Node -->
+                    <div class="absolute left-[20px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-4 h-4 bg-bg-deep border-2 border-outline-variant rounded-full z-20 group-hover:border-primary transition-colors"></div>
+                    <div class="md:w-1/2 pl-12 md:pl-12 pt-4 md:pt-0 relative z-10">
+                        <span class="font-timeline-date text-timeline-date text-on-surface-variant" data-i18n="exp_date3">Junio 2015 – Diciembre 2016</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section (Educación) -->
+        <section class="flex flex-col gap-margin-md fade-in-section" id="educacion">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="w-12 h-px bg-primary"></span>
+                <h2 class="font-label-caps text-label-caps text-primary tracking-widest uppercase" data-i18n="edu_badge">Formación Académica</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Maestria -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">school</span>
+                    </div>
+                    <span class="font-timeline-date text-timeline-date text-primary" data-i18n="edu_date1">Actualmente en curso</span>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="edu_role1_title">Maestría en TI e Inteligencia Analítica</h3>
+                    <h4 class="font-label-caps text-label-caps text-on-surface-variant z-10" data-i18n="edu_role1_inst">Universidad Anáhuac</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10 text-justify" data-i18n="edu_role1_desc">
+                        En curso. Formación avanzada en inteligencia de negocios, analítica de datos aplicada e integración de tecnologías de la información.
+                    </p>
+                </div>
+                <!-- Licenciatura -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">history_edu</span>
+                    </div>
+                    <span class="font-timeline-date text-timeline-date text-primary" data-i18n="edu_date2">Agosto 2005 – Diciembre 2010</span>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="edu_role2_title">Ingeniería en Comunicaciones y Electrónica, especialidad en Electrónica</h3>
+                    <h4 class="font-label-caps text-label-caps text-on-surface-variant z-10" data-i18n="edu_role2_inst">Instituto Politécnico Nacional (IPN) - ESIME Zacatenco</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10 text-justify" data-i18n="edu_role2_desc">
+                        Graduado. Especialización en diseño de sistemas electrónicos, telecomunicaciones y procesamiento de señales.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Achievements Section (Logros) -->
+        <section class="flex flex-col gap-margin-md fade-in-section" id="logros">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="w-12 h-px bg-primary"></span>
+                <h2 class="font-label-caps text-label-caps text-primary tracking-widest uppercase" data-i18n="ach_badge">Hitos Estratégicos</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">shield_lock</span>
+                    </div>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="ach_card1_title">Creación de la Función</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10" data-i18n="ach_card1_desc">
+                        Creó y consolidó la función de Arquitectura de Ciberseguridad a nivel corporativo en Grupo Salinas.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto pt-4 z-10">
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card1_tag1">Gobernanza</span>
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card1_tag2">Liderazgo</span>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">dns</span>
+                    </div>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="ach_card2_title">Diseño de Centro de Datos</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10" data-i18n="ach_card2_desc">
+                        Diseñó las arquitecturas de red y ciberseguridad para el nuevo centro de datos de alto desempeño de GS.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto pt-4 z-10">
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card2_tag1">Redes</span>
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card2_tag2">Datacenter</span>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">cloud_sync</span>
+                    </div>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="ach_card3_title">Estrategia Cloud & Multi-Cloud</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10" data-i18n="ach_card3_desc">
+                        Diseñó la arquitectura de comunicaciones y ciberseguridad para entornos híbridos y multi-nube en GS.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto pt-4 z-10">
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card3_tag1">Cloud</span>
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card3_tag2">Híbrido</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">security</span>
+                    </div>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="ach_card4_title">Despliegue Zero Trust</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10" data-i18n="ach_card4_desc">
+                        Lideró la implementación del modelo Zero Trust Network Access (ZTNA) en la red de usuarios de GS.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto pt-4 z-10">
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card4_tag1">Zero Trust</span>
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card4_tag2">ZTNA</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">groups</span>
+                    </div>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="ach_card5_title">Liderazgo Alto Rendimiento</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10" data-i18n="ach_card5_desc">
+                        Lideró equipos multidisciplinarios de gerentes, project managers, ingenieros y fabricantes de tecnología.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto pt-4 z-10">
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card5_tag1">Gestión</span>
+                        <span class="px-2 py-1 text-xs font-label-caps bg-surface-variant text-on-surface rounded border border-outline-variant/30" data-i18n="ach_card5_tag2">Equipos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="py-section-gap flex flex-col items-center justify-center text-center tech-bg rounded-xl glass-panel relative overflow-hidden fade-in-section" id="contacto">
+            <div class="absolute inset-0 border border-primary/10 rounded-xl pointer-events-none"></div>
+            <h2 class="font-display-lg text-4xl text-on-surface mb-4" data-i18n="contact_title">Asegurando el Futuro Digital</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-lg" data-i18n="contact_desc">
+                Para consultas sobre arquitectura estratégica, consultoría o colaboraciones profesionales, la vía de contacto principal es a través de LinkedIn.
+            </p>
+            <a class="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-primary-container text-primary-container font-label-caps text-label-caps uppercase tracking-wider rounded-DEFAULT hover:bg-primary-container/10 transition-colors duration-300 group" href="https://www.linkedin.com/in/luis-t%C3%A9llez-57878110a" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="contact_cta">Conectar en LinkedIn</span>
+                <svg class="w-5 h-5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                </svg>
+            </a>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="w-full flex flex-col items-center justify-center gap-margin-md px-grid-gutter bg-bg-deep full-width py-section-gap border-t border-outline-variant/5">
+        <div class="font-headline-md text-headline-md text-primary" data-i18n="footer_title">LUIS TÉLLEZ</div>
+        <div class="font-body-md text-body-md text-on-surface-variant text-center opacity-80 hover:opacity-100 transition-opacity" data-i18n="footer_copyright">
+            © 2026 LUIS TÉLLEZ. DIRECTOR DE ARQUITECTURA DE CIBERSEGURIDAD. TODOS LOS DERECHOS RESERVADOS.
+        </div>
+        <ul class="flex gap-4 font-label-caps text-xs">
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="https://www.linkedin.com/in/luis-t%C3%A9llez-57878110a" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#" data-i18n="footer_privacy">Política de Privacidad</a></li>
+        </ul>
+    </footer>
+
+    <!-- i18n and Interactive JS -->
+    <script>
+        const translations = {
+            es: {
+                title: "Luis Téllez | Director de Arquitectura de Ciberseguridad",
+                meta_desc: "Diseñando ecosistemas digitales resilientes y arquitecturas Zero Trust para infraestructuras críticas empresariales. Conoce la trayectoria de Luis Téllez.",
+                nav_inicio: "Inicio",
+                nav_perfil: "Perfil",
+                nav_experiencia: "Experiencia",
+                nav_educacion: "Educación",
+                nav_logros: "Logros",
+                nav_contacto: "Contacto",
+                hero_badge: "GUARDIAN ARCHITECT",
+                hero_title: "Luis Téllez",
+                hero_subtitle: "Director de Arquitectura de Ciberseguridad",
+                hero_desc: "Diseñando ecosistemas digitales resilientes y arquitecturas Zero Trust para infraestructuras críticas empresariales.",
+                hero_cta: "Conectar en LinkedIn",
+                profile_badge: "Perfil Profesional",
+                profile_title: "15+ Años de Liderazgo en Arquitectura Tecnológica",
+                profile_desc1: "Experto en el diseño, implementación y evolución de arquitecturas de red complejas y estrategias de ciberseguridad. Especializado en entornos críticos como ISPs, infraestructuras Cloud multi-tenant y Data Centers de alta disponibilidad.",
+                profile_desc2: "Mi enfoque se centra en alinear la visión tecnológica con los objetivos de negocio corporativos, mitigando riesgos sistémicos mediante metodologías Zero Trust y liderando equipos multidisciplinarios de alto rendimiento para garantizar la resiliencia operativa a escala nacional e internacional.",
+                profile_stat1_num: "15+",
+                profile_stat1_lbl: "Años Exp.",
+                profile_stat2_num: "ZTA",
+                profile_stat2_lbl: "Enfoque Zero Trust",
+                exp_badge: "Trayectoria - Grupo Salinas",
+                exp_desc: "Evolución estratégica liderando la arquitectura de seguridad y redes para infraestructuras críticas.",
+                exp_date1: "Abril 2022 – Actualidad",
+                exp_role1_title: "Director de Arquitectura de Ciberseguridad",
+                exp_role1_bullet1: "Lidera la función de Arquitectura de Ciberseguridad, creándola y consolidándola para diseñar modelos de seguridad on-premises, cloud e híbridos.",
+                exp_role1_bullet2: "Habilita el despliegue seguro de nuevas aplicaciones y evalúa las existentes conforme a estándares para proteger la confidencialidad, integridad y disponibilidad de los sistemas.",
+                exp_date2: "Enero 2017 – Marzo 2022",
+                exp_role2_title: "Gerente de Telecomunicaciones",
+                exp_role2_bullet1: "Responsable de la seguridad perimetral de Grupo Salinas, el diseño de redes core y la seguridad de datos.",
+                exp_role2_bullet2: "Supervisó el análisis de desempeño de aplicaciones, gestión de ancho de banda y pruebas e implementación de nuevas tecnologías de seguridad.",
+                exp_role2_bullet3: "Desarrolló planes de CAPEX y OPEX para iniciativas estratégicas.",
+                exp_date3: "Junio 2015 – Diciembre 2016",
+                exp_role3_title: "Gerente de Arquitectura de Redes",
+                exp_role3_bullet1: "Lideró el diseño de propuestas de conectividad e iniciativas de mejora de red para Grupo Salinas.",
+                exp_role3_bullet2: "Gestionó la relación con proveedores y realizó evaluaciones y pruebas de tecnología de transporte.",
+                edu_badge: "Formación Académica",
+                edu_desc: "Preparación académica y educación continua en tecnología y analítica.",
+                edu_date1: "Actualmente en curso",
+                edu_role1_title: "Maestría en TI e Inteligencia Analítica",
+                edu_role1_inst: "Universidad Anáhuac",
+                edu_role1_desc: "En curso. Formación avanzada en inteligencia de negocios, analítica de datos aplicada e integración de tecnologías de la información.",
+                edu_date2: "Agosto 2005 – Diciembre 2010",
+                edu_role2_title: "Ingeniería en Comunicaciones y Electrónica, especialidad en Electrónica",
+                edu_role2_inst: "Instituto Politécnico Nacional (IPN) - ESIME Zacatenco",
+                edu_role2_desc: "Graduado. Especialización en diseño de sistemas electrónicos, telecomunicaciones y procesamiento de señales.",
+                ach_badge: "Hitos Estratégicos",
+                ach_desc: "Logros clave y competencias técnicas adquiridas durante mi carrera.",
+                ach_card1_title: "Creación de la Función",
+                ach_card1_desc: "Creó y consolidó la función de Arquitectura de Ciberseguridad a nivel corporativo en Grupo Salinas.",
+                ach_card1_tag1: "Gobernanza",
+                ach_card1_tag2: "Liderazgo",
+                ach_card2_title: "Diseño de Centro de Datos",
+                ach_card2_desc: "Diseñó las arquitecturas de red y ciberseguridad para el nuevo centro de datos de alto desempeño de GS.",
+                ach_card2_tag1: "Redes",
+                ach_card2_tag2: "Datacenter",
+                ach_card3_title: "Estrategia Cloud & Multi-Cloud",
+                ach_card3_desc: "Diseñó la arquitectura de comunicaciones y ciberseguridad para entornos híbridos y multi-nube en GS.",
+                ach_card3_tag1: "Cloud",
+                ach_card3_tag2: "Híbrido",
+                ach_card4_title: "Despliegue Zero Trust",
+                ach_card4_desc: "Lideró la implementación del modelo Zero Trust Network Access (ZTNA) en la red de usuarios de GS.",
+                ach_card4_tag1: "Zero Trust",
+                ach_card4_tag2: "ZTNA",
+                ach_card5_title: "Liderazgo Alto Rendimiento",
+                ach_card5_desc: "Lideró equipos multidisciplinarios de gerentes, project managers, ingenieros y fabricantes de tecnología.",
+                ach_card5_tag1: "Gestión",
+                ach_card5_tag2: "Equipos",
+                contact_title: "Asegurando el Futuro Digital",
+                contact_desc: "Para consultas sobre arquitectura estratégica, consultoría o colaboraciones profesionales, la vía de contacto principal es a través de LinkedIn.",
+                contact_cta: "Conectar en LinkedIn",
+                footer_title: "LUIS TÉLLEZ",
+                footer_copyright: "© 2026 LUIS TÉLLEZ. DIRECTOR DE ARQUITECTURA DE CIBERSEGURIDAD. TODOS LOS DERECHOS RESERVADOS.",
+                footer_privacy: "Política de Privacidad"
+            },
+            en: {
+                title: "Luis Téllez | Cybersecurity Architecture Director",
+                meta_desc: "Designing resilient digital ecosystems and Zero Trust architectures for critical enterprise infrastructures. Learn about Luis Téllez's career.",
+                nav_inicio: "Home",
+                nav_perfil: "Profile",
+                nav_experiencia: "Experience",
+                nav_educacion: "Education",
+                nav_logros: "Achievements",
+                nav_contacto: "Contact",
+                hero_badge: "GUARDIAN ARCHITECT",
+                hero_title: "Luis Téllez",
+                hero_subtitle: "Cybersecurity Architecture Director",
+                hero_desc: "Designing resilient digital ecosystems and Zero Trust architectures for critical enterprise infrastructures.",
+                hero_cta: "Connect on LinkedIn",
+                profile_badge: "Professional Profile",
+                profile_title: "15+ Years of Leadership in Technology Architecture",
+                profile_desc1: "Expert in the design, implementation, and evolution of complex network architectures and cybersecurity strategies. Specialized in critical environments such as ISPs, multi-tenant Cloud infrastructures, and high-availability Data Centers.",
+                profile_desc2: "My focus centers on aligning technology vision with corporate business objectives, mitigating systemic risks through Zero Trust methodologies and leading high-performance multidisciplinary teams to ensure operational resilience at national and international scale.",
+                profile_stat1_num: "15+",
+                profile_stat1_lbl: "Years Exp.",
+                profile_stat2_num: "ZTA",
+                profile_stat2_lbl: "Zero Trust Focus",
+                exp_badge: "Career Path - Grupo Salinas",
+                exp_desc: "Strategic evolution leading security and network architecture for critical infrastructures.",
+                exp_date1: "April 2022 – Present",
+                exp_role1_title: "Cybersecurity Architecture Director",
+                exp_role1_bullet1: "Leads the Cybersecurity Architecture function, creating and consolidating it to design secure on-premises, cloud, and hybrid security models.",
+                exp_role1_bullet2: "Enables secure deployment of new applications and evaluates existing ones according to standards to protect confidentiality, integrity, and availability.",
+                exp_date2: "January 2017 – March 2022",
+                exp_role2_title: "Telecommunications Manager",
+                exp_role2_bullet1: "Responsible for the perimeter security of Grupo Salinas, core network design, and data security.",
+                exp_role2_bullet2: "Supervised application performance analysis, bandwidth management, and testing and implementation of new security technologies.",
+                exp_role2_bullet3: "Developed CAPEX and OPEX plans for strategic initiatives.",
+                exp_date3: "June 2015 – December 2016",
+                exp_role3_title: "Network Architecture Manager",
+                exp_role3_bullet1: "Led the design of connectivity proposals and network improvement initiatives for Grupo Salinas.",
+                exp_role3_bullet2: "Managed vendor relationships and performed evaluations and testing of transport technologies.",
+                edu_badge: "Academic Background",
+                edu_desc: "Academic training and continuous education in technology and analytics.",
+                edu_date1: "Currently in progress",
+                edu_role1_title: "Master's in IT and Analytical Intelligence",
+                edu_role1_inst: "Universidad Anáhuac",
+                edu_role1_desc: "In progress. Advanced training in business intelligence, applied data analytics, and information technology integration.",
+                edu_date2: "August 2005 – December 2010",
+                edu_role2_title: "Communications and Electronics Engineering, specializing in Electronics",
+                edu_role2_inst: "Instituto Politécnico Nacional (IPN) - ESIME Zacatenco",
+                edu_role2_desc: "Graduated. Specialization in electronic system design, telecommunications, and signal processing.",
+                ach_badge: "Strategic Milestones",
+                ach_desc: "Key accomplishments and technical competencies acquired during my career.",
+                ach_card1_title: "Creation of the Function",
+                ach_card1_desc: "Created and consolidated the Cybersecurity Architecture function at the corporate level in Grupo Salinas.",
+                ach_card1_tag1: "Governance",
+                ach_card1_tag2: "Leadership",
+                ach_card2_title: "Data Center Design",
+                ach_card2_desc: "Designed the network and cybersecurity architectures for the new high-performance GS data center.",
+                ach_card2_tag1: "Networks",
+                ach_card2_tag2: "Datacenter",
+                ach_card3_title: "Cloud & Multi-Cloud Strategy",
+                ach_card3_desc: "Designed the communications and cybersecurity architecture for hybrid and multi-cloud environments at GS.",
+                ach_card3_tag1: "Cloud",
+                ach_card3_tag2: "Hybrid",
+                ach_card4_title: "Zero Trust Deployment",
+                ach_card4_desc: "Led the implementation of the Zero Trust Network Access (ZTNA) model across GS user networks.",
+                ach_card4_tag1: "Zero Trust",
+                ach_card4_tag2: "ZTNA",
+                ach_card5_title: "High-Performance Leadership",
+                ach_card5_desc: "Led multidisciplinary teams comprising managers, project managers, engineers, and technology vendors.",
+                ach_card5_tag1: "Management",
+                ach_card5_tag2: "Teams",
+                contact_title: "Securing the Digital Future",
+                contact_desc: "For inquiries regarding strategic architecture, consulting, or professional collaborations, the primary channel of contact is LinkedIn.",
+                contact_cta: "Connect on LinkedIn",
+                footer_title: "LUIS TÉLLEZ",
+                footer_copyright: "© 2026 LUIS TÉLLEZ. CYBERSECURITY ARCHITECTURE DIRECTOR. ALL RIGHTS RESERVED.",
+                footer_privacy: "Privacy Policy"
+            }
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            
+            if (lang === 'es') {
+                btnEs.classList.add('text-primary', 'font-bold');
+                btnEn.classList.remove('text-primary', 'font-bold');
+                document.documentElement.lang = 'es';
+            } else {
+                btnEn.classList.add('text-primary', 'font-bold');
+                btnEs.classList.remove('text-primary', 'font-bold');
+                document.documentElement.lang = 'en';
+            }
+            
+            // Translate texts
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Translate SEO titles and metas
+            document.title = translations[lang].title;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute('content', translations[lang].meta_desc);
+            }
+        }
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('lang') || 'es';
+            setLanguage(savedLang);
+
+            // Add Event Listeners for language switches
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+
+            // Smooth Scroll Active Link Highlighting
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary', 'font-bold', 'border-b', 'border-primary');
+                    link.classList.add('text-on-surface-variant');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.remove('text-on-surface-variant');
+                        link.classList.add('text-primary', 'font-bold', 'border-b', 'border-primary');
+                    }
+                });
+            });
+
+            // Intersection Observer for Scroll Animations
+            const animatedSections = document.querySelectorAll('.fade-in-section');
+            const observerOptions = {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Once animated, no need to track again
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animatedSections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
