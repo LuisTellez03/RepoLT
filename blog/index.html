@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Blog | Luis Téllez</title>
+    <meta name="description" content="Reflexiones sobre arquitectura, resiliencia, liderazgo y ciberseguridad." />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        .glass-panel {
+            background: rgba(18, 18, 20, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hover-glow:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+        }
+        /* Topographic grid background */
+        .topo-bg {
+            background-color: #050505;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+            background-position: center center;
+        }
+        .topo-overlay {
+            background: radial-gradient(circle at 50% 100%, transparent 0%, #050505 80%);
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
+        <div class="flex items-center gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-bg-deep bg-primary rounded-full hover:bg-primary/90 transition-colors">Blog</a>
+        </div>
+    </nav>
+    
+    <!-- Hero / Header -->
+    <header class="relative pt-32 pb-24 border-b border-outline-variant/10 topo-bg">
+        <div class="topo-overlay"></div>
+        <div class="max-w-container-max mx-auto px-grid-gutter relative z-10 flex flex-col items-center text-center">
+            <span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4">Bitácora</span>
+            <h1 class="font-display-lg text-4xl md:text-6xl text-on-surface mb-6">Blog</h1>
+            <p class="font-body-md text-xl text-on-surface-variant max-w-2xl">
+                Reflexiones sobre arquitectura, resiliencia, liderazgo y ciberseguridad.
+            </p>
+        </div>
+    </header>
+
+    <!-- Post List -->
+    <main class="max-w-container-max mx-auto px-grid-gutter py-24 min-h-[50vh]">
+        <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+            
+            <!-- Article Card -->
+            <a href="/blog/disenar-confianza-digital" class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 group relative">
+                <div class="flex flex-wrap gap-2 mb-2">
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary">Presentación</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Liderazgo</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Ciberseguridad</span>
+                </div>
+                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors">Diseñar confianza digital: una presentación y un nuevo desafío</h2>
+                <p class="font-body-md text-on-surface-variant">Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico.</p>
+                <div class="flex items-center justify-between mt-4">
+                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70">21 de septiembre de 2026</span>
+                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2">Leer publicación <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                </div>
+            </a>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

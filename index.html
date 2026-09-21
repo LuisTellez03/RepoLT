@@ -177,10 +177,13 @@
             <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#logros" data-i18n="nav_logros">Logros</a></li>
             <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
         </ul>
-        <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
-            <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
-            <span>|</span>
-            <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+        <div class="flex items-center gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+            </div>
         </div>
     </nav>
     
@@ -320,7 +323,19 @@
                 <h2 class="font-label-caps text-label-caps text-primary tracking-widest uppercase" data-i18n="edu_badge">Formación Académica</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Maestria -->
+                <!-- Maestria MCY -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">shield_person</span>
+                    </div>
+                    <span class="font-timeline-date text-timeline-date text-primary" data-i18n="edu_date_mcy">Actualmente en curso</span>
+                    <h3 class="font-headline-md text-xl text-on-surface z-10" data-i18n="edu_role_mcy_title">Maestría en Ciberseguridad (MCY)</h3>
+                    <h4 class="font-label-caps text-label-caps text-on-surface-variant z-10" data-i18n="edu_role_mcy_inst">Tecnológico de Monterrey</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant z-10 text-justify" data-i18n="edu_role_mcy_desc">
+                        Programa enfocado en la gestión de riesgo corporativo, liderazgo estratégico en seguridad de la información y protección de infraestructuras críticas.
+                    </p>
+                </div>
+                <!-- Maestria Anahuac -->
                 <div class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 relative overflow-hidden group">
                     <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
                         <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 0;">school</span>
@@ -501,6 +516,10 @@
                 exp_role3_bullet2: "Gestionó la relación con proveedores y realizó evaluaciones y pruebas de tecnología de transporte.",
                 edu_badge: "Formación Académica",
                 edu_desc: "Preparación académica y educación continua en tecnología y analítica.",
+                edu_date_mcy: "Actualmente en curso",
+                edu_role_mcy_title: "Maestría en Ciberseguridad (MCY)",
+                edu_role_mcy_inst: "Tecnológico de Monterrey",
+                edu_role_mcy_desc: "Programa enfocado en la gestión de riesgo corporativo, liderazgo estratégico en seguridad de la información y protección de infraestructuras críticas.",
                 edu_date1: "Actualmente en curso",
                 edu_role1_title: "Maestría en TI e Inteligencia Analítica",
                 edu_role1_inst: "Universidad Anáhuac",
@@ -577,6 +596,10 @@
                 exp_role3_bullet2: "Managed vendor relationships and performed evaluations and testing of transport technologies.",
                 edu_badge: "Academic Background",
                 edu_desc: "Academic training and continuous education in technology and analytics.",
+                edu_date_mcy: "Currently in progress",
+                edu_role_mcy_title: "Master's in Cybersecurity (MCY)",
+                edu_role_mcy_inst: "Tecnológico de Monterrey",
+                edu_role_mcy_desc: "Program focused on corporate risk management, strategic leadership in information security, and protection of critical infrastructures.",
                 edu_date1: "Currently in progress",
                 edu_role1_title: "Master's in IT and Analytical Intelligence",
                 edu_role1_inst: "Universidad Anáhuac",

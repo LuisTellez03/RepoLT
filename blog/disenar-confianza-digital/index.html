@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Diseñar confianza digital: una presentación y un nuevo desafío | Luis Téllez</title>
+    <meta name="description" content="Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico." />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose-dark {
+            --tw-prose-body: #bac9cc;
+            --tw-prose-headings: #e5e2e3;
+            --tw-prose-lead: #bac9cc;
+            --tw-prose-links: #c3f5ff;
+            --tw-prose-bold: #e5e2e3;
+            --tw-prose-counters: #c3f5ff;
+            --tw-prose-bullets: #00e5ff;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5);
+            --tw-prose-quotes: #c3f5ff;
+            --tw-prose-quote-borders: #00e5ff;
+            --tw-prose-captions: #849396;
+            --tw-prose-code: #c3f5ff;
+            --tw-prose-pre-code: #bac9cc;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7);
+            --tw-prose-th-borders: #3b494c;
+            --tw-prose-td-borders: #3b494c;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
+        <div class="flex items-center gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center">
+                        <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+                    </li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center">
+                        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+                    </li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page">Diseñar confianza digital</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20">Presentación</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Liderazgo</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Ciberseguridad</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight">Diseñar confianza digital: una presentación y un nuevo desafío</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date">21 de septiembre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date">3 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-dark prose-lg lg:prose-xl font-body-md text-justify max-w-none">
+            
+            <p>Mi trayectoria profesional se ha desarrollado en la intersección entre redes, arquitectura tecnológica y ciberseguridad. Durante más de quince años he trabajado en el diseño, implementación y evolución de entornos tecnológicos complejos, especialmente en infraestructuras críticas, centros de datos y escenarios de nube híbrida. Esta experiencia me ha permitido entender que la seguridad no es un componente aislado: es una condición indispensable para que los servicios digitales puedan operar con confianza y continuidad.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">De la arquitectura técnica a la visión estratégica</h2>
+            <p>En mi recorrido he participado en la construcción de arquitecturas de red y ciberseguridad, así como en la consolidación de una función de arquitectura de seguridad. Cada uno de esos retos ha reforzado una convicción: proteger una organización va mucho más allá de implementar controles técnicos. A medida que los entornos crecen y se vuelven más interdependientes, la seguridad también exige gobierno, priorización y la capacidad de explicar riesgos e inversiones en un lenguaje cercano a las áreas de negocio.</p>
+            <p>Mi formación como Ingeniero en Comunicaciones y Electrónica, junto con mi experiencia en arquitectura tecnológica, me ha dado una base técnica que valoro profundamente. Sin embargo, el siguiente paso de mi desarrollo profesional requiere complementar esa perspectiva con conocimientos que permitan conectar la ciberseguridad con la continuidad de las cadenas productivas, la protección de los activos de información y la calidad de los servicios que reciben los clientes.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Por qué estudio la MCY</h2>
+            <p>Por esa razón decidí cursar la Maestría en Ciberseguridad del Tecnológico de Monterrey. Mi objetivo es prepararme para evolucionar hacia el rol de CISO, ampliando mis capacidades en gestión de riesgo, liderazgo y comunicación estratégica. Busco fortalecer la habilidad de trabajar con líderes de negocio y presentar la ciberseguridad como una inversión indispensable para la resiliencia y el crecimiento sostenible, no únicamente como una respuesta ante incidentes.</p>
+            <p>Para mí, este posgrado representa la oportunidad de integrar mi experiencia técnica con una visión más completa de la organización. Aspiro a contribuir a que las decisiones de seguridad se conviertan en habilitadores de confianza: decisiones que reduzcan la exposición a riesgos, preserven la operación y acompañen la innovación.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Una mirada personal</h2>
+            <p>Fuera del trabajo, disfruto pasar tiempo con mi familia en actividades al aire libre, ir al cine —en especial a las películas de ciencia ficción— y explorar preguntas sobre cómo funciona el universo y las cosas que nos rodean. También encuentro en la carpintería un equilibrio valioso entre habilidades manuales, precisión y pensamiento estructurado. Estas inquietudes tienen algo en común con mi vida profesional: la curiosidad por comprender sistemas complejos y construir soluciones con propósito.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Cierre</h2>
+            <p>Este blog será un espacio para compartir aprendizajes y reflexiones sobre ese camino: desde la arquitectura y la resiliencia hasta el liderazgo y el papel de la ciberseguridad en el negocio. Esta primera entrada es, en ese sentido, una presentación y también el inicio de un nuevo desafío.</p>
+
+        </article>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                Volver a publicaciones
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
