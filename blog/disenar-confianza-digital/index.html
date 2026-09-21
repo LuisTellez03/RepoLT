@@ -50,7 +50,7 @@
         body { scroll-behavior: smooth; }
         .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
         /* Markdown prose custom overrides for the dark theme */
-        .prose {
+        .prose, .prose-invert {
             --tw-prose-body: #bac9cc !important;
             --tw-prose-headings: #e5e2e3 !important;
             --tw-prose-lead: #bac9cc !important;
@@ -67,6 +67,14 @@
             --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
             --tw-prose-th-borders: #3b494c !important;
             --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
         }
     </style>
 </head>
@@ -119,7 +127,7 @@
         </div>
 
         <!-- Article Body (Markdown Content) -->
-        <article class="prose prose-dark prose-lg lg:prose-xl font-body-md text-left max-w-none">
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none">
             
             <p>Mi trayectoria profesional se ha desarrollado en la intersección entre redes, arquitectura tecnológica y ciberseguridad. Durante más de quince años he trabajado en el diseño, implementación y evolución de entornos tecnológicos complejos, especialmente en infraestructuras críticas, centros de datos y escenarios de nube híbrida. Esta experiencia me ha permitido entender que la seguridad no es un componente aislado: es una condición indispensable para que los servicios digitales puedan operar con confianza y continuidad.</p>
 
