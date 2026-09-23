@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>La gestión de activos de TI: el punto de partida para reducir el caos | Luis Téllez</title>
+    <meta name="description" content="Una reflexión inicial sobre por qué conocer, verificar y sostener la información de los activos es fundamental para la operación y la ciberseguridad." />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose, .prose-invert {
+            --tw-prose-body: #bac9cc !important;
+            --tw-prose-headings: #e5e2e3 !important;
+            --tw-prose-lead: #bac9cc !important;
+            --tw-prose-links: #c3f5ff !important;
+            --tw-prose-bold: #e5e2e3 !important;
+            --tw-prose-counters: #c3f5ff !important;
+            --tw-prose-bullets: #00e5ff !important;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5) !important;
+            --tw-prose-quotes: #c3f5ff !important;
+            --tw-prose-quote-borders: #00e5ff !important;
+            --tw-prose-captions: #849396 !important;
+            --tw-prose-code: #c3f5ff !important;
+            --tw-prose-pre-code: #bac9cc !important;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
+            --tw-prose-th-borders: #3b494c !important;
+            --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
+        <div class="flex items-center gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center">
+                        <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+                    </li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center">
+                        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+                    </li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page">Gestión de activos</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20">Gestión de activos</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Visibilidad</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Confiabilidad</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight">La gestión de activos de TI: el punto de partida para reducir el caos</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date">23 de septiembre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date">3 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none">
+            
+            <p>Al comenzar a profundizar en la gestión de activos de TI, he comprendido que no se trata únicamente de elaborar una lista de computadoras, servidores o licencias. Se trata de conocer el entorno tecnológico con suficiente certeza para poder operarlo, protegerlo y mejorarlo. Los capítulos iniciales de Martyn Hobbs y Jeremy L. Boerger coinciden en una idea que me parece esencial: cuando una organización no sabe con precisión qué posee, dónde se encuentra, quién lo utiliza y cómo se relaciona con otros elementos, la operación de TI tiende a convertirse en una reacción constante ante incidentes.</p>
+
+            <p>Hobbs describe este escenario como un tipo de caos operativo. Un servicio falla, se intenta restaurarlo, pero no se conoce con claridad qué dispositivos, aplicaciones o dependencias están involucrados. En ese contexto, cada incidente parece aislado, investigar la causa raíz se vuelve lento y los cambios tecnológicos pueden generar nuevas interrupciones. Por ello, la gestión de activos y la gestión de configuración no deben verse como tareas administrativas secundarias: aportan la información que conecta la gestión de incidentes, problemas y cambios. Una CMDB solo resulta útil si ayuda a responder preguntas prácticas, como qué servidor soporta una aplicación crítica, qué personas serían afectadas por una falla o qué riesgo tendría un cambio planificado.</p>
+
+            <p>La lectura también me ha ayudado a relacionar ITAM con la ciberseguridad. No es posible gestionar adecuadamente vulnerabilidades en activos que no han sido identificados. Un equipo no registrado, una máquina virtual olvidada o software instalado sin control pueden quedar fuera de las actualizaciones, del monitoreo y de las políticas de seguridad. Así, la visibilidad de los activos no es solo una ventaja operativa: es una condición para conocer la superficie tecnológica que debe protegerse.</p>
+
+            <p>Sin embargo, Boerger añade una precisión importante: no basta con tener datos; los datos deben ser confiables y verificables. Un reporte que afirma que existen cierto número de laptops o licencias no constituye, por sí mismo, una verdad. Debemos preguntarnos de dónde proviene la información, cuándo se validó y qué evidencia la respalda. Un número de serie observado en una auditoría física, un registro de red, una factura, una asignación a un usuario o un certificado de destrucción pueden aportar evidencia. Al contrastar varias fuentes, la organización reduce el riesgo de tomar decisiones basadas en registros desactualizados o incompletos.</p>
+
+            <p>Esta idea me parece especialmente útil porque evita dos errores comunes. El primero es depender solo de documentos de compra y movimientos administrativos: que un activo haya sido adquirido no prueba que siga en uso, que permanezca en la organización o que tenga una configuración segura. El segundo es depender solo de inventarios financieros periódicos: estos pueden apoyar el control de costos, pero no siempre describen la realidad técnica actual. La gestión efectiva de activos requiere combinar procesos, inventarios, documentación, herramientas de descubrimiento y validación continua.</p>
+
+            <p>Otro aprendizaje relevante de Hobbs es que el proyecto debe mantenerse enfocado. La operación diaria siempre presenta "urgencias": fallas, solicitudes de usuarios, renovaciones inesperadas o compras apresuradas. El riesgo es que estas situaciones desplacen el objetivo de construir una base de información útil y sostenible. Para evitarlo, necesitamos objetivos claros, avances graduales y disciplina para no abandonar el esfuerzo cuando aparezcan obstáculos. La información confiable no se obtiene de una sola vez; se mejora con el tiempo mediante controles sobre la entrada, el uso, el cambio y la salida de los activos.</p>
+
+            <p>Como punto de partida, estas lecturas me dejan tres recomendaciones. Primero, debemos tratar el inventario como una fuente de conocimiento para la toma de decisiones, no como una hoja de cálculo estática. Segundo, debemos verificar los datos antes de utilizarlos para auditorías, licencias, cambios o seguridad. Tercero, debemos sostener el proyecto aunque la presión cotidiana invite a volver a la improvisación. En futuras entradas profundizaré en cómo el inventario, el ciclo de vida de los activos y los controles de gestión convierten estas ideas iniciales en prácticas más concretas.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Referencias</h2>
+            <p>Boerger, J. L. (2021). <em>Rethinking information technology asset management</em>. Business Expert Press.</p>
+            <p>Hobbs, M. (2011). <em>IT asset management: A pocket survival guide</em>. IT Governance Publishing.</p>
+
+        </article>
+
+        <!-- Comments Section (Giscus) -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8">Comentarios</h2>
+            <script src="https://giscus.app/client.js"
+                    data-repo="LuisTellez03/RepoLT"
+                    data-repo-id="R_kgDOSC7m_A"
+                    data-category="Announcements"
+                    data-category-id="DIC_kwDOSC7m_M4DGHvX"
+                    data-mapping="pathname"
+                    data-strict="1"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="bottom"
+                    data-theme="transparent_dark"
+                    data-lang="es"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                Volver a publicaciones
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
