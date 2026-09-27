@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>El reto del liderazgo en la era de la IA: más criterio, más humanidad | Luis Téllez</title>
+    <meta name="description" content="La inteligencia artificial amplía nuestra capacidad de analizar y decidir, pero el liderazgo sigue requiriendo criterio, ética, confianza y relaciones humanas." />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose, .prose-invert {
+            --tw-prose-body: #bac9cc !important;
+            --tw-prose-headings: #e5e2e3 !important;
+            --tw-prose-lead: #bac9cc !important;
+            --tw-prose-links: #c3f5ff !important;
+            --tw-prose-bold: #e5e2e3 !important;
+            --tw-prose-counters: #c3f5ff !important;
+            --tw-prose-bullets: #00e5ff !important;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5) !important;
+            --tw-prose-quotes: #c3f5ff !important;
+            --tw-prose-quote-borders: #00e5ff !important;
+            --tw-prose-captions: #849396 !important;
+            --tw-prose-code: #c3f5ff !important;
+            --tw-prose-pre-code: #bac9cc !important;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
+            --tw-prose-th-borders: #3b494c !important;
+            --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
+        <div class="flex items-center gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center">
+                        <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+                    </li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center">
+                        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+                    </li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page">Liderazgo y IA</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20">Liderazgo</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Inteligencia Artificial</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Estrategia</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight">El reto del liderazgo en la era de la IA: más criterio, más humanidad</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date">27 de septiembre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date">4 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none">
+            
+            <p>La inteligencia artificial está avanzando a una velocidad que hace apenas unos años habría parecido difícil de imaginar. Hoy puede analizar enormes volúmenes de información, detectar patrones, generar estrategias, evaluar escenarios, automatizar tareas y apoyar decisiones en cuestión de segundos. Ante esta realidad surge una pregunta inevitable: si la IA puede hacer cada vez más cosas mejor que nosotros, ¿qué papel le queda al líder?</p>
+            <p>Después de leer <em>La IA no puede sustituir a los mejores líderes</em>, publicado por <em>Harvard Business Review</em>, mi conclusión es que probablemente estamos entrando en una etapa en la que el liderazgo será todavía más importante, pero también tendrá que transformarse. La IA pronto superará muchas capacidades humanas relacionadas con procesamiento de información, análisis y aprendizaje. Sin embargo, eso no significa necesariamente que queramos ser liderados por una máquina.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">La IA será mejor que nosotros en muchas cosas</h2>
+            <p>Uno de los primeros errores que podemos cometer es minimizar las capacidades que tendrá la inteligencia artificial. Los líderes no deberíamos competir contra ella en aquello que hace de manera prácticamente incomparable. Una IA puede procesar información a una escala imposible para una persona, identificar patrones, comparar escenarios y ayudar a estructurar decisiones con velocidad y consistencia.</p>
+            <p>Su aplicación puede ser especialmente valiosa en planificación, asignación de tareas, priorización, análisis de desempeño, estrategia y toma de decisiones. Nuestra responsabilidad debe ser aprender a utilizar esas capacidades para ampliar la productividad, evaluar mejor las alternativas e identificar riesgos, no intentar replicar manualmente lo que una máquina ya puede hacer con mayor eficiencia.</p>
+            <p>En mi experiencia profesional, he utilizado IA para analizar grandes volúmenes de información, elaborar documentos, generar código, automatizar procesos, apoyar el diseño de soluciones y preparar información para la toma de decisiones. El resultado ha sido una mayor velocidad en el procesamiento de datos, la documentación, la ejecución de actividades, el aprendizaje de nuevas tecnologías y la adquisición de conocimiento. Esta experiencia me confirma que la IA puede ser una herramienta extraordinaria para aumentar nuestras capacidades.</p>
+            <p>Pero hacer todo eso no equivale necesariamente a saber liderar personas.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Gestionar información no es lo mismo que liderar personas</h2>
+            <p>Una organización no está compuesta únicamente por procesos, indicadores, sistemas y objetivos. Está formada por personas con aspiraciones, frustraciones, problemas personales, inseguridades, expectativas, motivaciones y emociones. Ese componente hace que el liderazgo sea mucho más complejo que encontrar la respuesta matemáticamente correcta a un problema.</p>
+            <p>La IA puede identificar cuál es la opción aparentemente más eficiente. Un líder debe hacerse preguntas adicionales: ¿qué impacto tendrá esta decisión en las personas?, ¿estoy siendo justo?, ¿tengo todo el contexto?, ¿existe algo que los datos no muestran?, ¿cómo debo comunicar la decisión?, ¿hay una conversación difícil que necesito tener? Estas preguntas no desaparecen cuando utilizamos IA; se vuelven más importantes.</p>
+            <p>Mi experiencia de uso también deja claro un límite: la tecnología puede acelerar análisis y tareas, pero no sustituye las relaciones interpersonales con colaboradores, colegas y equipos. No reemplaza la construcción de confianza, la escucha activa, el entendimiento de una preocupación personal ni la responsabilidad de acompañar a alguien en una decisión difícil. Si intentamos delegar estas dimensiones a una herramienta, corremos el riesgo de perder el sentido humano del trabajo profesional.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Saber cuándo usar IA será una competencia de liderazgo</h2>
+            <p>La discusión no debería plantearse como "IA o personas". La pregunta útil es: ¿qué capacidad necesitamos utilizar en cada situación? Las actividades basadas principalmente en investigación, análisis de datos, procesamiento de información o tareas repetitivas pueden apoyarse ampliamente en IA. En cambio, el desarrollo individual y de equipos requiere capacidades sociales, emocionales e interpersonales que siguen siendo profundamente humanas.</p>
+            <p>Por ello, una de las competencias de liderazgo más importantes en los próximos años será saber cuándo utilizar la IA, cuándo aplicar criterio humano y cuándo combinar ambas capacidades. Un líder no tiene que tener todas las respuestas ni procesar toda la información por sí mismo. Debe saber formular las preguntas correctas, interpretar los resultados, reconocer límites y asumir la responsabilidad final de sus decisiones.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Más capacidad tecnológica exige más criterio y ética</h2>
+            <p>La utilidad de la IA no elimina los riesgos. Me preocupan los sesgos y errores en el procesamiento de información, la pérdida de criterio propio de quienes toman decisiones, la privacidad y el posible mal uso de datos confidenciales. También me preocupa la tentación de querer hacerlo todo con IA, incluso aquello que exige conversación, confianza y vínculo humano.</p>
+            <p>Estos riesgos no son una razón para rechazar la tecnología, sino para usarla con mayor responsabilidad. La IA puede proporcionar recomendaciones muy convincentes y aun así estar equivocada, carecer de contexto o reproducir sesgos presentes en los datos. El liderazgo responsable exige contrastar resultados, hacer explícitas las limitaciones, proteger la información y evitar que la automatización sustituya el juicio profesional.</p>
+            <p>El reto, entonces, no consiste solamente en incorporar IA a las organizaciones. Consiste en preservar la capacidad de cuestionarla. Debemos seguir preguntando: ¿de dónde proviene esta información?, ¿qué supuestos contiene?, ¿a quién puede afectar esta decisión?, ¿qué datos no están presentes?, ¿qué valor estamos priorizando? La tecnología puede ampliar nuestro alcance, pero no debe reducir nuestra responsabilidad.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">El liderazgo tendrá que volverse más humano</h2>
+            <p>Mientras más poderosa se vuelva la inteligencia artificial, mayor será la necesidad de desarrollar aquello que nos diferencia como seres humanos. El artículo de Hougaard, Carter y Stembridge resume esta idea alrededor de tres cualidades: conciencia, compasión y sabiduría.</p>
+            <p>La conciencia implica reconocer nuestros propios pensamientos, emociones y prejuicios, además de comprender mejor el entorno y a las personas que nos rodean. La compasión no consiste únicamente en ser amable: requiere empatía, intención y acción para beneficiar a otras personas, incluso cuando es necesario tener conversaciones difíciles. La sabiduría es la capacidad de formar un juicio sólido, basado en la experiencia, los valores y una comprensión amplia de las consecuencias de una decisión.</p>
+            <p>La IA puede aportar datos y recomendaciones; no determina automáticamente qué es lo correcto. En un entorno con más información que nunca, el desafío no será solo encontrar respuestas. Será saber qué hacer con ellas.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">La paradoja del liderazgo en la era de la IA</h2>
+            <p>Durante décadas hemos formado líderes para mejorar sus capacidades de análisis, planeación, administración y procesamiento de información. Ahora estamos construyendo sistemas que serán extraordinariamente buenos en muchas de esas actividades. Esto no hace menos importante al líder; cambia aquello por lo que realmente aporta valor.</p>
+            <p>La ventaja diferencial de un líder estará cada vez menos en cuánto puede procesar y cada vez más en cuánto puede comprender, conectar, desarrollar y movilizar personas. El futuro del liderazgo puede y debe apoyarse en IA, pero no estar dominado por ella.</p>
+            <p>Mi principal aprendizaje de esta lectura es que no necesitamos líderes que intenten competir con la inteligencia artificial. Necesitamos líderes capaces de utilizarla para ampliar las capacidades de sus equipos y organizaciones, sin delegar aquello que sigue siendo profundamente humano: conciencia para entender, compasión para conectar y sabiduría para decidir.</p>
+            <p>Mientras más inteligente sea la tecnología, más criterio y más humanidad tendremos que desarrollar.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Referencias</h2>
+            <p>Hougaard, R., Carter, J., & Stembridge, R. (2024, enero 12). <em>La IA no puede sustituir a los mejores líderes</em>. Harvard Business Review.</p>
+
+        </article>
+
+        <!-- Comments Section (Giscus) -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8">Comentarios</h2>
+            <script src="https://giscus.app/client.js"
+                    data-repo="LuisTellez03/RepoLT"
+                    data-repo-id="R_kgDOSC7m_A"
+                    data-category="Announcements"
+                    data-category-id="DIC_kwDOSC7m_M4DGHvX"
+                    data-mapping="pathname"
+                    data-strict="1"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="bottom"
+                    data-theme="transparent_dark"
+                    data-lang="es"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                Volver a publicaciones
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
