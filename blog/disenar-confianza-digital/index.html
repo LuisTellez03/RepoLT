@@ -81,13 +81,20 @@
 <body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
     <!-- TopNavBar -->
     <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
-        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-primary select-none hover:text-primary-container transition-colors">LUIS TÉLLEZ</a>
-        <div class="flex items-center gap-4">
-            <div class="flex bg-surface-variant/30 rounded-full p-1 border border-outline-variant/20">
-                <a href="/blog" class="font-label-caps text-xs px-3 py-1 rounded-full text-primary font-bold transition-colors">ES</a>
-                <a href="/blog/en" class="font-label-caps text-xs px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors">EN</a>
+        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
+        <div class="hidden lg:flex items-center gap-8">
+            <a href="/#inicio" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Inicio</a>
+            <a href="/#perfil" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Perfil</a>
+            <a href="/#experiencia" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Experiencia</a>
+            <a href="/#educacion" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Educación</a>
+            <a href="/#logros" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Logros</a>
+            <a href="/#contacto" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Contacto</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-outline-variant text-on-surface rounded-full hover:bg-surface-variant/50 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">
+                <a href="/blog" class="text-on-surface font-bold">ES</a> | <a href="/blog/en" class="hover:text-on-surface transition-colors">EN</a>
             </div>
-            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
         </div>
     </nav>
     
@@ -96,19 +103,23 @@
         
         <!-- Breadcrumbs & Meta -->
         <div class="mb-12">
-            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center space-x-2">
-                    <li class="inline-flex items-center">
-                        <a href="/" class="hover:text-primary transition-colors">Inicio</a>
-                    </li>
-                    <li><span class="mx-1">/</span></li>
-                    <li class="inline-flex items-center">
-                        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
-                    </li>
-                    <li><span class="mx-1">/</span></li>
-                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page">Diseñar confianza digital</li>
-                </ol>
-            </nav>
+            <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
+        <div class="hidden lg:flex items-center gap-8">
+            <a href="/#inicio" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Inicio</a>
+            <a href="/#perfil" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Perfil</a>
+            <a href="/#experiencia" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Experiencia</a>
+            <a href="/#educacion" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Educación</a>
+            <a href="/#logros" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Logros</a>
+            <a href="/#contacto" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Contacto</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-outline-variant text-on-surface rounded-full hover:bg-surface-variant/50 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">
+                <a href="/blog" class="text-on-surface font-bold">ES</a> | <a href="/blog/en" class="hover:text-on-surface transition-colors">EN</a>
+            </div>
+        </div>
+    </nav>
 
             <div class="flex flex-wrap gap-2 mb-6">
                 <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20">Presentación</span>
