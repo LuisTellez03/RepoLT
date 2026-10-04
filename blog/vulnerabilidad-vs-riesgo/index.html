@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>La vulnerabilidad no es el riesgo: una presentación y un nuevo desafío | Luis Téllez</title>
+    <meta name="description" content="Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico." />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                                        "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "timeline-date": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose, .prose-invert {
+            --tw-prose-body: #bac9cc !important;
+            --tw-prose-headings: #e5e2e3 !important;
+            --tw-prose-lead: #bac9cc !important;
+            --tw-prose-links: #c3f5ff !important;
+            --tw-prose-bold: #e5e2e3 !important;
+            --tw-prose-counters: #c3f5ff !important;
+            --tw-prose-bullets: #00e5ff !important;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5) !important;
+            --tw-prose-quotes: #c3f5ff !important;
+            --tw-prose-quote-borders: #00e5ff !important;
+            --tw-prose-captions: #849396 !important;
+            --tw-prose-code: #c3f5ff !important;
+            --tw-prose-pre-code: #bac9cc !important;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
+            --tw-prose-th-borders: #3b494c !important;
+            --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center"><a href="/" class="hover:text-primary transition-colors" data-en="Home">Inicio</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center"><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page" data-en="Designing digital trust: an introduction and a new challenge">La vulnerabilidad no es el riesgo: una presentación y un nuevo desafío</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20" data-en="Introduction">Presentación</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Leadership">Liderazgo</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Cybersecurity">Ciberseguridad</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight" data-en="Designing digital trust: an introduction and a new challenge">La vulnerabilidad no es el riesgo: una presentación y un nuevo desafío</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="September 21, 2026">21 de septiembre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="5 min read">5 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image -->
+        <figure class="mb-12 rounded-xl overflow-hidden shadow-lg border border-outline-variant/10">
+            <img src="hero.png" alt="Mapa de dependencias y activos críticos" class="w-full h-auto object-cover aspect-video" />
+            <figcaption class="text-sm font-label-caps text-on-surface-variant/70 text-center py-3 bg-surface border-t border-outline-variant/10" data-en="Source: Conceptual image generated with Artificial Intelligence">
+                Fuente: Imagen conceptual generada con Inteligencia Artificial
+            </figcaption>
+        </figure>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none" data-lang-block="es">
+            
+<p>He visto organizaciones con inventarios extensos de vulnerabilidades, tableros de severidad impecables y programas de remediación muy activos que, aun así, no podían responder una pregunta elemental: ¿qué proceso de negocio se detiene si falla este activo? La pregunta parece sencilla; responderla rara vez lo es.</p>
+<p>Los capítulos 6, 8, 9 y 10 de <em>Information Security Risk Management for ISO27001/ISO17799</em> de Calder y Watkins (2007) ofrecen una secuencia que sigue siendo útil: identificar lo que se debe proteger, entender las consecuencias de su pérdida, evaluar el riesgo y decidir cómo tratarlo. Mi experiencia me ha enseñado que el valor de esa secuencia no está en llenar una matriz. Está en obligarnos a pasar de la vulnerabilidad aislada a la conversación que el negocio sí puede decidir: operación, impacto, inversión y riesgo residual.</p>
+<h2>Desde la trinchera: el activo crítico casi nunca viene marcado como crítico</h2>
+<p>Uno de los errores más costosos que he encontrado es asumir que los activos importantes son evidentes. Es natural concentrarse en las plataformas visibles: el core bancario, el ERP, el portal de clientes. Sin embargo, los incidentes más incómodos suelen demostrar que la operación descansa también en sistemas satélite, integraciones, bases de datos, servicios de identidad, colas de mensajería, repositorios y componentes de red que reciben mucha menos atención.</p>
+<p>En un entorno de crédito, por ejemplo, el core puede ser el corazón de la operación, pero no funciona en el vacío. La originación, la consulta de buró, la validación de identidad, el cálculo de capacidad de pago, la generación documental y las interfaces con terceros pueden ser dependencias indispensables. Si uno de esos componentes falla, está mal configurado o queda expuesto, el negocio puede dejar de otorgar crédito aunque el core esté disponible y sin una vulnerabilidad crítica conocida.</p>
+<p>Ahí está la diferencia que más importa: un activo no es crítico por su tecnología, sino por el proceso, la información y las dependencias que habilita. Un servidor con una vulnerabilidad de alta severidad técnica puede tener una exposición manejable si no soporta un proceso relevante o si existen controles compensatorios. En cambio, una debilidad aparentemente moderada en un servicio satélite puede interrumpir una cadena de valor completa.</p>
+<p>Por eso no empiezo una conversación de priorización con el escáner. Empiezo con un mapa: qué procesos son esenciales; qué aplicaciones los soportan; qué datos, personas, proveedores y componentes técnicos necesitan; y qué ocurre cuando cualquiera de ellos deja de cumplir su función. Este ejercicio revela relaciones que los inventarios tradicionales no muestran y evita que la organización confunda "activo registrado" con "activo entendido".</p>
+<p>La aportación de Calder y Watkins es especialmente valiosa aquí. Su enfoque de evaluación orientada a los propietarios de activos dirige la atención a la relación entre activo, amenaza, vulnerabilidad, consecuencia y tratamiento. En la práctica, yo extendería esa mirada del activo individual al servicio completo. No basta saber que existe una aplicación; hay que saber qué proceso soporta, quién depende de ella, qué dependencia externa la condiciona y cuál sería el costo operativo, regulatorio y reputacional de perderla.</p>
+<p>Este conocimiento también evita el sobrecontrol. Cuando no entendemos interdependencias ni criticidad, solemos responder con el mismo reflejo: endurecer todo, pedir más herramientas y multiplicar controles. El resultado puede ser un programa caro, complejo y difícil de operar que reduce poco el riesgo que de verdad preocupa al negocio. La disciplina no consiste en poner controles en cada hallazgo; consiste en elegir controles proporcionales a la exposición que se quiere reducir.</p>
+<h2>Del hallazgo técnico a una decisión de negocio</h2>
+<p>Para un líder de negocio, una vulnerabilidad no es todavía una decisión. Es un dato técnico. Se convierte en riesgo cuando puedo explicar qué escenario la haría relevante, con qué probabilidad razonable podría ocurrir, qué proceso afectaría, durante cuánto tiempo y cuáles serían las consecuencias para clientes, ingresos, continuidad, cumplimiento y reputación.</p>
+<p>Esa traducción cambia la priorización. En lugar de ordenar el trabajo únicamente por una calificación de severidad, comparo riesgos considerando el impacto en el proceso, la factibilidad de explotación, los controles existentes, el costo de mitigar, los compromisos regulatorios y el riesgo residual. Una vulnerabilidad crítica sigue mereciendo atención urgente cuando expone una ruta real hacia un activo o servicio crítico. Pero una clasificación técnica, por sí sola, no puede decidir dónde invertir primero.</p>
+<p>En mi experiencia, llevar la aceptación del riesgo al nivel de negocio es la única forma sostenible de avanzar. El dueño del proceso de negocio debe aceptar el riesgo residual porque es quien asume las consecuencias operativas si el escenario se materializa. El CISO no debe delegar esa conversación ni usar la aceptación como un trámite. Su responsabilidad es llegar con información clara y oportuna: el escenario de riesgo, la probabilidad, el impacto, los controles actuales, las alternativas de tratamiento, el costo de cada una y el nivel de exposición que permanecería.</p>
+<p>Cuando la conversación está bien planteada, ocurre algo revelador: muchos tomadores de decisión prefieren financiar la mitigación antes que aceptar formalmente la responsabilidad de un incidente mayor. No es una táctica de presión; es el resultado natural de hacer visible la consecuencia que antes estaba oculta detrás de un identificador técnico. El presupuesto deja de ser una petición abstracta de seguridad y se vuelve una decisión sobre continuidad, apetito de riesgo y protección de un proceso que genera valor.</p>
+<p>El tratamiento tampoco es sinónimo de mitigar. Dependiendo del impacto, el costo, la regulación y el apetito de riesgo, la organización puede evitar una actividad, transferir parte de la exposición, aceptar el riesgo de manera informada o implementar controles para reducirlo. La madurez se observa menos en la cantidad de controles desplegados que en la calidad de estas decisiones y en la claridad de quién las toma.</p>
+<h3>Un refuerzo contemporáneo, no una reinterpretación del libro</h3>
+<p>Los marcos publicados después de la obra de Calder y Watkins refuerzan esta lógica, pero no sustituyen su contexto original. ISO/IEC 27001:2022 mantiene el enfoque de un sistema de gestión basado en riesgos; NIST CSF 2.0 hace explícita la función <em>Govern</em> y vincula la gestión de activos con su importancia relativa para los objetivos organizacionales. NIST SP 800-30 Rev. 1, por su parte, articula la evaluación alrededor de amenazas, vulnerabilidades, probabilidad e impacto.</p>
+<p>Leídos juntos, estos referentes sostienen una práctica sencilla de expresar y exigente de ejecutar: antes de preguntar cuántas vulnerabilidades cerramos, preguntemos qué riesgos de negocio reducimos. Para responderlo necesitamos un mapa vivo de activos y dependencias, criterios de impacto acordados con el negocio y una ruta de escalamiento que lleve el riesgo residual a quien tiene la autoridad para aceptarlo o financiar su reducción.</p>
+<p>Mi regla de trabajo es ésta: la ciberseguridad debe comenzar entendiendo el negocio, no escaneando vulnerabilidades. El escáner es indispensable; el mapa de procesos, activos y dependencias es lo que permite interpretar sus resultados. Sin esa arquitectura de contexto, podemos trabajar mucho y proteger poco. Con ella, el CISO puede convertir hallazgos técnicos en decisiones que la organización entiende, prioriza y respalda.</p>
+<h2>Referencias</h2>
+<ul>
+<li>Calder, A., & Watkins, S. G. (2007). <em>Information security risk management for ISO27001/ISO17799</em>. IT Governance Publishing.</li>
+<li>International Organization for Standardization. (2022). <em>ISO/IEC 27001:2022: Information security, cybersecurity and privacy protection — Information security management systems — Requirements</em>.</li>
+<li>National Institute of Standards and Technology. (2024). <em>The NIST Cybersecurity Framework (CSF) 2.0</em> (NIST CSWP 29).</li>
+<li>Ross, R. (2012). <em>Guide for conducting risk assessments</em> (NIST Special Publication 800-30 Rev. 1). National Institute of Standards and Technology.</li>
+</ul>
+
+        </article>
+
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none hidden" data-lang-block="en">
+            
+<p>I have seen organizations with extensive vulnerability inventories, impeccable severity dashboards, and highly active remediation programs that, even so, could not answer a basic question: what business process stops if this asset fails? The question seems simple; answering it rarely is.</p>
+<p>Chapters 6, 8, 9, and 10 of <em>Information Security Risk Management for ISO27001/ISO17799</em> by Calder and Watkins (2007) offer a sequence that remains useful: identify what must be protected, understand the consequences of its loss, assess the risk, and decide how to treat it. My experience has taught me that the value of this sequence lies not in filling out a matrix. It lies in forcing us to move from the isolated vulnerability to the conversation that the business can actually decide on: operation, impact, investment, and residual risk.</p>
+<h2>From the trenches: the critical asset rarely comes marked as critical</h2>
+<p>One of the most costly mistakes I have encountered is assuming that important assets are obvious. It is natural to focus on visible platforms: the core banking system, the ERP, the customer portal. However, the most uncomfortable incidents usually demonstrate that operations also rest on satellite systems, integrations, databases, identity services, messaging queues, repositories, and network components that receive much less attention.</p>
+<p>In a credit environment, for example, the core might be the heart of the operation, but it doesn't function in a vacuum. Origination, bureau queries, identity validation, payment capacity calculation, document generation, and interfaces with third parties can be indispensable dependencies. If one of these components fails, is misconfigured, or is exposed, the business may stop granting credit even if the core is available and has no known critical vulnerabilities.</p>
+<p>Therein lies the difference that matters most: an asset is not critical because of its technology, but because of the process, information, and dependencies it enables. A server with a vulnerability of high technical severity may have a manageable exposure if it does not support a relevant process or if compensating controls exist. In contrast, a seemingly moderate weakness in a satellite service can interrupt an entire value chain.</p>
+<p>That is why I never start a prioritization conversation with the scanner. I start with a map: what processes are essential; what applications support them; what data, people, suppliers, and technical components they need; and what happens when any of them stops performing its function. This exercise reveals relationships that traditional inventories do not show and prevents the organization from confusing "registered asset" with "understood asset".</p>
+<p>Calder and Watkins' contribution is especially valuable here. Their asset-owner-oriented evaluation approach directs attention to the relationship between asset, threat, vulnerability, consequence, and treatment. In practice, I would extend that view from the individual asset to the entire service. It is not enough to know that an application exists; we must know what process it supports, who depends on it, what external dependency conditions it, and what the operational, regulatory, and reputational cost of losing it would be.</p>
+<p>This knowledge also prevents over-control. When we do not understand interdependencies or criticality, we tend to respond with the same reflex: harden everything, ask for more tools, and multiply controls. The result can be an expensive, complex program that is difficult to operate and does little to reduce the risk that the business actually cares about. Discipline does not consist of putting controls on every finding; it consists of choosing controls proportional to the exposure we want to reduce.</p>
+<h2>From a technical finding to a business decision</h2>
+<p>For a business leader, a vulnerability is not yet a decision. It is a technical fact. It becomes a risk when I can explain what scenario would make it relevant, with what reasonable probability it could occur, what process it would affect, for how long, and what the consequences would be for customers, revenue, continuity, compliance, and reputation.</p>
+<p>That translation changes the prioritization. Instead of ordering work solely by a severity rating, I compare risks considering the impact on the process, the feasibility of exploitation, existing controls, the cost of mitigating, regulatory commitments, and residual risk. A critical vulnerability still deserves urgent attention when it exposes a real path to a critical asset or service. But a technical classification, by itself, cannot decide where to invest first.</p>
+<p>In my experience, elevating risk acceptance to the business level is the only sustainable way forward. The business process owner must accept the residual risk because they are the one who assumes the operational consequences if the scenario materializes. The CISO should not delegate that conversation or use acceptance as a formality. Their responsibility is to arrive with clear and timely information: the risk scenario, probability, impact, current controls, treatment alternatives, the cost of each, and the level of exposure that would remain.</p>
+<p>When the conversation is well framed, something revealing happens: many decision-makers prefer to fund mitigation rather than formally accept responsibility for a major incident. This is not a pressure tactic; it is the natural result of making visible the consequence that was previously hidden behind a technical identifier. The budget ceases to be an abstract security request and becomes a decision about continuity, risk appetite, and protecting a process that generates value.</p>
+<p>Treatment is also not synonymous with mitigation. Depending on impact, cost, regulation, and risk appetite, the organization can avoid an activity, transfer part of the exposure, make an informed acceptance of the risk, or implement controls to reduce it. Maturity is seen less in the number of controls deployed than in the quality of these decisions and the clarity of who makes them.</p>
+<h3>A contemporary reinforcement, not a reinterpretation of the book</h3>
+<p>Frameworks published after Calder and Watkins' work reinforce this logic, but do not replace its original context. ISO/IEC 27001:2022 maintains the focus on a risk-based management system; NIST CSF 2.0 makes the <em>Govern</em> function explicit and links asset management to its relative importance for organizational objectives. NIST SP 800-30 Rev. 1, for its part, articulates the assessment around threats, vulnerabilities, likelihood, and impact.</p>
+<p>Read together, these benchmarks support a practice that is simple to express and demanding to execute: before asking how many vulnerabilities we closed, let's ask what business risks we reduced. To answer this, we need a living map of assets and dependencies, impact criteria agreed upon with the business, and an escalation path that takes residual risk to those with the authority to accept it or fund its reduction.</p>
+<p>My working rule is this: cybersecurity must begin by understanding the business, not by scanning for vulnerabilities. The scanner is indispensable; the map of processes, assets, and dependencies is what allows us to interpret its results. Without that architectural context, we can work a lot and protect a little. With it, the CISO can turn technical findings into decisions that the organization understands, prioritizes, and supports.</p>
+<h2>References</h2>
+<ul>
+<li>Calder, A., & Watkins, S. G. (2007). <em>Information security risk management for ISO27001/ISO17799</em>. IT Governance Publishing.</li>
+<li>International Organization for Standardization. (2022). <em>ISO/IEC 27001:2022: Information security, cybersecurity and privacy protection — Information security management systems — Requirements</em>.</li>
+<li>National Institute of Standards and Technology. (2024). <em>The NIST Cybersecurity Framework (CSF) 2.0</em> (NIST CSWP 29).</li>
+<li>Ross, R. (2012). <em>Guide for conducting risk assessments</em> (NIST Special Publication 800-30 Rev. 1). National Institute of Standards and Technology.</li>
+</ul>
+
+        </article>
+
+        <!-- Comments Section (Giscus) -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8" data-en="Comments">Comentarios</h2>
+            <div id="giscus-container"></div>
+        </div>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                <span data-en="Back to posts"><span data-en="Back to posts"><span data-en="Back to posts">Volver a publicaciones</span></span></span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const PAGE = {"es": {"title": "La vulnerabilidad no es el riesgo: una presentación y un nuevo desafío | Luis Téllez", "desc": "Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico."}, "en": {"title": "Designing digital trust: an introduction and a new challenge | Luis Téllez", "desc": "A look at my path in cybersecurity architecture and the next step toward strategic leadership."}};
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
+</body>
+</html>
