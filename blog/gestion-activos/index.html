@@ -80,20 +80,22 @@
 </head>
 <body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
     <!-- TopNavBar -->
-    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
-        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
-        <div class="hidden lg:flex items-center gap-8">
-            <a href="/#inicio" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Inicio</a>
-            <a href="/#perfil" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Perfil</a>
-            <a href="/#experiencia" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Experiencia</a>
-            <a href="/#educacion" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Educación</a>
-            <a href="/#logros" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Logros</a>
-            <a href="/#contacto" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Contacto</a>
-        </div>
-        <div class="flex items-center gap-6">
-            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-outline-variant text-on-surface rounded-full hover:bg-surface-variant/50 transition-colors">Blog</a>
-            <div class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">
-                <a href="/blog" class="text-on-surface font-bold">ES</a> | <a href="/blog/en" class="hover:text-on-surface transition-colors">EN</a>
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
             </div>
         </div>
     </nav>
@@ -103,40 +105,32 @@
         
         <!-- Breadcrumbs & Meta -->
         <div class="mb-12">
-            <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
-        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
-        <div class="hidden lg:flex items-center gap-8">
-            <a href="/#inicio" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Inicio</a>
-            <a href="/#perfil" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Perfil</a>
-            <a href="/#experiencia" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Experiencia</a>
-            <a href="/#educacion" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Educación</a>
-            <a href="/#logros" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Logros</a>
-            <a href="/#contacto" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Contacto</a>
-        </div>
-        <div class="flex items-center gap-6">
-            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-outline-variant text-on-surface rounded-full hover:bg-surface-variant/50 transition-colors">Blog</a>
-            <div class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">
-                <a href="/blog" class="text-on-surface font-bold">ES</a> | <a href="/blog/en" class="hover:text-on-surface transition-colors">EN</a>
-            </div>
-        </div>
-    </nav>
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center"><a href="/" class="hover:text-primary transition-colors" data-en="Home">Inicio</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center"><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page" data-en="IT asset management: the starting point to reduce chaos">La gestión de activos de TI: el punto de partida para reducir el caos</li>
+                </ol>
+            </nav>
 
             <div class="flex flex-wrap gap-2 mb-6">
-                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20">Gestión de activos</span>
-                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Visibilidad</span>
-                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Confiabilidad</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20" data-en="Asset Management">Gestión de activos</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Visibility">Visibilidad</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Reliability">Confiabilidad</span>
             </div>
 
-            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight">La gestión de activos de TI: el punto de partida para reducir el caos</h1>
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight" data-en="IT asset management: the starting point to reduce chaos">La gestión de activos de TI: el punto de partida para reducir el caos</h1>
             
             <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
                 <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined text-sm">calendar_today</span>
-                    <span class="font-timeline-date text-timeline-date">23 de septiembre de 2026</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="September 23, 2026">23 de septiembre de 2026</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined text-sm">schedule</span>
-                    <span class="font-timeline-date text-timeline-date">3 min de lectura</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="3 min read">3 min de lectura</span>
                 </div>
             </div>
         </div>
@@ -144,13 +138,13 @@
         <!-- Hero Image -->
         <figure class="mb-12 rounded-xl overflow-hidden shadow-lg border border-outline-variant/10">
             <img src="hero.jpg" alt="Visibilidad de activos tecnológicos" class="w-full h-auto object-cover aspect-video" />
-            <figcaption class="text-sm font-label-caps text-on-surface-variant/70 text-center py-3 bg-surface border-t border-outline-variant/10">
+            <figcaption class="text-sm font-label-caps text-on-surface-variant/70 text-center py-3 bg-surface border-t border-outline-variant/10" data-en="Source: Conceptual image generated with Artificial Intelligence">
                 Fuente: Imagen conceptual generada con Inteligencia Artificial
             </figcaption>
         </figure>
 
         <!-- Article Body (Markdown Content) -->
-        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none">
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none" data-lang-block="es">
             
             <p>Al comenzar a profundizar en la gestión de activos de TI, he comprendido que no se trata únicamente de elaborar una lista de computadoras, servidores o licencias. Se trata de conocer el entorno tecnológico con suficiente certeza para poder operarlo, protegerlo y mejorarlo. Los capítulos iniciales de Martyn Hobbs y Jeremy L. Boerger coinciden en una idea que me parece esencial: cuando una organización no sabe con precisión qué posee, dónde se encuentra, quién lo utiliza y cómo se relaciona con otros elementos, la operación de TI tiende a convertirse en una reacción constante ante incidentes.</p>
 
@@ -172,31 +166,38 @@
 
         </article>
 
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none hidden" data-lang-block="en">
+            <p>As I began to delve into IT asset management, I came to understand that it is not only about compiling a list of computers, servers, or licenses. It is about knowing the technology environment with enough certainty to operate it, protect it, and improve it. The opening chapters by Martyn Hobbs and Jeremy L. Boerger agree on an idea that I find essential: when an organization does not know precisely what it owns, where it is, who uses it, and how it relates to other elements, IT operations tend to become a constant reaction to incidents.</p>
+
+            <p>Hobbs describes this scenario as a kind of operational chaos. A service fails, someone tries to restore it, but it is not clear which devices, applications, or dependencies are involved. In that context, every incident seems isolated, investigating the root cause becomes slow, and technology changes can cause new disruptions. For this reason, asset management and configuration management should not be seen as secondary administrative tasks: they provide the information that connects incident, problem, and change management. A CMDB is only useful if it helps answer practical questions, such as which server supports a critical application, which people would be affected by a failure, or what risk a planned change would carry.</p>
+
+            <p>The reading has also helped me relate ITAM to cybersecurity. It is not possible to properly manage vulnerabilities on assets that have not been identified. An unregistered device, a forgotten virtual machine, or software installed without control can fall outside of updates, monitoring, and security policies. Thus, asset visibility is not only an operational advantage: it is a condition for knowing the technology surface that must be protected.</p>
+
+            <p>However, Boerger adds an important nuance: having data is not enough; the data must be reliable and verifiable. A report stating that a certain number of laptops or licenses exist is not, by itself, the truth. We must ask where the information comes from, when it was validated, and what evidence supports it. A serial number observed during a physical audit, a network record, an invoice, an assignment to a user, or a certificate of destruction can provide evidence. By cross-checking several sources, the organization reduces the risk of making decisions based on outdated or incomplete records.</p>
+
+            <p>I find this idea especially useful because it avoids two common mistakes. The first is relying only on purchase documents and administrative transactions: the fact that an asset was acquired does not prove that it is still in use, that it remains in the organization, or that it has a secure configuration. The second is relying only on periodic financial inventories: these can support cost control, but they do not always describe the current technical reality. Effective asset management requires combining processes, inventories, documentation, discovery tools, and continuous validation.</p>
+
+            <p>Another relevant lesson from Hobbs is that the project must stay focused. Day-to-day operations always bring "urgent matters": failures, user requests, unexpected renewals, or rushed purchases. The risk is that these situations displace the goal of building a useful and sustainable information base. To avoid this, we need clear objectives, gradual progress, and the discipline not to abandon the effort when obstacles appear. Reliable information is not obtained all at once; it improves over time through controls over the entry, use, change, and exit of assets.</p>
+
+            <p>As a starting point, these readings leave me with three recommendations. First, we should treat the inventory as a source of knowledge for decision-making, not as a static spreadsheet. Second, we should verify data before using it for audits, licensing, changes, or security. Third, we should sustain the project even when daily pressure invites us to return to improvisation. In future posts I will go deeper into how inventory, the asset lifecycle, and management controls turn these initial ideas into more concrete practices.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">References</h2>
+            <p>Boerger, J. L. (2021). <em>Rethinking information technology asset management</em>. Business Expert Press.</p>
+            <p>Hobbs, M. (2011). <em>IT asset management: A pocket survival guide</em>. IT Governance Publishing.</p>
+
+        </article>
+
         <!-- Comments Section (Giscus) -->
         <div class="mt-16 pt-8 border-t border-outline-variant/20">
-            <h2 class="font-headline-md text-2xl text-on-surface mb-8">Comentarios</h2>
-            <script src="https://giscus.app/client.js"
-                    data-repo="LuisTellez03/RepoLT"
-                    data-repo-id="R_kgDOSC7m_A"
-                    data-category="Announcements"
-                    data-category-id="DIC_kwDOSC7m_M4DGHvX"
-                    data-mapping="pathname"
-                    data-strict="1"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="bottom"
-                    data-theme="transparent_dark"
-                    data-lang="es"
-                    crossorigin="anonymous"
-                    async>
-            </script>
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8" data-en="Comments">Comentarios</h2>
+            <div id="giscus-container"></div>
         </div>
 
         <!-- Post Footer CTA -->
         <div class="mt-16 pt-8 border-t border-outline-variant/20">
             <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
                 <span class="material-symbols-outlined text-lg">arrow_back</span>
-                Volver a publicaciones
+                <span data-en="Back to posts"><span data-en="Back to posts"><span data-en="Back to posts">Volver a publicaciones</span></span></span>
             </a>
         </div>
 
@@ -210,5 +211,66 @@
             </div>
         </div>
     </footer>
+
+
+
+    <script>
+        const PAGE = {"es": {"title": "La gestión de activos de TI: el punto de partida para reducir el caos | Luis Téllez", "desc": "Una reflexión inicial sobre por qué conocer, verificar y sostener la información de los activos es fundamental para la operación y la ciberseguridad."}, "en": {"title": "IT asset management: the starting point to reduce chaos | Luis Téllez", "desc": "An initial reflection on why knowing, verifying, and sustaining asset information is fundamental for operations and cybersecurity."}};
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
 </body>
 </html>

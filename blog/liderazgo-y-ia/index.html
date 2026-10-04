@@ -80,20 +80,22 @@
 </head>
 <body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
     <!-- TopNavBar -->
-    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
-        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
-        <div class="hidden lg:flex items-center gap-8">
-            <a href="/#inicio" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Inicio</a>
-            <a href="/#perfil" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Perfil</a>
-            <a href="/#experiencia" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Experiencia</a>
-            <a href="/#educacion" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Educación</a>
-            <a href="/#logros" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Logros</a>
-            <a href="/#contacto" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Contacto</a>
-        </div>
-        <div class="flex items-center gap-6">
-            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-outline-variant text-on-surface rounded-full hover:bg-surface-variant/50 transition-colors">Blog</a>
-            <div class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">
-                <a href="/blog" class="text-on-surface font-bold">ES</a> | <a href="/blog/en" class="hover:text-on-surface transition-colors">EN</a>
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
             </div>
         </div>
     </nav>
@@ -103,46 +105,38 @@
         
         <!-- Breadcrumbs & Meta -->
         <div class="mb-12">
-            <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
-        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
-        <div class="hidden lg:flex items-center gap-8">
-            <a href="/#inicio" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Inicio</a>
-            <a href="/#perfil" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Perfil</a>
-            <a href="/#experiencia" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Experiencia</a>
-            <a href="/#educacion" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Educación</a>
-            <a href="/#logros" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Logros</a>
-            <a href="/#contacto" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Contacto</a>
-        </div>
-        <div class="flex items-center gap-6">
-            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-outline-variant text-on-surface rounded-full hover:bg-surface-variant/50 transition-colors">Blog</a>
-            <div class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">
-                <a href="/blog" class="text-on-surface font-bold">ES</a> | <a href="/blog/en" class="hover:text-on-surface transition-colors">EN</a>
-            </div>
-        </div>
-    </nav>
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center"><a href="/" class="hover:text-primary transition-colors" data-en="Home">Inicio</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center"><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page" data-en="The leadership challenge in the age of AI: more judgment, more humanity">El reto del liderazgo en la era de la IA: más criterio, más humanidad</li>
+                </ol>
+            </nav>
 
             <div class="flex flex-wrap gap-2 mb-6">
-                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20">Liderazgo</span>
-                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Inteligencia Artificial</span>
-                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20">Estrategia</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20" data-en="Leadership">Liderazgo</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Artificial Intelligence">Inteligencia Artificial</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Strategy">Estrategia</span>
             </div>
 
-            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight">El reto del liderazgo en la era de la IA: más criterio, más humanidad</h1>
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight" data-en="The leadership challenge in the age of AI: more judgment, more humanity">El reto del liderazgo en la era de la IA: más criterio, más humanidad</h1>
             
             <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
                 <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined text-sm">calendar_today</span>
-                    <span class="font-timeline-date text-timeline-date">27 de septiembre de 2026</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="September 27, 2026">27 de septiembre de 2026</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined text-sm">schedule</span>
-                    <span class="font-timeline-date text-timeline-date">4 min de lectura</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="4 min read">4 min de lectura</span>
                 </div>
             </div>
         </div>
 
         <!-- Article Body (Markdown Content) -->
-        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none">
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none" data-lang-block="es">
             
             <p>La inteligencia artificial está avanzando a una velocidad que hace apenas unos años habría parecido difícil de imaginar. Hoy puede analizar enormes volúmenes de información, detectar patrones, generar estrategias, evaluar escenarios, automatizar tareas y apoyar decisiones en cuestión de segundos. Ante esta realidad surge una pregunta inevitable: si la IA puede hacer cada vez más cosas mejor que nosotros, ¿qué papel le queda al líder?</p>
             <p>Después de leer <em>La IA no puede sustituir a los mejores líderes</em>, publicado por <em>Harvard Business Review</em>, mi conclusión es que probablemente estamos entrando en una etapa en la que el liderazgo será todavía más importante, pero también tendrá que transformarse. La IA pronto superará muchas capacidades humanas relacionadas con procesamiento de información, análisis y aprendizaje. Sin embargo, eso no significa necesariamente que queramos ser liderados por una máquina.</p>
@@ -183,31 +177,57 @@
 
         </article>
 
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none hidden" data-lang-block="en">
+            <p>Artificial intelligence is advancing at a speed that would have seemed hard to imagine just a few years ago. Today it can analyze enormous volumes of information, detect patterns, generate strategies, evaluate scenarios, automate tasks, and support decisions in a matter of seconds. Faced with this reality, an unavoidable question arises: if AI can do more and more things better than we can, what role is left for the leader?</p>
+            <p>After reading <em>AI Can't Replace the Best Leaders</em>, published by <em>Harvard Business Review</em>, my conclusion is that we are probably entering a stage in which leadership will be even more important, but will also have to transform. AI will soon surpass many human capabilities related to information processing, analysis, and learning. However, that does not necessarily mean we want to be led by a machine.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">AI will be better than us at many things</h2>
+            <p>One of the first mistakes we can make is to downplay the capabilities artificial intelligence will have. Leaders should not compete against it in what it does in a practically incomparable way. An AI can process information at a scale impossible for a person, identify patterns, compare scenarios, and help structure decisions with speed and consistency.</p>
+            <p>Its application can be especially valuable in planning, task assignment, prioritization, performance analysis, strategy, and decision-making. Our responsibility should be to learn to use these capabilities to increase productivity, better evaluate alternatives, and identify risks, not to try to manually replicate what a machine can already do more efficiently.</p>
+            <p>In my professional experience, I have used AI to analyze large volumes of information, draft documents, generate code, automate processes, support solution design, and prepare information for decision-making. The result has been greater speed in data processing, documentation, execution of activities, learning new technologies, and acquiring knowledge. This experience confirms to me that AI can be an extraordinary tool to increase our capabilities.</p>
+            <p>But doing all of that is not necessarily the same as knowing how to lead people.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Managing information is not the same as leading people</h2>
+            <p>An organization is not made up only of processes, metrics, systems, and goals. It is made up of people with aspirations, frustrations, personal problems, insecurities, expectations, motivations, and emotions. That component makes leadership far more complex than finding the mathematically correct answer to a problem.</p>
+            <p>AI can identify which option is seemingly the most efficient. A leader must ask additional questions: what impact will this decision have on people? Am I being fair? Do I have the full context? Is there something the data does not show? How should I communicate the decision? Is there a difficult conversation I need to have? These questions do not disappear when we use AI; they become more important.</p>
+            <p>My experience using it also makes a limit clear: technology can speed up analysis and tasks, but it does not replace interpersonal relationships with collaborators, colleagues, and teams. It does not replace building trust, active listening, understanding someone's personal concern, or the responsibility of accompanying someone through a difficult decision. If we try to delegate these dimensions to a tool, we risk losing the human sense of professional work.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Knowing when to use AI will be a leadership competence</h2>
+            <p>The discussion should not be framed as "AI or people." The useful question is: what capability do we need to use in each situation? Activities based mainly on research, data analysis, information processing, or repetitive tasks can rely heavily on AI. In contrast, individual and team development requires social, emotional, and interpersonal capabilities that remain deeply human.</p>
+            <p>For this reason, one of the most important leadership competencies in the coming years will be knowing when to use AI, when to apply human judgment, and when to combine both. A leader does not have to have all the answers or process all the information alone. They must know how to ask the right questions, interpret results, recognize limits, and take final responsibility for their decisions.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">More technological capability demands more judgment and ethics</h2>
+            <p>The usefulness of AI does not eliminate the risks. I am concerned about biases and errors in information processing, the loss of decision-makers' own judgment, privacy, and the possible misuse of confidential data. I am also concerned about the temptation to do everything with AI, even what requires conversation, trust, and human connection.</p>
+            <p>These risks are not a reason to reject the technology, but to use it more responsibly. AI can provide highly convincing recommendations and still be wrong, lack context, or reproduce biases present in the data. Responsible leadership requires cross-checking results, making limitations explicit, protecting information, and preventing automation from replacing professional judgment.</p>
+            <p>The challenge, then, is not only to incorporate AI into organizations. It is to preserve the ability to question it. We must keep asking: where does this information come from? What assumptions does it contain? Who may be affected by this decision? What data is missing? What value are we prioritizing? Technology can expand our reach, but it must not reduce our responsibility.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">Leadership will have to become more human</h2>
+            <p>The more powerful artificial intelligence becomes, the greater the need to develop what sets us apart as human beings. The article by Hougaard, Carter, and Stembridge summarizes this idea around three qualities: awareness, compassion, and wisdom.</p>
+            <p>Awareness means recognizing our own thoughts, emotions, and biases, as well as better understanding the environment and the people around us. Compassion is not only about being kind: it requires empathy, intention, and action to benefit others, even when difficult conversations are necessary. Wisdom is the ability to form sound judgment, based on experience, values, and a broad understanding of the consequences of a decision.</p>
+            <p>AI can provide data and recommendations; it does not automatically determine what is right. In an environment with more information than ever, the challenge will not be only to find answers. It will be to know what to do with them.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">The leadership paradox in the age of AI</h2>
+            <p>For decades we have trained leaders to improve their abilities in analysis, planning, administration, and information processing. Now we are building systems that will be extraordinarily good at many of those activities. This does not make the leader less important; it changes what they truly contribute.</p>
+            <p>A leader's differentiating advantage will lie less and less in how much they can process and more and more in how much they can understand, connect, develop, and mobilize people. The future of leadership can and should rely on AI, but not be dominated by it.</p>
+            <p>My main takeaway from this reading is that we do not need leaders who try to compete with artificial intelligence. We need leaders who can use it to expand the capabilities of their teams and organizations, without delegating what remains deeply human: awareness to understand, compassion to connect, and wisdom to decide.</p>
+            <p>The smarter the technology, the more judgment and the more humanity we will have to develop.</p>
+
+            <h2 class="font-headline-md text-2xl mt-12 mb-6 text-on-surface">References</h2>
+            <p>Hougaard, R., Carter, J., &amp; Stembridge, R. (2024, January 12). <em>La IA no puede sustituir a los mejores líderes</em> [AI cannot replace the best leaders]. Harvard Business Review.</p>
+
+        </article>
+
         <!-- Comments Section (Giscus) -->
         <div class="mt-16 pt-8 border-t border-outline-variant/20">
-            <h2 class="font-headline-md text-2xl text-on-surface mb-8">Comentarios</h2>
-            <script src="https://giscus.app/client.js"
-                    data-repo="LuisTellez03/RepoLT"
-                    data-repo-id="R_kgDOSC7m_A"
-                    data-category="Announcements"
-                    data-category-id="DIC_kwDOSC7m_M4DGHvX"
-                    data-mapping="pathname"
-                    data-strict="1"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="bottom"
-                    data-theme="transparent_dark"
-                    data-lang="es"
-                    crossorigin="anonymous"
-                    async>
-            </script>
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8" data-en="Comments">Comentarios</h2>
+            <div id="giscus-container"></div>
         </div>
 
         <!-- Post Footer CTA -->
         <div class="mt-16 pt-8 border-t border-outline-variant/20">
             <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
                 <span class="material-symbols-outlined text-lg">arrow_back</span>
-                Volver a publicaciones
+                <span data-en="Back to posts"><span data-en="Back to posts"><span data-en="Back to posts">Volver a publicaciones</span></span></span>
             </a>
         </div>
 
@@ -221,5 +241,66 @@
             </div>
         </div>
     </footer>
+
+
+
+    <script>
+        const PAGE = {"es": {"title": "El reto del liderazgo en la era de la IA: más criterio, más humanidad | Luis Téllez", "desc": "La inteligencia artificial amplía nuestra capacidad de analizar y decidir, pero el liderazgo sigue requiriendo criterio, ética, confianza y relaciones humanas."}, "en": {"title": "The leadership challenge in the age of AI: more judgment, more humanity | Luis Téllez", "desc": "Artificial intelligence expands our capacity to analyze and decide, but leadership still requires judgment, ethics, trust, and human relationships."}};
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
 </body>
 </html>

@@ -80,20 +80,22 @@
 </head>
 <body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
     <!-- TopNavBar -->
-    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10">
-        <a href="/" class="font-display-lg text-lg font-bold tracking-tighter text-on-surface select-none hover:text-primary transition-colors">LUIS TÉLLEZ</a>
-        <div class="hidden lg:flex items-center gap-8">
-            <a href="/#inicio" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Inicio</a>
-            <a href="/#perfil" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Perfil</a>
-            <a href="/#experiencia" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Experiencia</a>
-            <a href="/#educacion" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Educación</a>
-            <a href="/#logros" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Logros</a>
-            <a href="/#contacto" class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors nav-link">Contacto</a>
-        </div>
-        <div class="flex items-center gap-6">
-            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-outline-variant text-on-surface rounded-full hover:bg-surface-variant/50 transition-colors">Blog</a>
-            <div class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">
-                <a href="/blog" class="text-on-surface font-bold">ES</a> | <a href="/blog/en" class="hover:text-on-surface transition-colors">EN</a>
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
             </div>
         </div>
     </nav>
@@ -102,9 +104,9 @@
     <header class="relative pt-32 pb-24 border-b border-outline-variant/10 topo-bg">
         <div class="topo-overlay"></div>
         <div class="max-w-container-max mx-auto px-grid-gutter relative z-10 flex flex-col items-center text-center">
-            <span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4">Bitácora</span>
+            <span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4" data-en="Logbook">Bitácora</span>
             <h1 class="font-display-lg text-4xl md:text-6xl text-on-surface mb-6">Blog</h1>
-            <p class="font-body-md text-xl text-on-surface-variant max-w-2xl">
+            <p class="font-body-md text-xl text-on-surface-variant max-w-2xl" data-en="Reflections on architecture, resilience, leadership, and cybersecurity.">
                 Reflexiones sobre arquitectura, resiliencia, liderazgo y ciberseguridad.
             </p>
         </div>
@@ -113,79 +115,71 @@
     <!-- Post List -->
     <main class="max-w-container-max mx-auto px-grid-gutter py-24 min-h-[50vh]">
         <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
-            
-            <!-- Article Card: Liderazgo e IA -->
-            <a href="/blog/liderazgo-y-ia" class="glass-panel p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 group relative">
+            <a href="/blog/liderazgo-y-ia" class="glass-panel p-5 sm:p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 group relative">
                 <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary">Liderazgo</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Inteligencia Artificial</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Estrategia</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary" data-en="Leadership">Liderazgo</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Artificial Intelligence">Inteligencia Artificial</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Strategy">Estrategia</span>
                 </div>
-                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors">El reto del liderazgo en la era de la IA: más criterio, más humanidad</h2>
-                <p class="font-body-md text-on-surface-variant">La inteligencia artificial amplía nuestra capacidad de analizar y decidir, pero el liderazgo sigue requiriendo criterio, ética, confianza y relaciones humanas.</p>
-                <div class="flex items-center justify-between mt-4">
-                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70">27 de septiembre de 2026</span>
-                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2">Leer publicación <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors" data-en="The leadership challenge in the age of AI: more judgment, more humanity">El reto del liderazgo en la era de la IA: más criterio, más humanidad</h2>
+                <p class="font-body-md text-on-surface-variant" data-en="Artificial intelligence expands our capacity to analyze and decide, but leadership still requires judgment, ethics, trust, and human relationships.">La inteligencia artificial amplía nuestra capacidad de analizar y decidir, pero el liderazgo sigue requiriendo criterio, ética, confianza y relaciones humanas.</p>
+                <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-2">
+                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70" data-en="September 27, 2026">27 de septiembre de 2026</span>
+                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2 whitespace-nowrap"><span data-en="Read post">Leer publicación</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
                 </div>
             </a>
 
-            <!-- Article Card: Visibilidad y Gobierno -->
-            <a href="/blog/visibilidad-y-gobierno" class="glass-panel rounded-xl flex flex-col overflow-hidden hover-glow transition-all duration-300 group relative">
-                <div class="w-full h-48 md:h-64 overflow-hidden border-b border-outline-variant/10">
-                    <img src="/blog/visibilidad-y-gobierno/hero.jpg" alt="Visibilidad y gobierno" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div class="p-8 flex flex-col gap-4">
+            <a href="/blog/visibilidad-y-gobierno" class="glass-panel p-5 sm:p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 group relative">
                 <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary">Gestión de activos</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Visibilidad</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Confiabilidad</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary" data-en="Asset Management">Gestión de activos</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Visibility">Visibilidad</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Reliability">Confiabilidad</span>
                 </div>
-                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors">De la visibilidad al gobierno: cuando la gestión de activos se vuelve accionable</h2>
-                <p class="font-body-md text-on-surface-variant">Una continuación práctica sobre cómo combinar descubrimiento, inventario, políticas y automatización para mejorar la operación y la ciberseguridad.</p>
-                <div class="flex items-center justify-between mt-4">
-                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70">27 de septiembre de 2026</span>
-                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2">Leer publicación <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors" data-en="From visibility to governance: when asset management becomes actionable">De la visibilidad al gobierno: cuando la gestión de activos se vuelve accionable</h2>
+                <p class="font-body-md text-on-surface-variant" data-en="A practical follow-up on combining discovery, inventory, policies, and automation to improve operations and cybersecurity.">Una continuación práctica sobre cómo combinar descubrimiento, inventario, políticas y automatización para mejorar la operación y la ciberseguridad.</p>
+                <div class="w-full aspect-video rounded-lg overflow-hidden border border-outline-variant/10 my-2">
+                    <img src="/blog/visibilidad-y-gobierno/hero.jpg" alt="" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-2">
+                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70" data-en="September 27, 2026">27 de septiembre de 2026</span>
+                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2 whitespace-nowrap"><span data-en="Read post">Leer publicación</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
                 </div>
             </a>
 
-            <!-- Article Card: Gestion de Activos -->
-            <a href="/blog/gestion-activos" class="glass-panel rounded-xl flex flex-col overflow-hidden hover-glow transition-all duration-300 group relative">
-                <div class="w-full h-48 md:h-64 overflow-hidden border-b border-outline-variant/10">
-                    <img src="/blog/gestion-activos/hero.jpg" alt="Gestión de activos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div class="p-8 flex flex-col gap-4">
+            <a href="/blog/gestion-activos" class="glass-panel p-5 sm:p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 group relative">
                 <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary">Gestión de activos</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Visibilidad</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Confiabilidad</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary" data-en="Asset Management">Gestión de activos</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Visibility">Visibilidad</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Reliability">Confiabilidad</span>
                 </div>
-                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors">La gestión de activos de TI: el punto de partida para reducir el caos</h2>
-                <p class="font-body-md text-on-surface-variant">Una reflexión inicial sobre por qué conocer, verificar y sostener la información de los activos es fundamental para la operación y la ciberseguridad.</p>
-                <div class="flex items-center justify-between mt-4">
-                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70">23 de septiembre de 2026</span>
-                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2">Leer publicación <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors" data-en="IT asset management: the starting point to reduce chaos">La gestión de activos de TI: el punto de partida para reducir el caos</h2>
+                <p class="font-body-md text-on-surface-variant" data-en="An initial reflection on why knowing, verifying, and sustaining asset information is fundamental for operations and cybersecurity.">Una reflexión inicial sobre por qué conocer, verificar y sostener la información de los activos es fundamental para la operación y la ciberseguridad.</p>
+                <div class="w-full aspect-video rounded-lg overflow-hidden border border-outline-variant/10 my-2">
+                    <img src="/blog/gestion-activos/hero.jpg" alt="" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-2">
+                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70" data-en="September 23, 2026">23 de septiembre de 2026</span>
+                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2 whitespace-nowrap"><span data-en="Read post">Leer publicación</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
                 </div>
             </a>
 
-            <!-- Article Card: Diseñar confianza -->
-            <a href="/blog/disenar-confianza-digital" class="glass-panel rounded-xl flex flex-col overflow-hidden hover-glow transition-all duration-300 group relative">
-                <div class="w-full h-48 md:h-64 overflow-hidden border-b border-outline-variant/10">
-                    <img src="/blog/disenar-confianza-digital/hero.jpg" alt="Diseñar confianza digital" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div class="p-8 flex flex-col gap-4">
+            <a href="/blog/disenar-confianza-digital" class="glass-panel p-5 sm:p-8 rounded-xl flex flex-col gap-4 hover-glow transition-all duration-300 group relative">
                 <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary">Presentación</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Liderazgo</span>
-                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant">Ciberseguridad</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-primary" data-en="Introduction">Presentación</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Leadership">Liderazgo</span>
+                    <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/50 rounded text-on-surface-variant" data-en="Cybersecurity">Ciberseguridad</span>
                 </div>
-                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors">Diseñar confianza digital: una presentación y un nuevo desafío</h2>
-                <p class="font-body-md text-on-surface-variant">Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico.</p>
-                <div class="flex items-center justify-between mt-4">
-                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70">21 de septiembre de 2026</span>
-                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2">Leer publicación <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                <h2 class="font-headline-md text-2xl text-on-surface group-hover:text-primary transition-colors" data-en="Designing digital trust: an introduction and a new challenge">Diseñar confianza digital: una presentación y un nuevo desafío</h2>
+                <p class="font-body-md text-on-surface-variant" data-en="A look at my path in cybersecurity architecture and the next step toward strategic leadership.">Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico.</p>
+                <div class="w-full aspect-video rounded-lg overflow-hidden border border-outline-variant/10 my-2">
+                    <img src="/blog/disenar-confianza-digital/hero.jpg" alt="" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-2">
+                    <span class="font-timeline-date text-timeline-date text-on-surface-variant opacity-70" data-en="September 21, 2026">21 de septiembre de 2026</span>
+                    <span class="font-label-caps text-label-caps text-primary group-hover:translate-x-2 transition-transform flex items-center gap-2 whitespace-nowrap"><span data-en="Read post">Leer publicación</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
                 </div>
             </a>
-            
+
         </div>
     </main>
 
@@ -197,5 +191,66 @@
             </div>
         </div>
     </footer>
+
+
+
+    <script>
+        const PAGE = {"es": {"title": "Blog | Luis Téllez", "desc": "Reflexiones sobre arquitectura, resiliencia, liderazgo y ciberseguridad."}, "en": {"title": "Blog | Luis Téllez", "desc": "Reflections on architecture, resilience, leadership, and cybersecurity."}};
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
 </body>
 </html>
