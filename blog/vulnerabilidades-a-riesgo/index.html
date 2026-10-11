@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>La vulnerabilidad no es el riesgo: una presentación y un nuevo desafío | Luis Téllez</title>
+    <meta name="description" content="Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico." />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                                        "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "timeline-date": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose, .prose-invert {
+            --tw-prose-body: #bac9cc !important;
+            --tw-prose-headings: #e5e2e3 !important;
+            --tw-prose-lead: #bac9cc !important;
+            --tw-prose-links: #c3f5ff !important;
+            --tw-prose-bold: #e5e2e3 !important;
+            --tw-prose-counters: #c3f5ff !important;
+            --tw-prose-bullets: #00e5ff !important;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5) !important;
+            --tw-prose-quotes: #c3f5ff !important;
+            --tw-prose-quote-borders: #00e5ff !important;
+            --tw-prose-captions: #849396 !important;
+            --tw-prose-code: #c3f5ff !important;
+            --tw-prose-pre-code: #bac9cc !important;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
+            --tw-prose-th-borders: #3b494c !important;
+            --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center"><a href="/" class="hover:text-primary transition-colors" data-en="Home">Inicio</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center"><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page" data-en="Vulnerability is Not Risk: The Security Architect's Perspective">Vulnerabilidad no es riesgo: la perspectiva del arquitecto de seguridad</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20" data-en="Vulnerability Management">Gestión de vulnerabilidades</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Risk Management">Gestión del riesgo</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Cybersecurity Architecture">Arquitectura de ciberseguridad</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight" data-en="Vulnerability is Not Risk: The Security Architect's Perspective">Vulnerabilidad no es riesgo: la perspectiva del arquitecto de seguridad</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="October 11, 2026">11 de octubre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="6 min read">6 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image -->
+        <figure class="mb-12 rounded-xl overflow-hidden shadow-lg border border-outline-variant/10">
+            <img src="hero.png" alt="Composición conceptual de arquitectura y riesgo" class="w-full h-auto object-cover aspect-video" />
+            <figcaption class="text-[10px] font-label-caps text-on-surface-variant/70 text-center py-1.5 bg-surface border-t border-outline-variant/10" data-en="Source: Conceptual composition of architecture and risk">
+                Fuente: Composición conceptual de arquitectura y riesgo
+            </figcaption>
+        </figure>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none" data-lang-block="es">
+            
+<p>Uno de los mayores desafíos que enfrentamos quienes trabajamos en ciberseguridad es determinar dónde concentrar nuestros esfuerzos para proteger adecuadamente a las organizaciones. En entornos empresariales complejos, donde existen miles de activos tecnológicos, cientos de aplicaciones y múltiples procesos de negocio, identificar vulnerabilidades es apenas el comienzo.</p>
+
+<p>Después de estudiar los capítulos 2, 5 y 7 del libro <em>Asset Attack Vectors</em>, de Morey J. Haber y Brad Hibbert, reafirmé una convicción que he construido a lo largo de mi experiencia profesional: <strong>la gestión de vulnerabilidades no debe centrarse únicamente en identificar y corregir debilidades tecnológicas, sino en comprender y reducir los riesgos que estas representan para el negocio.</strong></p>
+
+<p>Las herramientas de evaluación son indispensables. Nos permiten identificar vulnerabilidades conocidas, configuraciones inseguras y posibles superficies de ataque. Sin embargo, considero que uno de los errores más frecuentes en las grandes organizaciones es utilizar la severidad reportada por estas plataformas como principal criterio para decidir qué debe corregirse primero.</p>
+
+<p>Una vulnerabilidad crítica desde el punto de vista técnico no necesariamente representa el mayor riesgo para la organización. Para determinarlo, necesitamos conocer qué estamos protegiendo, por qué es importante y cuáles serían las consecuencias de su compromiso.</p>
+
+<h2>Conocer el negocio antes de evaluar sus vulnerabilidades</h2>
+
+<p>En mi experiencia, uno de los aspectos más complejos de la ciberseguridad empresarial es comprender las relaciones entre los procesos de negocio y la infraestructura tecnológica que los soporta.</p>
+
+<p>Una aplicación no funciona de manera aislada. Depende de servidores, sistemas operativos, bases de datos, componentes de software, redes, servicios de identidad, plataformas cloud y otras aplicaciones con las que intercambia información. Cada uno de estos componentes puede introducir vulnerabilidades o convertirse en una ruta de ataque hacia sistemas más críticos.</p>
+
+<p>Por esta razón, considero que un programa de gestión de vulnerabilidades debe partir de un inventario confiable de activos, pero también de un conocimiento profundo de las aplicaciones y sus interdependencias. No basta con saber que tenemos un servidor vulnerable. Necesitamos comprender qué función desempeña, qué información procesa, qué servicios dependen de él y cómo podría afectar al negocio su compromiso.</p>
+
+<p>Esta visión permite establecer prioridades mucho más precisas. Por ejemplo, una vulnerabilidad de severidad media en una aplicación financiera expuesta a Internet podría representar un riesgo mayor que una vulnerabilidad crítica en un servidor de pruebas correctamente aislado. La diferencia no está únicamente en la vulnerabilidad, sino en su contexto.</p>
+
+<h2>La gestión de vulnerabilidades debe comenzar desde el diseño</h2>
+
+<p>Otro aprendizaje importante de estas lecturas es que la evaluación de vulnerabilidades no debería considerarse una actividad exclusiva de los sistemas que ya están en producción. Desde mi perspectiva, <strong>la gestión de vulnerabilidades debe comenzar durante el diseño de la arquitectura tecnológica</strong>.</p>
+
+<p>Cuando desarrollamos o incorporamos una nueva aplicación, deberíamos establecer un proceso de certificación que permita validar los componentes que la integran y la infraestructura que necesita para operar. Esto implica revisar sistemas operativos, motores de aplicaciones, bases de datos, bibliotecas de software, firmware, configuraciones de seguridad y mecanismos de comunicación.</p>
+
+<p>También debemos establecer estándares tecnológicos que definan versiones autorizadas, configuraciones seguras y controles obligatorios para cada tipo de plataforma. Durante el despliegue, es necesario verificar que lo implementado corresponda con la arquitectura aprobada. Posteriormente, durante las pruebas y la operación, debemos ejecutar evaluaciones que permitan identificar vulnerabilidades y desviaciones respecto de los estándares establecidos.</p>
+
+<p>Este modelo puede incorporar distintos niveles de automatización, dependiendo de la madurez de la organización. Lo importante es comprender que la seguridad no comienza cuando un escáner identifica una vulnerabilidad. Comienza cuando diseñamos una arquitectura que busca prevenirla.</p>
+
+<h2>Evaluar vulnerabilidades sin comprometer la operación</h2>
+
+<p>En el capítulo 5, Haber y Hibbert explican las diferencias entre las evaluaciones activas, pasivas, intrusivas y no intrusivas. Una de las ideas que considero más relevantes es que identificar una vulnerabilidad y corregirla suele ser más importante que demostrar técnicamente que puede explotarse.</p>
+
+<p>Comparto esta perspectiva, especialmente cuando hablamos de sistemas que soportan operaciones financieras o servicios que deben permanecer disponibles. No considero adecuado ejecutar pruebas intrusivas indiscriminadamente sobre ambientes productivos. Una evaluación de seguridad no debería convertirse en la causa de una interrupción del negocio.</p>
+
+<p>En cambio, debemos establecer estrategias de evaluación que consideren la criticidad de los activos, su exposición, las obligaciones regulatorias y los riesgos operativos asociados con cada técnica. Las evaluaciones pasivas pueden proporcionar visibilidad continua sobre determinados componentes y comunicaciones. Los escaneos activos no intrusivos permiten identificar vulnerabilidades y configuraciones inseguras sin necesidad de ejecutar exploits. Las pruebas intrusivas deben reservarse para escenarios controlados, con objetivos específicos y una adecuada coordinación con las áreas responsables.</p>
+
+<p>También considero indispensable reconocer las limitaciones de las herramientas. Los falsos positivos generan esfuerzos innecesarios de investigación y remediación. Los falsos negativos pueden ser todavía más peligrosos porque generan una percepción equivocada del nivel de seguridad. Por eso, un programa maduro no debería medir únicamente cuántos activos escanea o cuántas vulnerabilidades identifica, sino también la confiabilidad de sus resultados y la efectividad de sus mecanismos de detección.</p>
+
+<h2>Priorizar por riesgo de negocio, no solamente por severidad</h2>
+
+<p>Este es, para mí, el aprendizaje más importante de los tres capítulos. En el capítulo 7, los autores explican que el riesgo puede analizarse considerando el impacto y la probabilidad de que ocurra un evento. Aunque esta relación parece sencilla, aplicarla correctamente requiere comprender múltiples factores.</p>
+
+<p>La severidad técnica de una vulnerabilidad, expresada mediante estándares como CVSS, proporciona información relevante. Sin embargo, no representa por sí sola el riesgo que enfrenta una organización. Para establecer prioridades debemos considerar la criticidad del proceso de negocio, la exposición del activo, la existencia de exploits, la actividad de las amenazas y la efectividad de los controles de seguridad.</p>
+
+<p>En una institución financiera, por ejemplo, una vulnerabilidad que permita acceder indebidamente a información de clientes puede representar un riesgo crítico, aunque no permita ejecutar código o comprometer el sistema operativo. El impacto puede materializarse mediante incumplimientos regulatorios, pérdidas económicas, afectaciones reputacionales o pérdida de confianza de los clientes. Por otra parte, una vulnerabilidad técnicamente crítica podría representar un riesgo menor cuando afecta un activo con exposición limitada y controles compensatorios efectivos.</p>
+
+<p>Esto no significa que debamos ignorarla, sino que necesitamos establecer una prioridad proporcional al riesgo. <strong>Mi propuesta es que las organizaciones evolucionen de un modelo de remediación basado principalmente en la severidad técnica hacia un modelo de priorización sustentado en el riesgo para sus procesos de negocio.</strong> Este cambio permitiría utilizar de manera más eficiente los recursos disponibles y concentrar los esfuerzos donde realmente pueden reducirse las consecuencias de un incidente.</p>
+
+<h2>La gestión del riesgo requiere responsabilidades compartidas</h2>
+
+<p>Otro aspecto que considero fundamental es comprender que la gestión de vulnerabilidades no puede depender exclusivamente de los equipos de ciberseguridad. Las áreas de Arquitectura deben establecer los requisitos y controles necesarios para proteger las aplicaciones y sus componentes tecnológicos. Los equipos de Operaciones deben participar en la implementación de configuraciones seguras, actualizaciones y actividades de remediación. Los responsables de Gestión de Vulnerabilidades deben proporcionar información confiable sobre las debilidades identificadas y facilitar su seguimiento.</p>
+
+<p>Pero existe un actor que considero indispensable: <strong>el dueño del proceso de negocio</strong>. En mi experiencia, cuando una vulnerabilidad no puede corregirse inmediatamente, es necesario presentar el riesgo de manera clara a quienes tienen la responsabilidad sobre el proceso afectado. Esto implica explicar la probabilidad de materialización, las posibles consecuencias, los controles disponibles y las alternativas de tratamiento. La decisión de aceptar un riesgo residual debe corresponder a las autoridades facultadas para hacerlo, considerando los límites de tolerancia y las obligaciones regulatorias de la organización.</p>
+
+<p>He observado que involucrar a los responsables del negocio también facilita la obtención de recursos para implementar controles y ejecutar proyectos de remediación. Cuando el riesgo se explica únicamente mediante indicadores técnicos, puede resultar difícil transmitir su importancia. En cambio, cuando demostramos cómo una vulnerabilidad podría afectar una operación financiera, comprometer información de clientes o interrumpir un servicio crítico, la conversación cambia: la ciberseguridad deja de presentarse como una necesidad exclusivamente tecnológica y comienza a entenderse como una responsabilidad relacionada con la continuidad y sostenibilidad del negocio.</p>
+
+<h2>Hacia un modelo de gestión de vulnerabilidades más efectivo</h2>
+
+<p>Considero que la evolución de estos programas debe comenzar por modificar la manera en que se establecen las prioridades. Para lograrlo, las organizaciones necesitan relacionar sus inventarios tecnológicos con los procesos de negocio, conocer las dependencias entre aplicaciones, establecer estándares de arquitectura y mantener mecanismos confiables de evaluación. También deben integrar información sobre amenazas, exposición y controles compensatorios para determinar el riesgo real de cada vulnerabilidad.</p>
+
+<p>Esta transformación no requiere necesariamente reemplazar las herramientas existentes. En muchos casos, el mayor desafío consiste en mejorar los procesos, la calidad de la información y la colaboración entre las áreas técnicas y de negocio. Las plataformas de gestión de vulnerabilidades deben proporcionar información que facilite las decisiones, pero no sustituir el análisis de riesgo.</p>
+
+<p>Finalmente, considero necesario evolucionar también las métricas utilizadas para evaluar estos programas. Reducir el número de vulnerabilidades críticas es un indicador importante, pero debería complementarse con mediciones relacionadas con la exposición de los procesos críticos, los tiempos de remediación según el riesgo y la efectividad de los controles implementados. De esta manera, podríamos demostrar no solamente cuánto trabajo realiza un equipo de ciberseguridad, sino cuánto contribuye realmente a proteger a la organización.</p>
+
+<h2>Reflexión final</h2>
+
+<p>El estudio de los capítulos 2, 5 y 7 de <em>Asset Attack Vectors</em> me permitió relacionar los fundamentos de la gestión de vulnerabilidades con los desafíos que enfrento en la arquitectura de ciberseguridad empresarial. Mi principal conclusión es que debemos cambiar la manera en que entendemos el éxito de estos programas.</p>
+
+<p>No considero suficiente identificar miles de vulnerabilidades, clasificarlas por severidad y establecer planes de remediación basados únicamente en los resultados de las herramientas. Necesitamos comprender los procesos que generan valor para la organización, las aplicaciones que los soportan, sus componentes tecnológicos y las amenazas capaces de comprometerlos. A partir de ese conocimiento podemos diseñar arquitecturas más seguras, implementar controles efectivos y establecer prioridades de remediación que respondan a las necesidades reales del negocio.</p>
+
+<p>También debemos reconocer que la seguridad absoluta no existe y que siempre habrá riesgos residuales. Nuestra responsabilidad consiste en identificarlos, evaluarlos y proporcionar información suficiente para que las decisiones de tratamiento sean conscientes y fundamentadas.</p>
+
+<p><strong>Creo que la verdadera madurez de un programa de gestión de vulnerabilidades no se mide por la cantidad de hallazgos que consigue cerrar, sino por su capacidad para reducir los riesgos que amenazan los procesos más importantes de la organización.</strong> Ese es, desde mi perspectiva, el cambio que debemos impulsar: dejar de administrar vulnerabilidades como elementos técnicos aislados y comenzar a gestionarlas como parte integral del riesgo empresarial.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h2>Referencias bibliográficas</h2>
+<ul>
+    <li>Haber, M. J., &amp; Hibbert, B. (2018). <em>Asset attack vectors: Building effective vulnerability management strategies to protect organizations</em>. Apress.</li>
+    <li>Capítulos consultados: 2, <em>The Vulnerability Landscape</em>; 5, <em>Vulnerability Assessment</em>; y 7, <em>Risk Measurement</em>.</li>
+</ul>
+
+        </article>
+
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none hidden" data-lang-block="en">
+            
+<p>One of the greatest challenges facing cybersecurity practitioners is determining where to concentrate efforts to adequately protect organizations. In complex enterprise environments—with thousands of technical assets, hundreds of applications, and multiple business processes—identifying vulnerabilities is merely the starting line.</p>
+
+<p>After studying Chapters 2, 5, and 7 of <em>Asset Attack Vectors</em> by Morey J. Haber and Brad Hibbert, I reaffirmed a conviction forged throughout my professional career: <strong>vulnerability management must not focus solely on identifying and patching technological flaws, but on understanding and mitigating the actual risks they pose to the business.</strong></p>
+
+<p>Assessment tools are indispensable. They allow us to discover known vulnerabilities, insecure configurations, and potential attack surfaces. However, I consider one of the most frequent mistakes in large organizations to be relying on tool-reported severity as the primary driver for remediation priorities.</p>
+
+<p>A technically critical vulnerability does not necessarily represent the highest risk to the organization. To determine true priority, we must understand what we are protecting, why it matters, and what the business consequences of its compromise would be.</p>
+
+<h2>Understanding the Business Before Assessing Its Vulnerabilities</h2>
+
+<p>In my experience, one of the most intricate facets of enterprise cybersecurity is grasping the web of relationships between business processes and the underlying technical infrastructure.</p>
+
+<p>An application never operates in isolation. It relies on servers, operating systems, databases, software components, networks, identity providers, cloud platforms, and other integrated systems with which it exchanges data. Each of these elements can introduce weaknesses or become an attack path toward core systems.</p>
+
+<p>For this reason, a vulnerability management program must begin not just with a reliable asset inventory, but with a deep understanding of applications and their interdependencies. It is insufficient to know that a server is vulnerable. We must understand its operational function, what data it processes, what downstream services depend on it, and how an outage or compromise would affect the business.</p>
+
+<p>This perspective enables far more accurate prioritization. For example, a medium-severity vulnerability in an internet-facing financial platform may pose a significantly higher risk than a critical vulnerability on an isolated staging server. The decisive factor is not merely the flaw itself, but its operational context.</p>
+
+<h2>Vulnerability Management Must Begin at Design</h2>
+
+<p>Another critical takeaway from these readings is that vulnerability assessment should never be treated as an activity reserved solely for systems already running in production. From my perspective, <strong>vulnerability management must begin during the design phase of technical architecture.</strong></p>
+
+<p>When developing or adopting a new application, we should establish an architectural certification process to validate its constituent components and supporting infrastructure. This entails reviewing operating systems, runtime engines, databases, third-party libraries, firmware, baseline security configurations, and communication mechanisms.</p>
+
+<p>We must also enforce technological standards defining authorized versions, hardened baselines, and mandatory controls across every platform tier. During deployment, we must ensure that what is implemented matches the approved architecture. Subsequently, during testing and steady-state operations, evaluations should actively identify vulnerabilities and standard drift.</p>
+
+<p>This framework can incorporate varying levels of automation depending on organizational maturity. The core principle remains clear: security does not begin when a scanner flags a finding; it begins when we design an architecture built to prevent it.</p>
+
+<h2>Assessing Vulnerabilities Without Compromising Operations</h2>
+
+<p>In Chapter 5, Haber and Hibbert distinguish between active, passive, intrusive, and non-intrusive assessments. One insight I find particularly compelling is that identifying and remediating a vulnerability is far more valuable than technically proving it can be exploited.</p>
+
+<p>I share this viewpoint, particularly when dealing with mission-critical systems supporting financial transactions or high-availability services. Running intrusive tests indiscriminately across production environments is unacceptable. A security assessment should never become the cause of a business disruption.</p>
+
+<p>Instead, we must formulate assessment strategies that weigh asset criticality, exposure, regulatory obligations, and operational risks inherent to each testing technique. Passive monitoring can provide continuous visibility across specific components and network flows. Active, non-intrusive scans allow us to identify vulnerabilities and configuration flaws without executing exploits. Intrusive testing should be strictly confined to controlled environments, with explicit objectives and coordinated execution.</p>
+
+<p>We must also recognize the inherent limitations of scanning platforms. False positives consume valuable investigative and engineering bandwidth. False negatives are even more dangerous, instilling a false sense of security. A mature program should not measure success merely by the number of scanned assets or discovered flaws, but by the reliability of its findings and the effectiveness of its detection posture.</p>
+
+<h2>Prioritizing by Business Risk, Not Just Severity</h2>
+
+<p>This is, in my view, the most vital lesson of the three chapters. In Chapter 7, the authors illustrate how risk can be evaluated by analyzing the likelihood and impact of a potential event. While conceptually straightforward, applying this framework effectively requires evaluating multiple interrelated factors.</p>
+
+<p>Technical severity metrics like CVSS provide valuable context, but CVSS alone does not represent the real risk facing an enterprise. True prioritization requires evaluating business process criticality, asset exposure, exploit availability, threat actor activity, and the efficacy of existing controls.</p>
+
+<p>In a financial institution, for instance, a vulnerability enabling unauthorized access to customer records represents a critical business risk, even if it does not grant remote code execution or root-level compromise. Impact manifests through regulatory sanctions, direct financial losses, reputational damage, and eroded client trust. Conversely, a technically critical vulnerability on an asset with restricted exposure and robust compensating controls may present a manageable exposure.</p>
+
+<p>This does not mean it should be overlooked, but rather assigned a priority proportional to the actual risk. <strong>My proposal is for organizations to evolve from a remediation model driven by technical severity toward a risk-based prioritization model anchored in business process impact.</strong> This paradigm shift maximizes the efficiency of security investments and focuses remediation where it genuinely safeguards enterprise value.</p>
+
+<h2>Risk Management Requires Shared Responsibility</h2>
+
+<p>Another crucial principle is that vulnerability management cannot remain an isolated mandate of the cybersecurity team. Architecture teams must define security baselines and necessary controls. Operations teams must execute patch deployment, hardening, and configuration management. Vulnerability management teams must provide accurate intelligence, visibility, and remediation governance.</p>
+
+<p>Yet there is an indispensable stakeholder: <strong>the business process owner.</strong> In my experience, when a vulnerability cannot be immediately resolved, the residual risk must be articulated clearly to those accountable for the affected business function. This requires communicating the probability of compromise, operational ramifications, existing controls, and treatment alternatives with their respective costs. The formal acceptance of residual risk must rest with the business authority empowered to decide, governed by organizational risk appetite and regulatory mandates.</p>
+
+<p>I have consistently observed that engaging business leaders facilitates resource allocation for security controls and remediation initiatives. When risk is communicated purely through technical jargon and severity scores, gaining executive buy-in is an uphill battle. In contrast, when we demonstrate how a flaw could halt a financial pipeline, breach confidential customer data, or disrupt a core service, the conversation changes entirely: cybersecurity ceases to be perceived as an overhead cost and becomes recognized as a strategic pillar of operational resilience and business continuity.</p>
+
+<h2>Toward a More Effective Vulnerability Management Model</h2>
+
+<p>Transforming vulnerability programs starts by reimagining how priorities are established. Organizations must correlate technical asset inventories with business processes, map application dependencies, institutionalize architectural standards, and maintain trustworthy assessment practices. They must also enrich vulnerability data with threat intelligence, real exposure metrics, and compensating controls to determine actual risk.</p>
+
+<p>This evolution does not require overhauling existing toolchains. In most cases, the real challenge lies in refining workflows, elevating data quality, and fostering cross-functional alignment between technical and executive leadership. Vulnerability management platforms must inform strategic decisions, not replace risk analysis.</p>
+
+<p>Finally, program metrics must evolve. Tracking the reduction of critical vulnerabilities is meaningful, but it should be paired with metrics reflecting critical process exposure, risk-adjusted remediation velocity, and control effectiveness. Only then can security teams demonstrate not just how much work they perform, but how effectively they protect the enterprise.</p>
+
+<h2>Final Thoughts</h2>
+
+<p>Studying Chapters 2, 5, and 7 of <em>Asset Attack Vectors</em> reinforced the critical bridge between vulnerability management fundamentals and enterprise cybersecurity architecture. My chief takeaway is that we must redefine what success looks like in these programs.</p>
+
+<p>It is not enough to catalog thousands of vulnerabilities and execute remediation plans guided solely by scanner outputs. We must understand the processes that create enterprise value, the applications that empower them, their technical dependencies, and the threats capable of disrupting them. Equipped with this clarity, we can architect more resilient systems, deploy high-impact controls, and prioritize remediation where it genuinely protects the business.</p>
+
+<p>Absolute security does not exist; residual risk is inevitable. Our duty is to identify, quantify, and articulate that risk so treatment decisions are deliberate and well-informed.</p>
+
+<p><strong>True maturity in vulnerability management is not measured by the sheer volume of closed tickets, but by the tangible reduction of risk across the organization's most critical operations.</strong> That is the shift we must champion: moving from treating vulnerabilities as isolated technical flaws to managing them as core components of enterprise business risk.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h2>References</h2>
+<ul>
+    <li>Haber, M. J., &amp; Hibbert, B. (2018). <em>Asset attack vectors: Building effective vulnerability management strategies to protect organizations</em>. Apress.</li>
+    <li>Consulted chapters: 2, <em>The Vulnerability Landscape</em>; 5, <em>Vulnerability Assessment</em>; and 7, <em>Risk Measurement</em>.</li>
+</ul>
+
+        </article>
+
+        <!-- Comments Section (Giscus) -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8" data-en="Comments">Comentarios</h2>
+            <div id="giscus-container"></div>
+        </div>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                <span data-en="Back to posts"><span data-en="Back to posts"><span data-en="Back to posts">Volver a publicaciones</span></span></span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const PAGE = {"es": {"title": "La vulnerabilidad no es el riesgo: una presentación y un nuevo desafío | Luis Téllez", "desc": "Una mirada a mi trayectoria en arquitectura de ciberseguridad y al siguiente paso hacia el liderazgo estratégico."}, "en": {"title": "Designing digital trust: an introduction and a new challenge | Luis Téllez", "desc": "A look at my path in cybersecurity architecture and the next step toward strategic leadership."}};
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
+</body>
+</html>
