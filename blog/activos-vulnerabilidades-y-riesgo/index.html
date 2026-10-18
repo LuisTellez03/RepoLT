@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Más allá del inventario: comprender los activos y sus vulnerabilidades para gestionar el riesgo | Luis Téllez</title>
+    <meta name="description" content="Las lecturas del Módulo 1 reforzaron mi experiencia en ciberseguridad y ampliaron mi perspectiva sobre las dependencias de software, la inteligencia de vulnerabilidades y la medición del riesgo de negocio." />
+    <meta name="keywords" content="gestion-de-activos, gestion-de-vulnerabilidades, ciberseguridad, gestion-de-riesgos, arquitectura-de-ciberseguridad" />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "timeline-date": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose, .prose-invert {
+            --tw-prose-body: #bac9cc !important;
+            --tw-prose-headings: #e5e2e3 !important;
+            --tw-prose-lead: #bac9cc !important;
+            --tw-prose-links: #c3f5ff !important;
+            --tw-prose-bold: #e5e2e3 !important;
+            --tw-prose-counters: #c3f5ff !important;
+            --tw-prose-bullets: #00e5ff !important;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5) !important;
+            --tw-prose-quotes: #c3f5ff !important;
+            --tw-prose-quote-borders: #00e5ff !important;
+            --tw-prose-captions: #849396 !important;
+            --tw-prose-code: #c3f5ff !important;
+            --tw-prose-pre-code: #bac9cc !important;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
+            --tw-prose-th-borders: #3b494c !important;
+            --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center"><a href="/" class="hover:text-primary transition-colors" data-en="Home">Inicio</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center"><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page" data-en="Beyond the Inventory: Understanding Assets and Their Vulnerabilities to Manage Risk">Más allá del inventario: comprender los activos y sus vulnerabilidades para gestionar el riesgo</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20" data-en="Asset Management">Gestión de activos</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Vulnerability Management">Gestión de vulnerabilidades</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Risk Management">Gestión del riesgo</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight" data-en="Beyond the Inventory: Understanding Assets and Their Vulnerabilities to Manage Risk">Más allá del inventario: comprender los activos y sus vulnerabilidades para gestionar el riesgo</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="October 18, 2026">18 de octubre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="5 min read">5 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image -->
+        <figure class="mb-12 rounded-xl overflow-hidden shadow-lg border border-outline-variant/10">
+            <img src="hero.webp" alt="Arquitectura tecnológica bajo protección frente a amenazas, con continuidad de los procesos empresariales" class="w-full h-auto object-cover aspect-video" />
+            <figcaption class="text-[10px] font-label-caps text-on-surface-variant/70 text-center py-1.5 bg-surface border-t border-outline-variant/10" data-en="Source: Conceptual image generated with Artificial Intelligence">
+                Fuente: Imagen conceptual generada con Inteligencia Artificial
+            </figcaption>
+        </figure>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none" data-lang-block="es">
+            
+<p>Al estudiar el Módulo 1, <em>Fundamentos de Gestión de Activos y su Relación con el Riesgo</em>, confirmé algo que he aprendido durante mi trayectoria en ciberseguridad: <strong>no podemos gestionar adecuadamente el riesgo de aquello que no conocemos</strong>. Sin embargo, las lecturas también me ayudaron a precisar qué significa realmente conocer un activo. No se trata solo de identificar su existencia, tecnología o responsable, sino de comprender su funcionamiento, sus dependencias y su importancia para los procesos de negocio.</p>
+
+<p>Los capítulos 2, 4, 5, 6 y 12 de <em>Effective Vulnerability Management</em>, de Chris Hughes y Nikki Robinson (2024), dieron fundamento teórico a ideas que ya aplicaba profesionalmente. También ampliaron mi perspectiva en dos ámbitos que considero especialmente relevantes: las vulnerabilidades presentes en los componentes utilizados para desarrollar aplicaciones y el potencial de correlacionar distintas bases de datos para construir una gestión más inteligente y oportuna.</p>
+
+<h2>Más allá del inventario: conocer las relaciones y el impacto</h2>
+
+<p>Uno de los principales problemas que he observado en las organizaciones no es simplemente la falta de herramientas de inventario, sino la dificultad para mantener información confiable y comprender cómo se relacionan los activos. Podemos conocer cuántos servidores tenemos y aun así desconocer qué aplicaciones soportan, qué información procesan o qué ocurriría si dejan de funcionar.</p>
+
+<p>Desde mi perspectiva, <strong>el valor de un inventario aumenta cuando conecta la tecnología con la arquitectura y los procesos de negocio</strong>. Es importante identificar versiones y configuraciones, pero también dependencias, conexiones, relaciones de confianza y responsables. Esa información permite distinguir entre un hallazgo técnico aislado y una exposición que podría interrumpir una operación esencial o comprometer información de clientes.</p>
+
+<p>Por ejemplo, imaginemos dos servidores afectados por una vulnerabilidad similar. Uno soporta un ambiente de pruebas aislado; el otro participa en un proceso transaccional y se comunica con diversas aplicaciones. Aunque ambos requieren evaluación, su tratamiento no debería definirse automáticamente de la misma manera. Necesitamos considerar la exposición efectiva, los controles existentes y las consecuencias de un incidente o de una actualización fallida.</p>
+
+<p>Aquí encuentro una relación directa con la gestión de parches del capítulo 2: <strong>remediar sin conocer las dependencias también puede generar riesgo</strong>. Por eso considero necesario que Desarrollo y Operaciones mantengan la información de los activos que administran, mientras Ciberseguridad verifica su consistencia de manera independiente. La gestión de activos debe ser una responsabilidad compartida, no un ejercicio documental aislado.</p>
+
+<h2>Las vulnerabilidades también están dentro del software</h2>
+
+<p>Un aprendizaje que amplió especialmente mi perspectiva fue profundizar en las vulnerabilidades de bibliotecas, paquetes y dependencias de desarrollo. Tradicionalmente resulta más visible hablar de sistemas operativos, servidores o dispositivos de red. Sin embargo, una aplicación puede incorporar numerosos componentes de terceros que cambian entre versiones sin que esa evolución sea evidente para las áreas responsables de gestionar el riesgo.</p>
+
+<p>Los temas de identificación de software del capítulo 5 me llevaron a valorar más la <strong>SBOM (Software Bill of Materials / Lista de Materiales de Software)</strong>, un registro de los componentes utilizados por una aplicación, y el <strong>SCA (Software Composition Analysis / Análisis de Composición de Software)</strong>, que permite examinar dependencias e identificar problemas conocidos.</p>
+
+<p>Pienso en un caso hipotético: una biblioteca vulnerable se utiliza en varias aplicaciones y se descubre una nueva forma de explotarla. Si solo inventariamos servidores, encontrar todos los sistemas afectados puede requerir revisiones manuales y consumir tiempo valioso. En cambio, si los componentes se identifican durante el desarrollo y se relacionan con las versiones desplegadas, es posible localizar las aplicaciones potencialmente expuestas y dirigir las verificaciones.</p>
+
+<p>Esto no significa almacenar cada dependencia en una sola base de datos corporativa. Considero más práctico relacionar un inventario especializado de componentes con la <strong>CMDB (Configuration Management Database / Base de Datos de Gestión de Configuraciones)</strong>, donde se mantiene el contexto de aplicaciones, activos y servicios. Para mí, <strong>el desarrollo de software debe formar parte del programa de gestión de vulnerabilidades desde su origen</strong>, no incorporarse únicamente cuando la aplicación entra en producción.</p>
+
+<h2>De las bases de datos de vulnerabilidades a la inteligencia útil</h2>
+
+<p>Otro aprendizaje fue comprender mejor las diferencias y posibilidades de las fuentes de información. El capítulo 6 aborda recursos como la <strong>NVD (National Vulnerability Database / Base de Datos Nacional de Vulnerabilidades)</strong> y <strong>OSV (Open Source Vulnerabilities / Vulnerabilidades de Código Abierto)</strong>, particularmente útil para consultar información de componentes y versiones de software.</p>
+
+<p>El capítulo 5 también ayuda a distinguir herramientas que responden preguntas diferentes: <strong>CVSS (Common Vulnerability Scoring System / Sistema Común de Puntuación de Vulnerabilidades)</strong> describe la severidad técnica; <strong>EPSS (Exploit Prediction Scoring System / Sistema de Puntuación de Predicción de Explotación)</strong> estima la probabilidad de explotación en los siguientes 30 días; y <strong>KEV (Known Exploited Vulnerabilities / Vulnerabilidades Conocidas Explotadas)</strong> identifica vulnerabilidades con evidencia de explotación conocida. Son señales complementarias, no sustitutos del análisis de riesgo de nuestra organización.</p>
+
+<p>Mi reflexión es que el verdadero avance no está en consultar más fuentes, sino en <strong>correlacionar sus datos con el conocimiento interno de los activos</strong>. Una alerta nueva debería permitir identificar componentes potencialmente afectados, validar si las condiciones de explotación están presentes y determinar qué procesos de negocio podrían verse comprometidos. Si cambia la actividad de los atacantes, el riesgo también puede cambiar, aunque no se haya modificado ningún servidor.</p>
+
+<p>En ese sentido, el capítulo 4 reforzó mi idea de que gestión continua no significa únicamente aumentar la frecuencia de los escaneos. Significa mantenerse atento a cambios tecnológicos y nuevas amenazas, y activar evaluaciones específicas cuando exista información relevante. La automatización puede acelerar esa correlación, pero las decisiones críticas requieren validar el contexto técnico y operativo.</p>
+
+<h2>La madurez comienza desde el inicio y debe poder medirse</h2>
+
+<p>El modelo del capítulo 12 integra gestión de activos, configuración segura, monitoreo, automatización, factores humanos e inteligencia de amenazas. Me parece una referencia útil, aunque discrepo de interpretarlo como una secuencia rígida: <strong>la inteligencia de amenazas, el liderazgo y la colaboración entre equipos deben desarrollarse desde el principio</strong>, junto con el inventario y los controles de configuración.</p>
+
+<p>Desde mi experiencia, cuando Ciberseguridad no comprende las necesidades de Desarrollo y Operaciones, las iniciativas pueden retrasarse o convertirse en controles difíciles de adoptar. Trabajar juntos desde el diseño permite conocer dependencias, anticipar problemas y definir tratamientos viables. También ayuda a separar las actividades que pueden automatizarse de las decisiones que requieren autorización de los responsables del negocio.</p>
+
+<p>Además, comparto un principio que considero indispensable: <strong>no se puede mejorar lo que no se mide</strong>. Propongo evaluar la madurez de cada capacidad mediante evidencia verificable, en lugar de asumir que una organización es madura por contar con muchas herramientas. Mediría la cobertura y calidad del inventario, su relación con procesos críticos, los tiempos de identificación y remediación, y la evolución del riesgo inherente y residual. Un alto porcentaje de parches instalados no necesariamente demuestra que protegimos mejor los servicios esenciales.</p>
+
+<h2>Lo que me llevo del módulo</h2>
+
+<p>Estas lecturas reforzaron mi convicción de que la gestión de vulnerabilidades debe evolucionar de administrar hallazgos técnicos a respaldar decisiones de negocio. Al mismo tiempo, me hicieron ampliar la mirada hacia el software que construimos y las fuentes de información que podemos integrar para reconocer amenazas con mayor oportunidad.</p>
+
+<p>Como aplicación concreta de este aprendizaje, considero prioritario conectar los inventarios tecnológicos con las arquitecturas y los procesos de negocio; incorporar visibilidad sobre las dependencias de las aplicaciones; y utilizar la inteligencia de amenazas para actualizar nuestras prioridades. Todo ello exige coordinación entre áreas, automatización responsable y una forma clara de demostrar resultados.</p>
+
+<p>Para mí, la pregunta que mejor resume el módulo ya no es solamente <strong>«¿cuántas vulnerabilidades corregimos?»</strong>, sino <strong>«¿qué sabemos de los activos que sostienen al negocio y cuánto riesgo logramos reducir al protegerlos?»</strong>. Esa es la conversación que quiero fortalecer en mi práctica profesional.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h3>Fuentes consultadas</h3>
+<ul>
+    <li>Hughes, C., &amp; Robinson, N. (2024). <em><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394277155" target="_blank" rel="noopener noreferrer">Effective vulnerability management: Managing risk in the vulnerable digital ecosystem</a></em>. Wiley. Capítulos 2, 4, 5, 6 y 12. <a href="https://learning.oreilly.com/library/view/effective-vulnerability-management/9781394221202" target="_blank" rel="noopener noreferrer">Acceso en O'Reilly</a>.</li>
+    <li>National Institute of Standards and Technology. (s. f.). <em><a href="https://nvd.nist.gov/" target="_blank" rel="noopener noreferrer">National Vulnerability Database (NVD)</a></em>.</li>
+    <li>OSV. (s. f.). <em><a href="https://osv.dev/" target="_blank" rel="noopener noreferrer">Open Source Vulnerabilities</a></em>.</li>
+    <li>Forum of Incident Response and Security Teams. (s. f.). <em><a href="https://www.first.org/epss/" target="_blank" rel="noopener noreferrer">Exploit Prediction Scoring System (EPSS)</a></em>.</li>
+    <li>Cybersecurity and Infrastructure Security Agency. (s. f.). <em><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">Known Exploited Vulnerabilities Catalog</a></em>.</li>
+</ul>
+
+        </article>
+
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none hidden" data-lang-block="en">
+            
+<p>While studying Module 1, <em>Asset Management Fundamentals and Their Relationship with Risk</em>, I reaffirmed a core lesson from my career in cybersecurity: <strong>we cannot adequately manage the risk of what we do not know</strong>. However, the readings also helped me refine what it truly means to know an asset. It is not merely about identifying its existence, technology stack, or owner, but understanding how it operates, its dependencies, and its importance to business processes.</p>
+
+<p>Chapters 2, 4, 5, 6, and 12 of <em>Effective Vulnerability Management</em>, by Chris Hughes and Nikki Robinson (2024), provided a solid theoretical foundation for practices I already applied professionally. They also broadened my perspective in two areas I consider particularly relevant: vulnerabilities embedded within the components used to build applications, and the potential of correlating diverse vulnerability databases to drive smarter, more timely risk management.</p>
+
+<h2>Beyond the Inventory: Understanding Relationships and Impact</h2>
+
+<p>One of the main challenges I have observed in organizations is not simply a lack of inventory tools, but the difficulty of maintaining reliable information and understanding how assets relate to one another. We may know exactly how many servers we have and still remain unaware of which applications they support, what data they process, or what would happen if they went offline.</p>
+
+<p>From my perspective, <strong>the value of an inventory increases when it connects technology with architecture and business processes</strong>. Identifying versions and configurations is important, but so is mapping dependencies, network paths, trust relationships, and accountability. That context makes it possible to distinguish between an isolated technical finding and an exposure capable of disrupting an essential operation or compromising customer data.</p>
+
+<p>For example, imagine two servers affected by a similar vulnerability. One supports an isolated testing environment; the other participates in a core transactional workflow and communicates with multiple applications. Although both require assessment, their remediation treatment should not be defined automatically in the same way. We must weigh effective exposure, existing controls, and the consequences of either a security incident or a failed update.</p>
+
+<p>Here I find a direct connection with the patch management principles in Chapter 2: <strong>remediating without understanding dependencies can also introduce risk</strong>. That is why Development and Operations must maintain accurate records of the assets they manage, while Cybersecurity independently verifies consistency. Asset management must be a shared responsibility, not an isolated documentation exercise.</p>
+
+<h2>Vulnerabilities Also Live Inside the Software</h2>
+
+<p>An insight that significantly expanded my perspective was diving deeper into vulnerabilities across libraries, packages, and development dependencies. Traditionally, discussions around operating systems, servers, or network devices are much more visible. Yet an application can incorporate dozens of third-party components that change across releases without that evolution being apparent to the teams responsible for managing risk.</p>
+
+<p>The software identification topics in Chapter 5 led me to place greater value on the <strong>SBOM (Software Bill of Materials)</strong>, a comprehensive record of the components used by an application, and <strong>SCA (Software Composition Analysis)</strong>, which examines dependencies and identifies known weaknesses.</p>
+
+<p>Consider a hypothetical scenario: a vulnerable library is used across several applications, and a new exploitation technique emerges. If we only inventory servers, locating every affected system may require manual inspections and consume critical time. Conversely, if software components are cataloged during development and linked to deployed versions, we can rapidly pinpoint potentially exposed applications and focus verification efforts.</p>
+
+<p>This does not mean storing every dependency inside a single monolithic corporate database. I find it far more practical to link a specialized component inventory with the <strong>CMDB (Configuration Management Database)</strong>, where application, asset, and service context is maintained. To me, <strong>software development must be part of the vulnerability management program from its inception</strong>, rather than joining only when an application reaches production.</p>
+
+<h2>From Vulnerability Databases to Actionable Intelligence</h2>
+
+<p>Another valuable takeaway was gaining a clearer understanding of the differences and capabilities across vulnerability intelligence sources. Chapter 6 covers resources such as the <strong>NVD (National Vulnerability Database)</strong> and <strong>OSV (Open Source Vulnerabilities)</strong>, which is particularly useful for querying software component and version advisories.</p>
+
+<p>Chapter 5 also helps distinguish frameworks that answer fundamentally different questions: <strong>CVSS (Common Vulnerability Scoring System)</strong> describes technical severity; <strong>EPSS (Exploit Prediction Scoring System)</strong> estimates the probability of exploitation within the next 30 days; and <strong>KEV (Known Exploited Vulnerabilities)</strong> identifies flaws with confirmed active exploitation. They are complementary signals, not substitutes for our organization's own risk analysis.</p>
+
+<p>My reflection is that true progress does not lie in consulting more feeds, but in <strong>correlating their data with our internal knowledge of assets</strong>. A new advisory should enable us to identify potentially affected components, validate whether exploitation conditions exist, and determine which business processes could be compromised. When threat actor activity shifts, risk can change immediately—even if not a single server was modified.</p>
+
+<p>In that sense, Chapter 4 reinforced my view that continuous management does not simply mean increasing scan frequency. It means staying alert to technological changes and emerging threats, triggering targeted assessments whenever relevant intelligence surfaces. Automation can accelerate that correlation, but critical decisions still require validating technical and operational context.</p>
+
+<h2>Maturity Starts from the Beginning and Must Be Measurable</h2>
+
+<p>The maturity model in Chapter 12 integrates asset management, secure configuration, monitoring, automation, human factors, and threat intelligence. I find it a useful reference, although I disagree with interpreting it as a rigid linear sequence: <strong>threat intelligence, leadership, and cross-functional collaboration must be cultivated from day one</strong>, alongside asset inventory and configuration controls.</p>
+
+<p>In my experience, when Cybersecurity fails to understand the operational realities of Development and Operations, initiatives either stall or turn into controls that are difficult to adopt. Collaborating from the design stage enables teams to map dependencies, anticipate friction, and define viable treatments. It also helps separate routine activities that can be automated from risk decisions that require formal business authorization.</p>
+
+<p>Furthermore, I share an indispensable principle: <strong>you cannot improve what you do not measure</strong>. I propose evaluating the maturity of each capability through verifiable evidence rather than assuming an organization is mature simply because it owns numerous tools. I would measure inventory coverage and accuracy, its alignment with critical business processes, identification and remediation lead times, and the evolution of inherent and residual risk. A high percentage of installed patches does not necessarily prove that we have better protected essential services.</p>
+
+<h2>Key Takeaways from the Module</h2>
+
+<p>These readings reinforced my conviction that vulnerability management must evolve from administering technical findings to supporting business decisions. At the same time, they broadened my focus toward the software we build and the intelligence sources we can integrate to recognize threats earlier.</p>
+
+<p>As a concrete application of this learning, I consider it a priority to connect technical inventories with architectures and business processes; embed visibility into application dependencies; and leverage threat intelligence to dynamically update remediation priorities. All of this demands cross-team coordination, responsible automation, and a clear way to demonstrate outcomes.</p>
+
+<p>For me, the question that best summarizes the module is no longer just <strong>“how many vulnerabilities did we fix?”</strong>, but <strong>“what do we know about the assets that sustain the business, and how much risk did we actually reduce by protecting them?”</strong>. That is the conversation I aim to strengthen in my professional practice.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h3>References</h3>
+<ul>
+    <li>Hughes, C., &amp; Robinson, N. (2024). <em><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394277155" target="_blank" rel="noopener noreferrer">Effective vulnerability management: Managing risk in the vulnerable digital ecosystem</a></em>. Wiley. Chapters 2, 4, 5, 6, and 12. <a href="https://learning.oreilly.com/library/view/effective-vulnerability-management/9781394221202" target="_blank" rel="noopener noreferrer">O'Reilly Access</a>.</li>
+    <li>National Institute of Standards and Technology. (n.d.). <em><a href="https://nvd.nist.gov/" target="_blank" rel="noopener noreferrer">National Vulnerability Database (NVD)</a></em>.</li>
+    <li>OSV. (n.d.). <em><a href="https://osv.dev/" target="_blank" rel="noopener noreferrer">Open Source Vulnerabilities</a></em>.</li>
+    <li>Forum of Incident Response and Security Teams. (n.d.). <em><a href="https://www.first.org/epss/" target="_blank" rel="noopener noreferrer">Exploit Prediction Scoring System (EPSS)</a></em>.</li>
+    <li>Cybersecurity and Infrastructure Security Agency. (n.d.). <em><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">Known Exploited Vulnerabilities Catalog</a></em>.</li>
+</ul>
+
+        </article>
+
+        <!-- Comments Section (Giscus) -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8" data-en="Comments">Comentarios</h2>
+            <div id="giscus-container"></div>
+        </div>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                <span data-en="Back to posts">Volver a publicaciones</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const PAGE = {
+            "es": {
+                "title": "Más allá del inventario: comprender los activos y sus vulnerabilidades para gestionar el riesgo | Luis Téllez",
+                "desc": "Las lecturas del Módulo 1 reforzaron mi experiencia en ciberseguridad y ampliaron mi perspectiva sobre las dependencias de software, la inteligencia de vulnerabilidades y la medición del riesgo de negocio."
+            },
+            "en": {
+                "title": "Beyond the Inventory: Understanding Assets and Their Vulnerabilities to Manage Risk | Luis Téllez",
+                "desc": "Module 1 readings reinforced my cybersecurity experience and broadened my perspective on software dependencies, vulnerability intelligence, and business risk measurement."
+            }
+        };
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
+</body>
+</html>
