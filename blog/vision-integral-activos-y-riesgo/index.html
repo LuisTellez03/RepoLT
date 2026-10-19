@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Más allá de las herramientas: gestión de activos, vulnerabilidades y riesgo desde una visión integral | Luis Téllez</title>
+    <meta name="description" content="Mi experiencia en las prácticas de inventario, evaluación de vulnerabilidades y estudio de marcos de referencia me confirmó que proteger el negocio requiere conocer los activos, validar los hallazgos y coordinar personas, procesos y tecnología." />
+    <meta name="keywords" content="gestion-de-activos, gestion-de-vulnerabilidades, gestion-de-riesgos, reflexion-academica, gobierno-de-ciberseguridad" />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "timeline-date": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose, .prose-invert {
+            --tw-prose-body: #bac9cc !important;
+            --tw-prose-headings: #e5e2e3 !important;
+            --tw-prose-lead: #bac9cc !important;
+            --tw-prose-links: #c3f5ff !important;
+            --tw-prose-bold: #e5e2e3 !important;
+            --tw-prose-counters: #c3f5ff !important;
+            --tw-prose-bullets: #00e5ff !important;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5) !important;
+            --tw-prose-quotes: #c3f5ff !important;
+            --tw-prose-quote-borders: #00e5ff !important;
+            --tw-prose-captions: #849396 !important;
+            --tw-prose-code: #c3f5ff !important;
+            --tw-prose-pre-code: #bac9cc !important;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
+            --tw-prose-th-borders: #3b494c !important;
+            --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center"><a href="/" class="hover:text-primary transition-colors" data-en="Home">Inicio</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center"><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page" data-en="Beyond Tools: Asset, Vulnerability, and Risk Management from a Comprehensive Perspective">Más allá de las herramientas: gestión de activos, vulnerabilidades y riesgo desde una visión integral</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20" data-en="Asset Management">Gestión de activos</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Vulnerability Management">Gestión de vulnerabilidades</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Risk Management">Gestión del riesgo</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight" data-en="Beyond Tools: Asset, Vulnerability, and Risk Management from a Comprehensive Perspective">Más allá de las herramientas: gestión de activos, vulnerabilidades y riesgo desde una visión integral</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="October 18, 2026">18 de octubre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="7 min read">7 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image -->
+        <figure class="mb-12 rounded-xl overflow-hidden shadow-lg border border-outline-variant/10">
+            <img src="hero.webp" alt="Profesionales de diferentes áreas analizan una arquitectura tecnológica y sus riesgos de seguridad" class="w-full h-auto object-cover aspect-video" />
+            <figcaption class="text-[10px] font-label-caps text-on-surface-variant/70 text-center py-1.5 bg-surface border-t border-outline-variant/10" data-en="Source: Conceptual image generated with Artificial Intelligence">
+                Fuente: Imagen conceptual generada con Inteligencia Artificial
+            </figcaption>
+        </figure>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none" data-lang-block="es">
+            
+<h2>Una reflexión que parte de la experiencia, pero no termina en ella</h2>
+
+<p>Al comenzar el módulo <em>Fundamentos de Gestión de Activos y su Relación con el Riesgo</em>, no partía de cero. En mi trabajo como responsable de Arquitectura de Ciberseguridad he participado en decisiones relacionadas con activos, controles, tecnologías y riesgos que pueden afectar operaciones importantes. Sin embargo, realizar las prácticas y contrastarlas con las lecturas me permitió cuestionar algo que a veces damos por sentado: <strong>conocer una plataforma de seguridad no significa comprender el problema que debería resolver</strong>.</p>
+
+<p>Me llevo una idea que conecta todo lo aprendido: la gestión de activos aporta conocimiento; la evaluación de vulnerabilidades y configuraciones aporta evidencia; y el gobierno del riesgo permite transformar esa evidencia en decisiones. Si alguno de estos elementos falla, la inversión tecnológica pierde efectividad. Para mí, ese es el verdadero sentido de estudiar la gestión de activos como fundamento de la ciberseguridad.</p>
+
+<h2>Del inventario de Snipe-IT a la pregunta que realmente importa</h2>
+
+<p>En una de las actividades trabajé con <strong>Snipe-IT</strong>, herramienta de gestión de activos, y registré tres elementos en su inventario. La carga individual fue sencilla y la plataforma permitió observar información básica sobre los activos y su ciclo de vida. No obstante, durante la práctica me resultó difícil identificar, en la interfaz que utilicé, cómo incorporar ciertos campos personalizados, registrar responsabilidades técnicas y de negocio o representar relaciones entre activos y aplicaciones. Esto no significa que la herramienta carezca necesariamente de esas funciones —su <a href="https://snipe-it.readme.io/docs/introduction" target="_blank" rel="noopener noreferrer">documentación</a> describe distintas capacidades de administración—, sino que <strong>un inventario útil para el riesgo exige definir primero qué datos necesitamos y cómo mantenerlos</strong>.</p>
+
+<p>La actividad reforzó tres preocupaciones de mi experiencia profesional. Primero, la información incompleta o desactualizada produce una falsa sensación de control. Segundo, cada activo necesita un responsable identificable; las áreas que lo operan deben mantener sus datos y Gestión de Activos debe coordinar su calidad. Tercero, conocer características técnicas no basta: necesitamos relacionar infraestructura, aplicaciones, dependencias, información y procesos de negocio. Un servidor puede estar inventariado y, aun así, desconocerse su papel en un servicio crítico.</p>
+
+<p>Los <strong>CIS Controls (Center for Internet Security Controls / Controles del Centro para la Seguridad en Internet)</strong>, particularmente los controles 1 y 2, me ayudaron a reforzar el valor de mantener inventarios de activos empresariales y software. Pero también confirmé que cada organización necesita complementar esos controles con información de criticidad, obligaciones regulatorias y responsables de los procesos. La herramienta debe adaptarse al modelo de gestión; no al revés.</p>
+
+<h2>De un reporte automatizado a un hallazgo técnicamente sustentado</h2>
+
+<p>La práctica de seguridad web agregó otra perspectiva. Trabajamos con <strong>Google Gruyere</strong>, un entorno didáctico deliberadamente vulnerable, y analizamos resultados de <strong>HostedScan</strong>, una plataforma de evaluación de seguridad. La experiencia fue valiosa porque hizo visible la distancia entre <strong>encontrar una señal de posible vulnerabilidad y demostrar su existencia, actualidad y relevancia</strong>.</p>
+
+<p>En el ejercicio de HostedScan revisé doce hallazgos y contrasté manualmente diez observaciones; dos quedaron pendientes de verificación. Además, fue necesario reconocer que parte de la información provenía de resultados previamente almacenados, no de un escaneo recién ejecutado. Esta distinción cambia la interpretación del reporte: no sería correcto presentar información histórica como una fotografía actual del sistema. Revisamos aspectos como cabeceras de seguridad, cookies, protocolos y puertos expuestos, sin asumir que cada puerto abierto equivaliera por sí mismo a una vulnerabilidad.</p>
+
+<p>Mi principal aprendizaje práctico no fue descubrir que existen herramientas automatizadas —eso ya lo sabía—, sino <strong>recordar la importancia de verificar sus resultados y documentar lo que aún no podemos concluir</strong>. En un ambiente empresarial, un falso positivo puede consumir recursos; un falso negativo puede dejar una exposición sin atender; y un reporte desactualizado puede distorsionar la prioridad. El criterio profesional consiste en reconocer esas limitaciones y decidir qué comprobaciones adicionales se requieren.</p>
+
+<p>Desde Arquitectura de Ciberseguridad, esto también exige entender la configuración, los controles de protección, las rutas de comunicación y la función del sistema dentro del negocio. El reporte de un escáner es una fuente de evidencia, no una decisión automática de riesgo.</p>
+
+<h2>Configuración segura y cumplimiento: medios para proteger el negocio</h2>
+
+<p>Las lecturas de <strong>Calder y Watkins</strong> relacionadas con gobierno de seguridad de la información y los ejercicios sobre <strong>ISO/IEC 27001</strong> me permitieron conectar los controles técnicos con responsabilidades de gestión. La norma establece requisitos para un sistema de gestión de seguridad de la información y promueve el tratamiento sistemático de riesgos; no debería interpretarse como una lista de configuraciones que garantiza protección por el solo hecho de completarse.</p>
+
+<p>Mi reflexión es que <strong>cumplimiento y seguridad deben complementarse, pero no confundirse</strong>. Un control puede estar documentado y, sin embargo, operar de manera deficiente. Una configuración puede ajustarse a una referencia técnica y aun así no ser suficiente para una arquitectura particular. Por eso necesitamos seleccionar controles según el activo, la sensibilidad de la información, el proceso que soporta, las amenazas y las consecuencias de un incidente; después, verificar que funcionan como esperamos.</p>
+
+<p>Pensemos en un ejemplo hipotético: el otorgamiento de un crédito depende de varios servicios, como identificación del cliente, consulta de información y procesamiento de la operación. Proteger únicamente el servidor principal no garantiza continuidad si una dependencia puede interrumpir el proceso. La criticidad no está contenida en una máquina aislada; surge también de <strong>las relaciones entre los componentes y del servicio de negocio que posibilitan</strong>.</p>
+
+<p>En mi experiencia, cuando una decisión implica aceptar una exposición relevante o asumir una interrupción operativa, Ciberseguridad debe explicar el escenario de riesgo, la probabilidad estimada, los impactos y las opciones de mitigación. La aceptación del riesgo residual corresponde al responsable del negocio con autoridad para decidir, no debe quedar implícita en una excepción técnica.</p>
+
+<h2>Lo que las lecturas ampliaron de mi visión profesional</h2>
+
+<p><a href="/blog/activos-vulnerabilidades-y-riesgo/">Los capítulos 2, 4, 5, 6 y 12 de <em>Effective Vulnerability Management</em></a>, de <strong>Hughes y Robinson (2024)</strong>, dieron sustento a experiencias que ya conocía. Al estudiar gestión de parches, evaluación continua, puntuación de vulnerabilidades, bases de datos de exploits y modelos de madurez, reforcé la idea de que <strong>la prioridad no debe surgir solamente de la severidad técnica de un hallazgo, sino del riesgo contextualizado para la organización</strong>.</p>
+
+<p>Dos temas ampliaron especialmente mi perspectiva. El primero fue la gestión de vulnerabilidades en las bibliotecas y dependencias utilizadas durante el desarrollo de aplicaciones. Una <strong>SBOM (Software Bill of Materials / Lista de Materiales de Software)</strong> y las técnicas de análisis de composición permiten mejorar el conocimiento de los componentes desplegados. El segundo fue la variedad de fuentes públicas de vulnerabilidades y su potencial de correlación. Bases como <strong>NVD (National Vulnerability Database / Base de Datos Nacional de Vulnerabilidades)</strong> y <strong>OSV (Open Source Vulnerabilities / Vulnerabilidades de Código Abierto)</strong> pueden enriquecer el análisis, pero su utilidad aumenta cuando se conectan con nuestro inventario y verificamos si las condiciones reportadas aplican al entorno real.</p>
+
+<p>Esto me llevó a cuestionar la idea de que aumentar la frecuencia de los escaneos es suficiente para gestionar vulnerabilidades continuamente. Podemos complementar las evaluaciones técnicas con cambios en configuraciones, información de componentes e inteligencia de amenazas para revisar de nuevo el riesgo cuando cambien las condiciones de explotación. La automatización facilita el análisis y las alertas; <strong>la validación técnica y las decisiones de alto impacto siguen necesitando responsables claros</strong>.</p>
+
+<h2>La parte más difícil no es comprar tecnología</h2>
+
+<p>Al reunir las actividades comprendí que los obstáculos que enfrentan las organizaciones están relacionados entre sí: información de activos incompleta, herramientas que no intercambian datos, coordinación insuficiente y dificultad para demostrar resultados. Resolver uno de ellos sin atender los demás ofrece mejoras parciales, pero rara vez transforma la gestión del riesgo.</p>
+
+<p>Este punto conecta con el <strong>NIST Cybersecurity Framework 2.0 (Marco de Ciberseguridad del Instituto Nacional de Estándares y Tecnología)</strong>, que da relevancia explícita al gobierno y plantea capacidades que deben operar de forma coordinada. También explica mi postura crítica frente al modelo de madurez de Hughes y Robinson: valoro su secuencia como guía de desarrollo, pero considero que <strong>la inteligencia de amenazas, el liderazgo y la colaboración entre Desarrollo, Operaciones, Ciberseguridad y negocio deben existir desde las primeras etapas</strong>, no quedar reservados para el final.</p>
+
+<p>En la práctica profesional, la gestión de activos no puede recaer únicamente en quien administra un inventario. Se necesita corresponsabilidad para mantener información verificada; Arquitectura debe comprender interdependencias y relaciones de confianza; las áreas técnicas deben participar en tratamientos viables; y los responsables del negocio deben comprender el riesgo que están decidiendo asumir o reducir. Esta colaboración, idealmente desde el diseño de las soluciones, me parece tan importante como la tecnología utilizada.</p>
+
+<h2>Convertir el aprendizaje en un hábito medible</h2>
+
+<p>La actividad me hizo pensar qué cambiaría en la forma de trabajar, no solo qué conceptos recordaría para una evaluación. Mi propuesta es impulsar una evolución gradual que comience por mejorar la calidad del inventario y su relación con servicios críticos; continúe integrando hallazgos, configuraciones y fuentes de inteligencia; y fortalezca la verificación, el gobierno y la automatización de actividades repetitivas. No imagino una herramienta única que haga todo: pienso en <strong>capacidades conectadas, responsabilidades definidas y decisiones trazables</strong>.</p>
+
+<p>Para demostrar avance usaría indicadores complementarios: cobertura de activos con responsable y proceso de negocio identificados; calidad y actualización de datos; porcentaje de exposiciones relevantes verificadas; tiempos de identificación, evaluación y remediación; y evolución del riesgo inherente y residual de los procesos críticos. También mediría la madurez de cada capacidad con evidencias concretas. No mezclaría ambos resultados: <strong>tener un proceso más maduro no demuestra automáticamente que el negocio tenga menos riesgo</strong>.</p>
+
+<p>Esta es quizá la práctica que más quiero fortalecer: ante cada hallazgo, preguntarme qué sabemos del activo, qué depende de él, qué evidencia confirma la exposición, quién puede tomar la decisión y cómo comprobaremos que el tratamiento redujo el riesgo. Son preguntas sencillas, pero obligan a dejar de pensar únicamente en herramientas y volúmenes de vulnerabilidades.</p>
+
+<h2>Lo que me llevo del módulo</h2>
+
+<p>Las actividades no cambiaron por completo mi manera de entender la ciberseguridad; principalmente dieron fundamento teórico a convicciones construidas con la experiencia. Sin embargo, también ampliaron mi perspectiva sobre las vulnerabilidades de componentes de software, la correlación de fuentes de inteligencia y la disciplina necesaria para validar resultados de herramientas. Esa combinación de práctica, lectura y reflexión es el valor que encuentro en seguir estudiando mientras ejerzo una responsabilidad profesional.</p>
+
+<p>Concluyo que <strong>una gestión efectiva de activos y vulnerabilidades debe conocer lo que protege, comprobar lo que encuentra y medir el riesgo que reduce</strong>. Las herramientas son indispensables, pero no sustituyen a los procesos, la colaboración, el liderazgo ni las decisiones informadas del negocio. Si convierto esa visión en un hábito de trabajo, el aprendizaje del módulo tendrá un impacto más allá del aula.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h3>Fuentes y recursos consultados</h3>
+<ul>
+    <li>Calder, A., &amp; Watkins, S. <em><a href="https://books.google.com/books/about/IT_Governance.html?hl=en&amp;id=qSCyDwAAQBAJ" target="_blank" rel="noopener noreferrer">IT governance: An international guide to data security and ISO 27001/ISO 27002</a></em>. IT Governance Publishing. Lecturas de gobierno, seguridad de la información y riesgo.</li>
+    <li>Hughes, C., &amp; Robinson, N. (2024). <em><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394277155" target="_blank" rel="noopener noreferrer">Effective vulnerability management: Managing risk in the vulnerable digital ecosystem</a></em>. Wiley. Capítulos 2, 4, 5, 6 y 12.</li>
+    <li>International Organization for Standardization. (2022). <em><a href="https://www.iso.org/es/norma/27001" target="_blank" rel="noopener noreferrer">ISO/IEC 27001:2022 — Information security management systems</a></em>.</li>
+    <li>Center for Internet Security. <em><a href="https://www.cisecurity.org/controls/cis-controls-list" target="_blank" rel="noopener noreferrer">CIS Critical Security Controls, controles 1, 2 y 4</a></em>.</li>
+    <li>National Institute of Standards and Technology. (2024). <em><a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer">The NIST Cybersecurity Framework (CSF) 2.0</a></em>.</li>
+    <li>Snipe-IT. <em><a href="https://snipe-it.readme.io/docs/introduction" target="_blank" rel="noopener noreferrer">Documentación oficial</a></em>.</li>
+    <li>Leban, B., Bendre, M., &amp; Tabriz, P. <em><a href="https://google-gruyere.appspot.com/" target="_blank" rel="noopener noreferrer">Google Gruyere — Web Application Exploits and Defenses</a></em>. Laboratorio educativo.</li>
+    <li>HostedScan. <em><a href="https://hostedscan.com/platform" target="_blank" rel="noopener noreferrer">Plataforma de evaluación de vulnerabilidades</a></em>.</li>
+    <li>National Institute of Standards and Technology. <em><a href="https://nvd.nist.gov/" target="_blank" rel="noopener noreferrer">National Vulnerability Database</a></em>; OSV. <em><a href="https://osv.dev/" target="_blank" rel="noopener noreferrer">Open Source Vulnerabilities</a></em>.</li>
+</ul>
+
+        </article>
+
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none hidden" data-lang-block="en">
+            
+<h2>A Reflection Rooted in Experience, Yet Extending Beyond It</h2>
+
+<p>When I began the module <em>Asset Management Fundamentals and Their Relationship with Risk</em>, I was not starting from scratch. In my role leading Cybersecurity Architecture, I have participated in decisions involving assets, controls, technologies, and risks capable of impacting critical operations. Even so, completing the hands-on exercises and contrasting them with the readings allowed me to question something we sometimes take for granted: <strong>knowing how to use a security platform does not mean understanding the problem it is meant to solve</strong>.</p>
+
+<p>I walk away with a core idea that connects everything covered: asset management provides knowledge; vulnerability and configuration assessments provide evidence; and risk governance transforms that evidence into decisions. If any of these elements fails, technology investments lose their effectiveness. To me, that is the true purpose of studying asset management as a foundation of cybersecurity.</p>
+
+<h2>From the Snipe-IT Inventory to the Question That Truly Matters</h2>
+
+<p>In one of the activities, I worked with <strong>Snipe-IT</strong>, an asset management tool, and registered three items in its inventory. Individual entry was straightforward, and the platform made it easy to view basic information about assets and their lifecycle. However, during the exercise I found it difficult to identify—within the interface I used—how to incorporate certain custom fields, record technical and business accountability, or represent relationships between assets and applications. This does not necessarily mean the tool lacks those capabilities—its <a href="https://snipe-it.readme.io/docs/introduction" target="_blank" rel="noopener noreferrer">documentation</a> describes various administration features—but rather that <strong>an inventory useful for risk management requires first defining what data we need and how we will maintain it</strong>.</p>
+
+<p>The activity reinforced three concerns from my professional experience. First, incomplete or outdated information creates a false sense of control. Second, every asset needs an identifiable owner; the teams operating it must maintain its data while Asset Management coordinates quality. Third, knowing technical specifications is not enough: we must connect infrastructure, applications, dependencies, data, and business processes. A server can be inventoried while its role in a critical service remains completely unknown.</p>
+
+<p>The <strong>CIS Controls (Center for Internet Security Controls)</strong>, particularly Controls 1 and 2, helped reinforce the value of maintaining inventories of enterprise assets and software. Yet I also confirmed that every organization must complement those controls with criticality ratings, regulatory obligations, and business process owners. The tool must adapt to the management model—not the other way around.</p>
+
+<h2>From an Automated Report to a Technically Substantiated Finding</h2>
+
+<p>The web security exercise added another perspective. We worked with <strong>Google Gruyere</strong>, a deliberately vulnerable educational environment, and analyzed results from <strong>HostedScan</strong>, a security assessment platform. The experience was valuable because it highlighted the distance between <strong>spotting a signal of a potential vulnerability and demonstrating its existence, currency, and relevance</strong>.</p>
+
+<p>In the HostedScan exercise, I reviewed twelve findings and manually contrasted ten observations; two remained pending verification. Furthermore, it was necessary to recognize that part of the information came from previously stored results rather than a freshly executed scan. That distinction changes how a report must be interpreted: presenting historical data as a current snapshot of the system would be inaccurate. We examined elements such as security headers, cookies, protocols, and exposed ports without assuming that every open port automatically equated to an exploitable vulnerability.</p>
+
+<p>My primary practical takeaway was not discovering that automated tools exist—I already knew that—but <strong>remembering the importance of verifying their output and documenting what we cannot yet conclude</strong>. In an enterprise environment, a false positive consumes resources; a false negative leaves an exposure unaddressed; and an outdated report distorts priorities. Professional judgment lies in recognizing those limitations and deciding what additional checks are required.</p>
+
+<p>From a Cybersecurity Architecture standpoint, this also demands understanding system configurations, protective controls, communication paths, and the system's role within the business. A scanner report is a source of evidence, not an automatic risk decision.</p>
+
+<h2>Secure Configuration and Compliance: Means to Protect the Business</h2>
+
+<p>The readings by <strong>Calder and Watkins</strong> on information security governance and the exercises on <strong>ISO/IEC 27001</strong> allowed me to connect technical controls with management responsibilities. The standard establishes requirements for an information security management system and promotes the systematic treatment of risks; it should never be interpreted as a configuration checklist that guarantees protection simply by being checked off.</p>
+
+<p>My reflection is that <strong>compliance and security must complement each other, never be confused</strong>. A control can be documented and still operate poorly. A configuration may align with a technical benchmark and still fall short for a specific architecture. That is why we must select controls according to the asset, data sensitivity, the business process it supports, threats, and the consequences of an incident—and then verify that they operate as intended.</p>
+
+<p>Consider a hypothetical example: granting a loan depends on multiple services, such as customer identification, credit inquiry, and transaction processing. Protecting only the primary server does not guarantee continuity if a dependency can halt the workflow. Criticality is not contained within an isolated machine; it also emerges from <strong>the relationships between components and the business service they enable</strong>.</p>
+
+<p>In my experience, when a decision involves accepting a significant exposure or risking an operational disruption, Cybersecurity must clearly articulate the risk scenario, estimated likelihood, business impacts, and mitigation options. Accepting residual risk belongs to the business leader with the authority to decide—it must never remain implicit inside a technical exception.</p>
+
+<h2>How the Readings Broadened My Professional Perspective</h2>
+
+<p><a href="/blog/activos-vulnerabilidades-y-riesgo/">Chapters 2, 4, 5, 6, and 12 of <em>Effective Vulnerability Management</em></a>, by <strong>Hughes and Robinson (2024)</strong>, provided theoretical grounding for experiences I already knew firsthand. Studying patch management, continuous assessment, vulnerability scoring, exploit databases, and maturity models reinforced the conviction that <strong>prioritization must not arise solely from the technical severity of a finding, but from contextualized risk for the organization</strong>.</p>
+
+<p>Two topics expanded my perspective in particular. The first was managing vulnerabilities in libraries and dependencies used during application development. An <strong>SBOM (Software Bill of Materials)</strong> and software composition analysis techniques improve visibility into deployed components. The second was the diversity of public vulnerability feeds and their correlation potential. Databases such as <strong>NVD (National Vulnerability Database)</strong> and <strong>OSV (Open Source Vulnerabilities)</strong> enrich analysis, but their value multiplies when connected to our inventory to verify whether reported conditions apply to our real environment.</p>
+
+<p>This led me to challenge the notion that simply increasing scan frequency is enough to manage vulnerabilities continuously. We can complement technical assessments with configuration changes, component intelligence, and threat feeds to reassess risk whenever exploitation conditions shift. Automation accelerates analysis and alerting; <strong>technical validation and high-impact decisions still require clear human accountability</strong>.</p>
+
+<h2>The Hardest Part Is Not Buying Technology</h2>
+
+<p>Bringing all the module activities together made it clear that the obstacles organizations face are interconnected: incomplete asset data, tools that do not share information, insufficient cross-team coordination, and difficulty demonstrating outcomes. Solving one in isolation yields partial improvements, but rarely transforms risk management.</p>
+
+<p>This connects directly with the <strong>NIST Cybersecurity Framework 2.0</strong>, which explicitly elevates governance and outlines capabilities that must operate in concert. It also explains my critical stance toward Hughes and Robinson's maturity model: I value its sequence as a developmental guide, yet I believe <strong>threat intelligence, leadership, and collaboration across Development, Operations, Cybersecurity, and business units must exist from the earliest stages</strong>, rather than being reserved for the final levels.</p>
+
+<p>In professional practice, asset management cannot rest solely on whoever administers an inventory tool. Shared accountability is needed to keep records verified; Architecture must understand interdependencies and trust relationships; technical teams must participate in viable treatments; and business owners must understand the risk they are choosing to assume or reduce. That collaboration—ideally starting at solution design—is just as important as the technology deployed.</p>
+
+<h2>Turning Learning into a Measurable Habit</h2>
+
+<p>The coursework prompted me to reflect on what I would change in day-to-day practice, not just what concepts to recall for an assessment. My proposal is to drive a gradual evolution that starts by improving inventory quality and its linkage to critical services; continues by integrating findings, configurations, and intelligence feeds; and strengthens verification, governance, and the automation of repetitive tasks. I do not envision a single tool that does everything: I think in terms of <strong>connected capabilities, defined responsibilities, and traceable decisions</strong>.</p>
+
+<p>To demonstrate progress, I would use complementary indicators: asset coverage with identified owners and business processes; data quality and currency; percentage of relevant exposures verified; identification, assessment, and remediation lead times; and the evolution of inherent and residual risk across critical processes. I would also measure the maturity of each capability through concrete evidence. I would not conflate the two: <strong>having a more mature process does not automatically prove that the business carries less risk</strong>.</p>
+
+<p>Perhaps this is the habit I most want to strengthen: before every finding, asking what we know about the asset, what depends on it, what evidence confirms the exposure, who holds decision authority, and how we will verify that the treatment reduced risk. They are simple questions, yet they force us to stop thinking solely in terms of tools and vulnerability counts.</p>
+
+<h2>Key Takeaways from the Module</h2>
+
+<p>The activities did not completely upend how I understand cybersecurity; primarily, they provided theoretical grounding for convictions forged through experience. Yet they also broadened my perspective on software component vulnerabilities, intelligence source correlation, and the discipline required to validate tool outputs. That blend of hands-on practice, reading, and reflection is the true value I find in continuing academic study while exercising professional responsibility.</p>
+
+<p>I conclude that <strong>effective asset and vulnerability management must understand what it protects, verify what it finds, and measure the risk it reduces</strong>. Tools are indispensable, but they do not replace processes, collaboration, leadership, or informed business decisions. By turning that vision into a working habit, the lessons of this module will have an impact far beyond the classroom.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h3>References and Consulted Resources</h3>
+<ul>
+    <li>Calder, A., &amp; Watkins, S. <em><a href="https://books.google.com/books/about/IT_Governance.html?hl=en&amp;id=qSCyDwAAQBAJ" target="_blank" rel="noopener noreferrer">IT governance: An international guide to data security and ISO 27001/ISO 27002</a></em>. IT Governance Publishing. Readings on governance, information security, and risk.</li>
+    <li>Hughes, C., &amp; Robinson, N. (2024). <em><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394277155" target="_blank" rel="noopener noreferrer">Effective vulnerability management: Managing risk in the vulnerable digital ecosystem</a></em>. Wiley. Chapters 2, 4, 5, 6, and 12.</li>
+    <li>International Organization for Standardization. (2022). <em><a href="https://www.iso.org/es/norma/27001" target="_blank" rel="noopener noreferrer">ISO/IEC 27001:2022 — Information security management systems</a></em>.</li>
+    <li>Center for Internet Security. <em><a href="https://www.cisecurity.org/controls/cis-controls-list" target="_blank" rel="noopener noreferrer">CIS Critical Security Controls, Controls 1, 2, and 4</a></em>.</li>
+    <li>National Institute of Standards and Technology. (2024). <em><a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer">The NIST Cybersecurity Framework (CSF) 2.0</a></em>.</li>
+    <li>Snipe-IT. <em><a href="https://snipe-it.readme.io/docs/introduction" target="_blank" rel="noopener noreferrer">Official Documentation</a></em>.</li>
+    <li>Leban, B., Bendre, M., &amp; Tabriz, P. <em><a href="https://google-gruyere.appspot.com/" target="_blank" rel="noopener noreferrer">Google Gruyere — Web Application Exploits and Defenses</a></em>. Educational laboratory.</li>
+    <li>HostedScan. <em><a href="https://hostedscan.com/platform" target="_blank" rel="noopener noreferrer">Vulnerability Assessment Platform</a></em>.</li>
+    <li>National Institute of Standards and Technology. <em><a href="https://nvd.nist.gov/" target="_blank" rel="noopener noreferrer">National Vulnerability Database</a></em>; OSV. <em><a href="https://osv.dev/" target="_blank" rel="noopener noreferrer">Open Source Vulnerabilities</a></em>.</li>
+</ul>
+
+        </article>
+
+        <!-- Comments Section (Giscus) -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8" data-en="Comments">Comentarios</h2>
+            <div id="giscus-container"></div>
+        </div>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                <span data-en="Back to posts">Volver a publicaciones</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const PAGE = {
+            "es": {
+                "title": "Más allá de las herramientas: gestión de activos, vulnerabilidades y riesgo desde una visión integral | Luis Téllez",
+                "desc": "Mi experiencia en las prácticas de inventario, evaluación de vulnerabilidades y estudio de marcos de referencia me confirmó que proteger el negocio requiere conocer los activos, validar los hallazgos y coordinar personas, procesos y tecnología."
+            },
+            "en": {
+                "title": "Beyond Tools: Asset, Vulnerability, and Risk Management from a Comprehensive Perspective | Luis Téllez",
+                "desc": "My experience across inventory practices, vulnerability assessments, and reference framework studies confirmed that protecting the business requires understanding assets, validating findings, and coordinating people, processes, and technology."
+            }
+        };
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
+</body>
+</html>
