@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>De gestionar vulnerabilidades a comprender exposiciones: una evolución necesaria en ciberseguridad | Luis Téllez</title>
+    <meta name="description" content="La madurez en ciberseguridad exige ir más allá de los hallazgos técnicos: relacionar activos, identidades y procesos de negocio, gestionar la incertidumbre y demostrar la reducción de exposiciones mediante CTEM." />
+    <meta name="keywords" content="gestion-de-vulnerabilidades, gestion-de-exposiciones, CTEM, riesgo-de-negocio, gobierno-de-ciberseguridad, arquitectura-de-ciberseguridad" />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <!-- Tailwind Config injected from Design System -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "bg-deep": "#050505",
+                        "primary": "#c3f5ff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#bac9cc",
+                        "outline-variant": "#3b494c",
+                        "primary-container": "#00e5ff"
+                    },
+                    "spacing": {
+                        "grid-gutter": "2rem",
+                        "container-max": "1200px"
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "timeline-date": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "timeline-date": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { scroll-behavior: smooth; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined', sans-serif; }
+        /* Markdown prose custom overrides for the dark theme */
+        .prose, .prose-invert {
+            --tw-prose-body: #bac9cc !important;
+            --tw-prose-headings: #e5e2e3 !important;
+            --tw-prose-lead: #bac9cc !important;
+            --tw-prose-links: #c3f5ff !important;
+            --tw-prose-bold: #e5e2e3 !important;
+            --tw-prose-counters: #c3f5ff !important;
+            --tw-prose-bullets: #00e5ff !important;
+            --tw-prose-hr: rgba(59, 73, 76, 0.5) !important;
+            --tw-prose-quotes: #c3f5ff !important;
+            --tw-prose-quote-borders: #00e5ff !important;
+            --tw-prose-captions: #849396 !important;
+            --tw-prose-code: #c3f5ff !important;
+            --tw-prose-pre-code: #bac9cc !important;
+            --tw-prose-pre-bg: rgba(18, 18, 20, 0.7) !important;
+            --tw-prose-th-borders: #3b494c !important;
+            --tw-prose-td-borders: #3b494c !important;
+        }
+        
+        /* Fallback for specificity issues */
+        .prose p, .prose li {
+            color: #bac9cc !important;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #e5e2e3 !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-deep text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-bg-deep">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-gutter py-4 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10">
+        <a href="/" class="font-display-lg text-body-lg font-bold tracking-tighter text-on-surface select-none">LUIS TÉLLEZ</a>
+        <ul class="hidden md:flex gap-margin-md font-label-caps text-label-caps" style="gap:2rem">
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#inicio" data-en="Home">Inicio</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#perfil" data-en="Profile">Perfil</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#educacion" data-en="Education">Educación</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#logros" data-en="Achievements">Logros</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="/#contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-3 sm:gap-6">
+            <a href="/blog" class="font-label-caps text-label-caps px-4 py-1 border border-primary text-primary rounded-full hover:bg-primary/10 transition-colors">Blog</a>
+            <div class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer flex gap-2 select-none">
+                <span id="btn-lang-es" class="hover:text-primary transition-colors font-bold text-primary">ES</span>
+                <span>|</span>
+                <span id="btn-lang-en" class="hover:text-primary transition-colors">EN</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Post Content -->
+    <main class="max-w-3xl mx-auto px-grid-gutter pt-32 pb-24">
+        
+        <!-- Breadcrumbs & Meta -->
+        <div class="mb-12">
+            <nav class="flex text-sm font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2">
+                    <li class="inline-flex items-center"><a href="/" class="hover:text-primary transition-colors" data-en="Home">Inicio</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="inline-flex items-center"><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-primary truncate max-w-[200px] md:max-w-none" aria-current="page" data-en="From Managing Vulnerabilities to Understanding Exposures: A Necessary Evolution in Cybersecurity">De gestionar vulnerabilidades a comprender exposiciones: una evolución necesaria en ciberseguridad</li>
+                </ol>
+            </nav>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-primary border border-primary/20" data-en="Exposure Management">Gestión de exposiciones</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="CTEM">CTEM</span>
+                <span class="font-label-caps text-label-caps px-2 py-1 bg-surface-variant/30 rounded text-on-surface-variant border border-outline-variant/20" data-en="Business Risk">Riesgo de negocio</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl md:text-5xl text-on-surface mb-6 leading-tight" data-en="From Managing Vulnerabilities to Understanding Exposures: A Necessary Evolution in Cybersecurity">De gestionar vulnerabilidades a comprender exposiciones: una evolución necesaria en ciberseguridad</h1>
+            
+            <div class="flex items-center gap-4 text-on-surface-variant opacity-80 border-b border-outline-variant/20 pb-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="November 8, 2026">8 de noviembre de 2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="font-timeline-date text-timeline-date" data-en="5 min read">5 min de lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image -->
+        <figure class="mb-12 rounded-xl overflow-hidden shadow-lg border border-outline-variant/10">
+            <img src="hero.webp" alt="Ciclo conceptual de gestión continua de exposiciones con activos y especialistas de ciberseguridad conectados alrededor de un servicio financiero" class="w-full h-auto object-cover aspect-video" />
+            <figcaption class="text-[10px] font-label-caps text-on-surface-variant/70 text-center py-1.5 bg-surface border-t border-outline-variant/10" data-en="Source: Conceptual image generated with Artificial Intelligence">
+                Fuente: Imagen conceptual generada con Inteligencia Artificial
+            </figcaption>
+        </figure>
+
+        <!-- Article Body (Markdown Content) -->
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none" data-lang-block="es">
+            
+<h2>El verdadero riesgo no siempre está en la vulnerabilidad más crítica</h2>
+
+<p>Durante años, la gestión de vulnerabilidades ha sido una de las prácticas fundamentales de la ciberseguridad empresarial. Identificar activos, detectar vulnerabilidades, clasificarlas mediante indicadores técnicos y establecer planes de remediación ha permitido a las organizaciones mejorar sus condiciones de seguridad.</p>
+
+<p>Sin embargo, considero que uno de los principales desafíos de esta disciplina es que <strong>conocer nuestras vulnerabilidades no significa necesariamente conocer nuestros riesgos</strong>.</p>
+
+<p>Esta reflexión se fortaleció durante el análisis de los primeros tres capítulos del libro <em>Moving from Vulnerability Management to Exposure Management</em>, de M. J. Kaufmann (2024), donde el autor plantea una evolución desde la gestión tradicional de vulnerabilidades hacia un enfoque más amplio de gestión continua de exposiciones.</p>
+
+<p>En mi experiencia en arquitectura de ciberseguridad, he observado que las organizaciones pueden disponer de múltiples tecnologías de seguridad, generar grandes cantidades de información y mantener indicadores de remediación satisfactorios, pero continuar teniendo dificultades para explicar cuáles son sus riesgos más relevantes para el negocio.</p>
+
+<p>El problema no necesariamente radica en la falta de herramientas, sino en nuestra capacidad para relacionar la información que producen.</p>
+
+<h2>De la severidad técnica al riesgo de negocio</h2>
+
+<p>Tradicionalmente, muchos programas de gestión de vulnerabilidades han basado sus prioridades en la severidad técnica de los hallazgos, particularmente mediante el CVSS (<em>Common Vulnerability Scoring System</em>, Sistema Común de Puntuación de Vulnerabilidades), complementado en modelos más maduros con indicadores como EPSS (<em>Exploit Prediction Scoring System</em>, Sistema de Puntuación de Predicción de Explotación) y catálogos de vulnerabilidades explotadas como KEV (<em>Known Exploited Vulnerabilities</em>, Vulnerabilidades Conocidas Explotadas).</p>
+
+<p>Estos mecanismos son importantes porque proporcionan información sobre severidad, probabilidad estimada de explotación y evidencia de amenazas activas.</p>
+
+<p>Sin embargo, ninguno de ellos, de manera aislada, determina el riesgo real para una organización.</p>
+
+<p>Una vulnerabilidad crítica en un servidor segmentado, con acceso restringido y controles compensatorios efectivos, podría representar un riesgo menor que una vulnerabilidad de severidad media presente en una aplicación conectada con procesos financieros críticos.</p>
+
+<p>Incluso una organización sin vulnerabilidades críticas conocidas puede mantener exposiciones importantes debido a configuraciones incorrectas, privilegios excesivos o relaciones de confianza innecesarias entre sus sistemas.</p>
+
+<p>Por ello, considero indispensable evolucionar de una priorización basada principalmente en indicadores técnicos hacia un modelo que incorpore la accesibilidad de los activos, las capacidades de los atacantes, la efectividad de los controles y las posibles consecuencias para los procesos de negocio.</p>
+
+<p><strong>La severidad de una vulnerabilidad nos ayuda a entender la debilidad técnica; el contexto empresarial nos permite comprender sus posibles consecuencias.</strong></p>
+
+<h2>La importancia de conocer los activos y sus relaciones</h2>
+
+<p>Uno de los mayores retos que identifico en esta evolución es la calidad de los inventarios.</p>
+
+<p>Las organizaciones pueden contar con herramientas especializadas para descubrir servidores, aplicaciones, dispositivos, recursos cloud y vulnerabilidades. Sin embargo, esa información frecuentemente está distribuida entre múltiples plataformas y no siempre mantiene relaciones confiables.</p>
+
+<p>Un inventario tecnológico que únicamente identifica dispositivos y sistemas operativos resulta insuficiente para comprender la exposición de una organización.</p>
+
+<p>Desde mi perspectiva, necesitamos construir un conocimiento integral que relacione activos tecnológicos, aplicaciones, información, procesos de negocio, personas, identidades, privilegios y responsables.</p>
+
+<p>También debemos comprender cómo se comunican los sistemas, cuáles son sus dependencias y qué relaciones de confianza existen entre ellos.</p>
+
+<p>Esta información es esencial porque una exposición puede surgir de la combinación de varias debilidades que individualmente no parecen críticas.</p>
+
+<p>Por ejemplo, una aplicación puede tener una vulnerabilidad moderada, pero si utiliza una identidad con privilegios excesivos y mantiene conectividad hacia repositorios de información sensible, podría formar parte de una ruta de ataque con consecuencias importantes.</p>
+
+<p>Identificar esas relaciones permite dejar de evaluar los activos como elementos aislados y comenzar a comprenderlos como componentes de procesos empresariales interdependientes.</p>
+
+<p>No obstante, la calidad del inventario no se obtiene solamente incorporando nuevas tecnologías. Requiere establecer responsabilidades, fuentes de información confiables, validaciones y procesos continuos de actualización.</p>
+
+<p><strong>La gestión de activos no debe limitarse a saber qué tenemos, sino permitirnos comprender qué soporta cada activo, con qué se relaciona y qué sucedería si se compromete.</strong></p>
+
+<h2>CTEM: convertir el conocimiento de las exposiciones en acciones</h2>
+
+<p>Una de las propuestas más relevantes del libro es CTEM (<em>Continuous Threat Exposure Management</em>, Gestión Continua de la Exposición a Amenazas), un enfoque de Gartner que permite estructurar la gestión continua de exposiciones mediante cinco fases: <em>Scoping</em> (definición del alcance), <em>Discovery</em> (descubrimiento), <em>Prioritization</em> (priorización), <em>Validation</em> (validación) y <em>Mobilization</em> (movilización).</p>
+
+<p>Estas fases permiten definir alcances basados en necesidades del negocio, descubrir activos y debilidades, priorizar exposiciones, validar su viabilidad y movilizar a los equipos responsables para reducirlas.</p>
+
+<p>Lo que considero especialmente valioso de este enfoque es que no requiere resolver todos los problemas de visibilidad de una organización antes de comenzar.</p>
+
+<p>Podemos establecer alcances sobre procesos críticos, utilizar la información disponible e identificar progresivamente activos desconocidos, dependencias no documentadas y discrepancias entre las distintas fuentes tecnológicas.</p>
+
+<p>Cada ciclo puede contribuir tanto a reducir exposiciones como a mejorar la calidad del conocimiento que tenemos de nuestra infraestructura y sus relaciones con el negocio.</p>
+
+<p>Desde luego, esto no significa operar sin gobierno o tomar decisiones basadas en información no verificada.</p>
+
+<p>Por el contrario, debemos documentar las incertidumbres, establecer criterios para evaluar los hallazgos y asegurar que las decisiones importantes estén sustentadas en evidencia.</p>
+
+<p>El modelo de gobierno debe desarrollarse desde el inicio, definiendo quién mantiene la información, quién evalúa los riesgos y quién tiene autoridad para decidir sobre su tratamiento.</p>
+
+<p>La implementación progresiva de CTEM permite equilibrar dos necesidades: mejorar continuamente la calidad de la información y comenzar oportunamente a reducir riesgos.</p>
+
+<h2>Gestionar lo desconocido también forma parte del riesgo</h2>
+
+<p>Durante este análisis reflexioné sobre una situación que considero especialmente representativa.</p>
+
+<p>Supongamos que identificamos dos condiciones dentro de un proceso financiero crítico.</p>
+
+<p>La primera corresponde a un servidor con una vulnerabilidad crítica conocida, pero del cual tenemos información completa sobre sus dependencias, conectividad y controles compensatorios.</p>
+
+<p>La segunda corresponde a una aplicación de un tercero que participa en el mismo proceso, pero de la cual desconocemos sus privilegios efectivos, las relaciones de confianza que utiliza y la información a la que puede acceder.</p>
+
+<p>Si solamente consideramos la severidad técnica, probablemente atenderíamos primero la vulnerabilidad crítica.</p>
+
+<p>Sin embargo, mi criterio sería priorizar la investigación de la segunda condición, porque desconocemos elementos fundamentales para descartar un riesgo importante sobre el proceso de negocio.</p>
+
+<p>Esto no significa asumir que lo desconocido siempre representa el mayor riesgo. Significa reconocer que la falta de información introduce incertidumbre y que debemos gestionarla activamente.</p>
+
+<p>En el primer escenario, si los controles compensatorios han sido validados, podemos administrar temporalmente la exposición mientras mantenemos un plan de remediación.</p>
+
+<p>En el segundo, necesitamos obtener información que nos permita determinar la accesibilidad real, los privilegios efectivos, las dependencias y las posibles consecuencias de un compromiso.</p>
+
+<p><strong>No contar con evidencia de una vulnerabilidad crítica no significa que un activo esté libre de exposiciones relevantes.</strong></p>
+
+<p>Este razonamiento representa, para mí, uno de los cambios más importantes que debemos incorporar a los programas de gestión de riesgos tecnológicos.</p>
+
+<h2>De identificar riesgos a movilizar a la organización</h2>
+
+<p>Otro aprendizaje relevante de CTEM es que identificar y priorizar una exposición no garantiza su corrección.</p>
+
+<p>Podemos contar con herramientas avanzadas que descubran posibles rutas de ataque, pero si no existen responsables claros, recursos disponibles y mecanismos de gobierno, los hallazgos permanecerán sin tratamiento.</p>
+
+<p>La fase de <em>Mobilization</em> resulta esencial porque conecta las decisiones de seguridad con las capacidades operativas de la organización.</p>
+
+<p>Esto requiere coordinar equipos de infraestructura, desarrollo, redes, identidades, operaciones, ciberseguridad y responsables de negocio.</p>
+
+<p>También implica comprender que determinadas acciones de remediación podrían afectar la continuidad de los servicios.</p>
+
+<p>Por ejemplo, eliminar una identidad con privilegios excesivos podría interrumpir una aplicación crítica si no conocemos sus dependencias.</p>
+
+<p>Por ello, las acciones deben incluir validaciones, responsables, planes de cambio y pruebas que permitan confirmar tanto la reducción de la exposición como la continuidad operativa.</p>
+
+<p>Desde mi perspectiva, <strong>el éxito de un programa CTEM no debería medirse únicamente por la cantidad de vulnerabilidades corregidas, sino también por su capacidad para demostrar una reducción verificable de las exposiciones relevantes y del riesgo residual para el negocio</strong>.</p>
+
+<h2>Reflexión final: una evolución de tecnología, información y gobierno</h2>
+
+<p>Después de analizar los planteamientos de Kaufmann, considero que la evolución de <em>Vulnerability Management</em> hacia <em>Exposure Management</em> representa principalmente un cambio en la forma de comprender y gobernar el riesgo.</p>
+
+<p>No se trata de abandonar las herramientas existentes ni de sustituir los programas de gestión de vulnerabilidades.</p>
+
+<p>Se trata de ampliar su alcance, integrar fuentes de información y comprender las relaciones entre los activos tecnológicos y los procesos que permiten operar a una organización.</p>
+
+<p>La calidad de los inventarios, la contextualización del negocio, la inteligencia de amenazas y la validación de los controles son elementos fundamentales de esta evolución.</p>
+
+<p>CTEM aporta una estructura para integrar estas capacidades en un proceso continuo, orientado a resultados y susceptible de mejorar con cada ciclo.</p>
+
+<p>Mi principal conclusión es que debemos evolucionar de administrar hallazgos técnicos a comprender escenarios de exposición que realmente puedan afectar a nuestros negocios.</p>
+
+<p>Porque <strong>la madurez de un programa de ciberseguridad no se demuestra solamente por lo que somos capaces de detectar, sino también por lo que comprendemos, las decisiones que tomamos y nuestra capacidad para reducir el riesgo de manera verificable</strong>.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h3>Fuentes y recursos consultados</h3>
+<ul>
+    <li>Kaufmann, M. J. (2024). <em><a href="https://learning.oreilly.com/library/view/moving-from-vulnerability/9781098173241/" target="_blank" rel="noopener noreferrer">Moving from Vulnerability Management to Exposure Management</a></em>. O'Reilly Media, Inc. Capítulos 1, 2 y 3.</li>
+    <li>Gartner. <em>Continuous Threat Exposure Management (CTEM)</em>. Marco conceptual referido y explicado en el libro de Kaufmann.</li>
+</ul>
+
+        </article>
+
+        <article class="prose prose-invert prose-lg lg:prose-xl font-body-md text-left max-w-none hidden" data-lang-block="en">
+            
+<h2>True Risk Does Not Always Lie in the Most Critical Vulnerability</h2>
+
+<p>For years, vulnerability management has been one of the foundational practices of enterprise cybersecurity. Identifying assets, detecting vulnerabilities, classifying them through technical indicators, and establishing remediation plans has enabled organizations to improve their security posture.</p>
+
+<p>However, I consider one of the main challenges of this discipline to be that <strong>knowing our vulnerabilities does not necessarily mean knowing our risks</strong>.</p>
+
+<p>This reflection was reinforced while analyzing the first three chapters of <em>Moving from Vulnerability Management to Exposure Management</em>, by M. J. Kaufmann (2024), where the author outlines an evolution from traditional vulnerability management toward a broader approach of continuous exposure management.</p>
+
+<p>In my experience in cybersecurity architecture, I have observed that organizations can deploy multiple security technologies, generate vast amounts of data, and maintain satisfactory remediation metrics, yet still struggle to explain which risks truly matter most to the business.</p>
+
+<p>The problem does not necessarily lie in a lack of tools, but in our ability to connect the information they produce.</p>
+
+<h2>From Technical Severity to Business Risk</h2>
+
+<p>Traditionally, many vulnerability management programs have based their priorities on the technical severity of findings, particularly through CVSS (<em>Common Vulnerability Scoring System</em>), complemented in more mature models with indicators such as EPSS (<em>Exploit Prediction Scoring System</em>) and exploited vulnerability catalogs such as KEV (<em>Known Exploited Vulnerabilities</em>).</p>
+
+<p>These mechanisms are important because they provide insights into severity, estimated probability of exploitation, and evidence of active threats.</p>
+
+<p>Yet none of them, in isolation, determines the actual risk to an organization.</p>
+
+<p>A critical vulnerability on a segmented server with restricted access and effective compensating controls may represent a lower risk than a medium-severity vulnerability in an application connected to critical financial processes.</p>
+
+<p>Even an organization with no known critical vulnerabilities can harbor significant exposures due to misconfigurations, excessive privileges, or unnecessary trust relationships across its systems.</p>
+
+<p>Therefore, I consider it essential to evolve from prioritization driven primarily by technical metrics toward a model that incorporates asset accessibility, attacker capabilities, control effectiveness, and potential consequences for business processes.</p>
+
+<p><strong>The severity of a vulnerability helps us understand the technical weakness; business context allows us to understand its potential consequences.</strong></p>
+
+<h2>The Importance of Understanding Assets and Their Relationships</h2>
+
+<p>One of the greatest challenges I identify in this evolution is inventory quality.</p>
+
+<p>Organizations may have specialized tools to discover servers, applications, devices, cloud resources, and vulnerabilities. However, that information is frequently scattered across multiple platforms and does not always preserve reliable relationships.</p>
+
+<p>A technical inventory that merely identifies devices and operating systems is insufficient to understand an organization's exposure.</p>
+
+<p>From my perspective, we need to build comprehensive knowledge that connects technical assets, applications, data, business processes, people, identities, privileges, and accountable owners.</p>
+
+<p>We must also understand how systems communicate, what their dependencies are, and what trust relationships exist between them.</p>
+
+<p>This context is essential because an exposure can arise from the combination of several weaknesses that individually do not appear critical.</p>
+
+<p>For example, an application may have a moderate vulnerability, but if it uses an overprivileged identity and maintains connectivity to repositories of sensitive data, it could form part of an attack path with severe consequences.</p>
+
+<p>Identifying these relationships allows us to stop evaluating assets as isolated elements and start understanding them as components of interdependent business processes.</p>
+
+<p>Nevertheless, inventory quality is not achieved simply by onboarding new technologies. It requires establishing clear ownership, reliable data sources, validation mechanisms, and continuous update processes.</p>
+
+<p><strong>Asset management must not be limited to knowing what we have, but enable us to understand what each asset supports, what it connects to, and what would happen if it were compromised.</strong></p>
+
+<h2>CTEM: Turning Exposure Knowledge into Action</h2>
+
+<p>One of the book's most relevant proposals is CTEM (<em>Continuous Threat Exposure Management</em>), a Gartner approach that structures continuous exposure management across five phases: <em>Scoping</em>, <em>Discovery</em>, <em>Prioritization</em>, <em>Validation</em>, and <em>Mobilization</em>.</p>
+
+<p>These phases make it possible to define scopes aligned with business needs, discover assets and weaknesses, prioritize exposures, validate their exploitability, and mobilize responsible teams to reduce them.</p>
+
+<p>What I find especially valuable about this approach is that it does not require solving every visibility challenge across the enterprise before getting started.</p>
+
+<p>We can scope critical business processes, leverage available information, and progressively uncover unknown assets, undocumented dependencies, and discrepancies across technical sources.</p>
+
+<p>Each cycle can contribute both to reducing exposures and to improving the quality of our knowledge regarding infrastructure and its relationships with the business.</p>
+
+<p>Of course, this does not mean operating without governance or making decisions based on unverified information.</p>
+
+<p>On the contrary, we must document uncertainties, establish criteria for evaluating findings, and ensure that major decisions are backed by evidence.</p>
+
+<p>A governance model must be developed from the outset, defining who maintains information, who assesses risks, and who holds authority to decide on risk treatment.</p>
+
+<p>Progressive implementation of CTEM balances two imperatives: continuously improving information quality while promptly beginning to reduce risk.</p>
+
+<h2>Managing the Unknown Is Also Part of Risk</h2>
+
+<p>During this analysis, I reflected on a situation I consider particularly representative.</p>
+
+<p>Suppose we identify two conditions within a critical financial process.</p>
+
+<p>The first involves a server with a known critical vulnerability, but for which we have complete visibility into its dependencies, connectivity, and compensating controls.</p>
+
+<p>The second involves a third-party application participating in the same process, but for which we lack visibility into its effective privileges, the trust relationships it uses, and the information it can access.</p>
+
+<p>If we only consider technical severity, we would likely address the critical vulnerability first.</p>
+
+<p>However, my judgment would be to prioritize investigating the second condition, because we lack fundamental elements needed to rule out a major risk to the business process.</p>
+
+<p>This does not mean assuming the unknown always represents the greatest risk. It means recognizing that a lack of information introduces uncertainty that must be actively managed.</p>
+
+<p>In the first scenario, if compensating controls have been validated, we can temporarily manage the exposure while executing a remediation plan.</p>
+
+<p>In the second, we must gather the intelligence needed to determine real accessibility, effective privileges, dependencies, and the potential consequences of a compromise.</p>
+
+<p><strong>Lacking evidence of a critical vulnerability does not mean an asset is free from relevant exposures.</strong></p>
+
+<p>To me, this reasoning represents one of the most important shifts we must embed into technology risk management programs.</p>
+
+<h2>From Identifying Risks to Mobilizing the Organization</h2>
+
+<p>Another key takeaway from CTEM is that identifying and prioritizing an exposure does not guarantee its remediation.</p>
+
+<p>We may deploy advanced tools that uncover potential attack paths, but without clear ownership, available resources, and governance mechanisms, findings will remain untreated.</p>
+
+<p>The <em>Mobilization</em> phase is essential because it connects security decisions with the organization's operational capabilities.</p>
+
+<p>This requires coordinating infrastructure, development, networking, identity, operations, cybersecurity, and business leaders.</p>
+
+<p>It also entails understanding that certain remediation actions could impact service continuity.</p>
+
+<p>For instance, revoking an overprivileged identity could disrupt a critical application if its dependencies are not mapped.</p>
+
+<p>Consequently, actions must include validations, accountable owners, change plans, and testing that confirm both exposure reduction and operational continuity.</p>
+
+<p>From my perspective, <strong>the success of a CTEM program should not be measured solely by the number of patched vulnerabilities, but by its ability to demonstrate a verifiable reduction in relevant exposures and residual business risk</strong>.</p>
+
+<h2>Final Reflection: An Evolution of Technology, Information, and Governance</h2>
+
+<p>After analyzing Kaufmann's arguments, I believe the evolution from <em>Vulnerability Management</em> to <em>Exposure Management</em> primarily represents a shift in how we understand and govern risk.</p>
+
+<p>It is not about abandoning existing tools or replacing vulnerability management programs.</p>
+
+<p>It is about expanding their scope, integrating intelligence sources, and understanding the relationships between technical assets and the processes that keep an organization running.</p>
+
+<p>Inventory quality, business contextualization, threat intelligence, and control validation are pillars of this evolution.</p>
+
+<p>CTEM provides a structure to integrate these capabilities into a continuous, outcome-oriented process that improves with every cycle.</p>
+
+<p>My main conclusion is that we must evolve from administering technical findings to understanding exposure scenarios that can genuinely impact our business.</p>
+
+<p>Because <strong>the maturity of a cybersecurity program is demonstrated not only by what we are able to detect, but by what we understand, the decisions we make, and our ability to verifiably reduce risk</strong>.</p>
+
+<hr class="border-outline-variant/20 my-8"/>
+
+<h3>References and Consulted Resources</h3>
+<ul>
+    <li>Kaufmann, M. J. (2024). <em><a href="https://learning.oreilly.com/library/view/moving-from-vulnerability/9781098173241/" target="_blank" rel="noopener noreferrer">Moving from Vulnerability Management to Exposure Management</a></em>. O'Reilly Media, Inc. Chapters 1, 2, and 3.</li>
+    <li>Gartner. <em>Continuous Threat Exposure Management (CTEM)</em>. Conceptual framework referenced and explained in Kaufmann's book.</li>
+</ul>
+
+        </article>
+
+        <!-- Comments Section (Giscus) -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <h2 class="font-headline-md text-2xl text-on-surface mb-8" data-en="Comments">Comentarios</h2>
+            <div id="giscus-container"></div>
+        </div>
+
+        <!-- Post Footer CTA -->
+        <div class="mt-16 pt-8 border-t border-outline-variant/20">
+            <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps tracking-widest uppercase">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                <span data-en="Back to posts">Volver a publicaciones</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/10 py-8 bg-surface">
+        <div class="max-w-container-max mx-auto px-grid-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2026 Luis Téllez. Guardian Architect.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const PAGE = {
+            "es": {
+                "title": "De gestionar vulnerabilidades a comprender exposiciones: una evolución necesaria en ciberseguridad | Luis Téllez",
+                "desc": "La madurez en ciberseguridad exige ir más allá de los hallazgos técnicos: relacionar activos, identidades y procesos de negocio, gestionar la incertidumbre y demostrar la reducción de exposiciones mediante CTEM."
+            },
+            "en": {
+                "title": "From Managing Vulnerabilities to Understanding Exposures: A Necessary Evolution in Cybersecurity | Luis Téllez",
+                "desc": "Cybersecurity maturity requires going beyond technical findings: connecting assets, identities, and business processes, managing uncertainty, and demonstrating exposure reduction through CTEM."
+            }
+        };
+        function loadGiscus(lang) {
+            const c = document.getElementById('giscus-container');
+            if (!c) return;
+            const frame = document.querySelector('iframe.giscus-frame');
+            if (frame) {
+                frame.contentWindow.postMessage({ giscus: { setConfig: { lang: lang } } }, 'https://giscus.app');
+                return;
+            }
+            if (c.dataset.loaded) return;
+            c.dataset.loaded = '1';
+            const s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            const attrs = {
+                'data-repo': 'LuisTellez03/RepoLT', 'data-repo-id': 'R_kgDOSC7m_A',
+                'data-category': 'Announcements', 'data-category-id': 'DIC_kwDOSC7m_M4DGHvX',
+                'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '1',
+                'data-emit-metadata': '0', 'data-input-position': 'bottom',
+                'data-theme': 'transparent_dark', 'data-lang': lang
+            };
+            Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+            s.crossOrigin = 'anonymous';
+            s.async = true;
+            c.appendChild(s);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            const btnEs = document.getElementById('btn-lang-es');
+            const btnEn = document.getElementById('btn-lang-en');
+            btnEs.classList.toggle('text-primary', lang === 'es');
+            btnEs.classList.toggle('font-bold', lang === 'es');
+            btnEn.classList.toggle('text-primary', lang === 'en');
+            btnEn.classList.toggle('font-bold', lang === 'en');
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.innerHTML);
+                el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-lang-block]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang-block') !== lang);
+            });
+
+            document.title = PAGE[lang].title;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', PAGE[lang].desc);
+            loadGiscus(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'es';
+            setLanguage(saved);
+            document.getElementById('btn-lang-es').addEventListener('click', () => setLanguage('es'));
+            document.getElementById('btn-lang-en').addEventListener('click', () => setLanguage('en'));
+        });
+    </script>
+</body>
+</html>
